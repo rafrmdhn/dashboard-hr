@@ -44,9 +44,6 @@
                     <form action="/logout" method="POST">
                         @csrf
                         <button type="submit" class="flex items-center w-full px-4 py-2 text-sm text-pink-600 hover:bg-gray-100" role="menuitem">
-                            <svg class="w-6 h-6 text-pink-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
-                            </svg>
                             Sign out
                         </button>
                     </form>

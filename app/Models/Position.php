@@ -16,8 +16,9 @@ class Position extends Model
         return $this->hasMany(Intern::class);
     }
 
-    public function employee()
+    public function staff()
     {
         return $this->hasMany(Staff::class);
     }
+
 }

@@ -22,7 +22,7 @@ class TalentFactory extends Factory
             'biography' => $this->faker->paragraph(mt_rand(3, 5)),
             'instagram' => $this->faker->userName(),
             'linkedin' => $this->faker->userName(),
-            'photo' => $this->withPhoto($this->faker->image('public/storage/images', 300, 300)),
+            'photo' => $this->withPhoto($this->faker->image('public/storage/images/talents', 300, 300)),
         ];
     }
 

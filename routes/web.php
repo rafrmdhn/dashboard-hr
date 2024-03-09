@@ -24,8 +24,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::resource('/intern', InternController::class)->middleware('auth');
-
-Route::resource('/staff', StaffController::class)->middleware('auth');
-
-Route::resource('/talent', TalentController::class)->middleware('auth');
+Route::middleware(['auth', 'prevent-back'])->group(function () {
+    Route::resource('/intern', InternController::class);
+    Route::resource('/staff', StaffController::class);
+    Route::resource('/talent', TalentController::class);
+});
