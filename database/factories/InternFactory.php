@@ -19,7 +19,7 @@ class InternFactory extends Factory
         return [
             'email' => $this->faker->unique()->safeEmail(),
             'name' => $this->faker->name(),
-            'photo' => $this->withPhoto($this->faker->image('public/storage/images', 300, 300)),
+            'photo' => $this->withPhoto($this->faker->image('public/storage/images/interns', 300, 300)),
             'biography' => $this->faker->paragraph(mt_rand(3, 5)),
             'university' => $this->faker->company(),
             'instagram' => $this->faker->userName(),

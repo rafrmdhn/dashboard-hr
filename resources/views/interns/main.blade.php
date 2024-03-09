@@ -91,7 +91,6 @@
 {{ $tables->links('partials.paginate') }}
 
 <!-- Add User Modal -->
-<div class="mt-20">
-    @include('interns.create')
-</div>
+@include('interns.create')
+
 @endsection

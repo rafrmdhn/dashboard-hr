@@ -24,7 +24,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            $intendedUrl = session()->pull('url.intended', '/');
+            return redirect()->intended($intendedUrl);
         }
 
         return back()->with('loginError', 'Login failed!');
@@ -32,6 +33,8 @@ class LoginController extends Controller
 
     public function logout()
     {
+        session(['url.intended' => url()->previous()]);
+        
         Auth::logout();
 
         session()->invalidate();

@@ -20,7 +20,7 @@ class InternController extends Controller
         return view('interns.main', [
             'title' => 'Intern',
             'search' => 'intern',
-            'tables' => Intern::latest()->filter(request(['search', 'name']))->paginate(7)->withQueryString(),
+            'tables' => Intern::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
             'positions' => Position::all(),
         ]);
     }

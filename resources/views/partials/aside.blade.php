@@ -34,6 +34,7 @@
                 </li>
           </ul>
         </li>
+        
         {{-- <li>
             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -60,17 +61,18 @@
             </a>
         </li> --}}
     </div>
-    @auth
-    <div class="absolute bottom-0 w-full">
-        <form action="/logout" method="POST" class="pb-4">
-            @csrf
-            <button type="submit" class="w-full px-4 py-2 text-gray-900 hover:text-pink-600 bg-white hover:bg-pink-100 rounded-lg">
-                <svg class="w-6 h-6 inline-block mr-2 hover:text-pink-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
-                </svg>
-                Sign Out
-            </button>
-        </form>
+    <div class="absolute bottom-0 w-full px-3">
+        @auth
+            <form action="/logout" method="POST" class="pb-4">
+                @csrf
+                <button type="submit" class="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group hover:bg-pink-100 hover:text-pink-600">
+                    <svg class="w-6 h-6 inline-block mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
+                    </svg>
+                    Sign Out
+                </button>
+            </form>
+        @endauth
     </div>
-    @endauth
+    
 </aside>

@@ -7,7 +7,7 @@
             <div class="flex justify-between mb-6">
                 <div>
                     <div class="flex items-center mb-1">
-                        <div class="text-2xl font-semibold">2</div>
+                        <div class="text-2xl font-semibold">{{ $staffs }}</div>
                     </div>
                     <div class="text-sm font-medium text-gray-400">Staff</div>
                 </div>
@@ -16,31 +16,30 @@
             <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
         </div>
         <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
+            <div class="flex justify-between mb-6">
+                <div>
+                    <div class="text-2xl font-semibold mb-1">{{ $talents }}</div>
+                    <div class="text-sm font-medium text-gray-400">Talent</div>
+                </div>
+            </div>
+            <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+        </div>
+        <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
+            <div class="flex justify-between mb-6">
+                <div>
+                    <div class="text-2xl font-semibold mb-1">{{ $interns }}</div>
+                    <div class="text-sm font-medium text-gray-400">Intern</div>
+                </div>
+            </div>
+            <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+        </div>
+        <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
             <div class="flex justify-between mb-4">
                 <div>
                     <div class="flex items-center mb-1">
-                        <div class="text-2xl font-semibold">100</div>
-                        <div class="p-1 rounded bg-emerald-500/10 text-emerald-500 text-[12px] font-semibold leading-none ml-2">+30%</div>
+                        <div class="text-2xl font-semibold">{{ $positions }}</div>
                     </div>
-                    <div class="text-sm font-medium text-gray-400">Program</div>
-                </div>
-            </div>
-            <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
-        </div>
-        <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
-            <div class="flex justify-between mb-6">
-                <div>
-                    <div class="text-2xl font-semibold mb-1">100</div>
-                    <div class="text-sm font-medium text-gray-400">Testimoni</div>
-                </div>
-            </div>
-            <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
-        </div>
-        <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
-            <div class="flex justify-between mb-6">
-                <div>
-                    <div class="text-2xl font-semibold mb-1">100</div>
-                    <div class="text-sm font-medium text-gray-400">Pendaftar</div>
+                    <div class="text-sm font-medium text-gray-400">Position</div>
                 </div>
             </div>
             <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
@@ -125,89 +124,9 @@
               </div>
             </div>
           </div>
-                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
-            <div class="flex justify-between mb-4 items-start">
-                <div class="font-medium">Activities</div>
-                 <div class="dropdown">
-                    <button type="button" class="dropdown-toggle text-gray-400 hover:text-gray-600"><i class="ri-more-fill"></i></button>
-                    <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                        <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
+                <canvas id="myChart"></canvas>
             </div>
-            <div class="overflow-hidden">
-                <table class="w-full min-w-[540px]">
-                    <tbody>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Lorem Ipsum</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">17.45</span>
-                            </td>
-                             <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="dropdown">
-                                    <button type="button" class="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"><i class="ri-more-2-fill"></i></button>
-                                    <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                        <li>
-                                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td> 
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Lorem Ipsum</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">17.45</span>
-                            </td>
-                             <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="dropdown">
-                                    <button type="button" class="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"><i class="ri-more-2-fill"></i></button>
-                                    <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                        <li>
-                                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td> 
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
@@ -429,4 +348,56 @@
         </div>
     </div>
 </div>
+
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: {!! json_encode($labels) !!},
+            datasets: [{
+                data: {!! json_encode($data) !!},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)',
+                    'rgba(255, 0, 0, 0.7)',
+                    'rgba(0, 255, 0, 0.7)',
+                    'rgba(0, 0, 255, 0.7)',
+                    'rgba(128, 128, 128, 0.7)',
+                    'rgba(0, 128, 128, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(0, 255, 0, 1)',
+                    'rgba(0, 0, 255, 1)',
+                    'rgba(128, 128, 128, 1)',
+                    'rgba(0, 128, 128, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                position: 'bottom',
+                labels: {
+                    fontColor: 'black',
+                    fontSize: 14,
+                    padding: 20
+                }
+            }
+        }
+    });
+</script>
 @endsection

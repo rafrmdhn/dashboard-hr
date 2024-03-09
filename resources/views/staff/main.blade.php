@@ -86,10 +86,6 @@
 {{-- Paginate --}}
 {{ $tables->links('partials.paginate') }}
 
-
-
-{{ $tables->links('partials.paginate') }}
-
 <!-- Add User Modal -->
 @include('staff.create')
 

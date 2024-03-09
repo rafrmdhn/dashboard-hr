@@ -24,13 +24,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        User::factory()->create();
+        // User::factory()->create();
 
-        // Intern::factory(3)->create();
+        Intern::factory(20)->create();
 
-        // Talent::factory(5)->create();
+        Talent::factory(20)->create();
 
-        // Staff::factory(5)->create();
+        Staff::factory(20)->create();
 
         // Position::factory(5)->create();
     }
