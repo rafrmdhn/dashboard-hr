@@ -32,6 +32,12 @@
                 <li>
                    <a href="/intern" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 {{ Request::is('intern') ? 'bg-gray-200' : '' }}">Intern</a>
                 </li>
+                <li>
+                   <a href="/brand" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 {{ Request::is('brand') ? 'bg-gray-200' : '' }}">Brand</a>
+                </li>
+                <li>
+                   <a href="/agency" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 {{ Request::is('agency') ? 'bg-gray-200' : '' }}">Agency</a>
+                </li>
           </ul>
         </li>
         

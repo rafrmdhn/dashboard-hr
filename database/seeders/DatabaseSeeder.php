@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
         // ]);
         // User::factory()->create();
 
-        Intern::factory(20)->create();
+        // Intern::factory(20)->create();
 
         Talent::factory(20)->create();
 
-        Staff::factory(20)->create();
+        // Staff::factory(20)->create();
 
         // Position::factory(5)->create();
     }

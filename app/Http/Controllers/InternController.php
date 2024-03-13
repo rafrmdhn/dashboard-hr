@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
+use Session;
+
 use App\Models\Intern;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use App\Imports\InternImport;
+use App\Exports\InternExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class InternController extends Controller
 {
@@ -20,8 +27,9 @@ class InternController extends Controller
         return view('interns.main', [
             'title' => 'Intern',
             'search' => 'intern',
-            'tables' => Intern::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
+            'tables' => Intern::latest()->filter(request(['search', 'name', 'position']))->paginate(6)->withQueryString(),
             'positions' => Position::all(),
+            'export' => 'exportIntern'
         ]);
     }
 
@@ -113,5 +121,22 @@ class InternController extends Controller
         Intern::destroy($intern->id);
 
         return redirect('/intern')->with('success', 'Data has been deleted!');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new InternExport, 'intern.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('InternData', $fileName);
+
+        Excel::import(new InternImport, public_path('/InternData/'.$fileName)); 
+        
+        return redirect('/intern')->with('success', 'Data has been added!');
     }
 }
