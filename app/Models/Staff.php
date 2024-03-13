@@ -29,5 +29,11 @@ class Staff extends Model
                 $query->where('name', 'like', '%' . $search . '%');
             });
         });
+
+        $query->when($filters['position'] ?? false, function($query, $position) {
+            return $query->whereHas('position', function($query) use ($position) {
+                $query->where('name', $position);
+            });
+        });
     }
 }

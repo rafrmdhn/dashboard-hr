@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Talent;
 use Illuminate\Http\Request;
+use App\Exports\TalentExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TalentController extends Controller
 {
@@ -17,6 +19,7 @@ class TalentController extends Controller
             'title' => 'Talent',
             'search' => 'talent',
             'tables' => Talent::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
+            'export' => 'exportTalent'
         ]);
     }
 
@@ -71,5 +74,10 @@ class TalentController extends Controller
         Talent::destroy($talent->id);
 
         return redirect('/talent')->with('success', 'Data has been deleted!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new TalentExport, 'talent.xlsx');
     }
 }

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Staff;
 use App\Models\Position;
+use App\Exports\StaffExport;
+use App\Imports\StaffImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StaffController extends Controller
 {
@@ -20,8 +23,9 @@ class StaffController extends Controller
         return view('staff.main', [
             'title' => 'Staff',
             'search' => 'staff',
-            'tables' => Staff::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
+            'tables' => Staff::latest()->filter(request(['search', 'name', 'position']))->paginate(6)->withQueryString(),
             'positions' => Position::all(),
+            'export' => 'exportStaff'
         ]);
     }
 
@@ -111,5 +115,22 @@ class StaffController extends Controller
         Staff::destroy($staff->id);
 
         return redirect('/staff')->with('success', 'Data has been deleted!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new StaffExport, 'staff.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('StaffData', $fileName);
+
+        Excel::import(new StaffImport, public_path('/StaffData/'.$fileName)); 
+        
+        return redirect('/staff')->with('success', 'Data has been added!');
     }
 }

@@ -24,7 +24,7 @@ class InternFactory extends Factory
             'university' => $this->faker->company(),
             'instagram' => $this->faker->userName(),
             'linkedin' => $this->faker->userName(),
-            'position_id' => mt_rand(1, 5)
+            'position_id' => mt_rand(1, 11)
         ];
     }
 

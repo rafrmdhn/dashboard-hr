@@ -54,79 +54,14 @@
                 </div>
               </div>
               <div class="block w-full overflow-x-auto">
-                <table class="items-center w-full bg-transparent border-collapse">
-                  <thead>
-                    <tr>
-                      <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Role</th>
-                      <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Amount</th>
-                      <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="text-gray-700 dark:text-gray-100">
-                      <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Administrator</th>
-                      <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">1</td>
-                      <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div class="flex items-center">
-                          <span class="mr-2">70%</span>
-                          <div class="relative w-full">
-                            <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
-                              <div style="width: 70%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="text-gray-700 dark:text-gray-100">
-                      <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">User</th>
-                      <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">6</td>
-                      <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div class="flex items-center">
-                          <span class="mr-2">40%</span>
-                          <div class="relative w-full">
-                            <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
-                              <div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="text-gray-700 dark:text-gray-100">
-                      <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">User</th>
-                      <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">5</td>
-                      <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div class="flex items-center">
-                          <span class="mr-2">45%</span>
-                          <div class="relative w-full">
-                            <div class="overflow-hidden h-2 text-xs flex rounded bg-pink-200">
-                              <div style="width: 45%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="text-gray-700 dark:text-gray-100">
-                      <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">User</th>
-                      <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">4</td>
-                      <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div class="flex items-center">
-                          <span class="mr-2">60%</span>
-                          <div class="relative w-full">
-                            <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                              <div style="width: 60%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                    <div id="column-chart"></div>
               </div>
             </div>
           </div>
             <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
-                <canvas id="myChart"></canvas>
+                <div class="py-6" id="pie-chart"></div>
             </div>
+            
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
@@ -350,54 +285,181 @@
 </div>
 
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: {!! json_encode($labels) !!},
-            datasets: [{
-                data: {!! json_encode($data) !!},
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 206, 86, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(153, 102, 255, 0.7)',
-                    'rgba(255, 159, 64, 0.7)',
-                    'rgba(255, 0, 0, 0.7)',
-                    'rgba(0, 255, 0, 0.7)',
-                    'rgba(0, 0, 255, 0.7)',
-                    'rgba(128, 128, 128, 0.7)',
-                    'rgba(0, 128, 128, 0.7)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(255, 0, 0, 1)',
-                    'rgba(0, 255, 0, 1)',
-                    'rgba(0, 0, 255, 1)',
-                    'rgba(128, 128, 128, 1)',
-                    'rgba(0, 128, 128, 1)'
-                ],
-                borderWidth: 2
-            }]
+
+const getChartOptions = () => {
+  return {
+    series: {!! json_encode($data) !!},
+    colors: ["#1C64F2", "#16BDCA", "#9061F9", "#F21C64", "#CA16BD", "#F99061", "#F9F91C", "#64F21C", "#1CAAF2", "#F21CA3"],
+    chart: {
+      height: 420,
+      width: "100%",
+      type: "pie",
+    },
+    stroke: {
+      colors: ["white"],
+      lineCap: "",
+    },
+    plotOptions: {
+      pie: {
+        labels: {
+          show: true,
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-                position: 'bottom',
-                labels: {
-                    fontColor: 'black',
-                    fontSize: 14,
-                    padding: 20
-                }
-            }
+        size: "100%",
+        dataLabels: {
+          offset: -25
         }
-    });
+      },
+    },
+    labels: {!! json_encode($labels) !!},
+    dataLabels: {
+      enabled: true,
+      style: {
+        fontFamily: "Inter, sans-serif",
+      },
+    },
+    legend: {
+      position: "bottom",
+      fontFamily: "Inter, sans-serif",
+    },
+    yaxis: {
+      labels: {
+        formatter: function (value) {
+          return value + "%"
+        },
+      },
+    },
+    xaxis: {
+      labels: {
+        formatter: function (value) {
+          return value  + "%"
+        },
+      },
+      axisTicks: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+    },
+  }
+}
+
+if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
+  const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
+  chart.render();
+}
+
 </script>
+
+<script>
+    const options = {
+      colors: ["#1A56DB", "#FDBA8C"],
+      series: [
+        {
+          name: "Organic",
+          color: "#1A56DB",
+          data: [
+            { x: "Mon", y: 231 },
+            { x: "Tue", y: 122 },
+            { x: "Wed", y: 63 },
+            { x: "Thu", y: 421 },
+            { x: "Fri", y: 122 },
+            { x: "Sat", y: 323 },
+            { x: "Sun", y: 111 },
+          ],
+        },
+        {
+          name: "Social media",
+          color: "#FDBA8C",
+          data: [
+            { x: "Mon", y: 232 },
+            { x: "Tue", y: 113 },
+            { x: "Wed", y: 341 },
+            { x: "Thu", y: 224 },
+            { x: "Fri", y: 522 },
+            { x: "Sat", y: 411 },
+            { x: "Sun", y: 243 },
+          ],
+        },
+      ],
+      chart: {
+        type: "bar",
+        height: "320px",
+        fontFamily: "Inter, sans-serif",
+        toolbar: {
+          show: false,
+        },
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: "70%",
+          borderRadiusApplication: "end",
+          borderRadius: 8,
+        },
+      },
+      tooltip: {
+        shared: true,
+        intersect: false,
+        style: {
+          fontFamily: "Inter, sans-serif",
+        },
+      },
+      states: {
+        hover: {
+          filter: {
+            type: "darken",
+            value: 1,
+          },
+        },
+      },
+      stroke: {
+        show: true,
+        width: 0,
+        colors: ["transparent"],
+      },
+      grid: {
+        show: false,
+        strokeDashArray: 4,
+        padding: {
+          left: 2,
+          right: 2,
+          top: -14
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      legend: {
+        show: false,
+      },
+      xaxis: {
+        floating: false,
+        labels: {
+          show: true,
+          style: {
+            fontFamily: "Inter, sans-serif",
+            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+          }
+        },
+        axisBorder: {
+          show: false,
+        },
+        axisTicks: {
+          show: false,
+        },
+      },
+      yaxis: {
+        show: false,
+      },
+      fill: {
+        opacity: 1,
+      },
+    }
+    
+    if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
+      const chart = new ApexCharts(document.getElementById("column-chart"), options);
+      chart.render();
+    }
+    </script>
 @endsection

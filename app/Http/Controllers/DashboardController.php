@@ -13,11 +13,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $positionData = Position::select('positions.name AS name', DB::raw('COUNT(*) AS total_count'))
-            ->leftJoin('interns', 'interns.position_id', '=', 'positions.id')
-            ->leftJoin('staff', 'staff.position_id', '=', 'positions.id')
-            ->groupBy('name')
-            ->get();
+        $positionData = Position::select('positions.name AS name', 
+                        DB::raw('COUNT(DISTINCT interns.id) AS intern_count'),
+                        DB::raw('COUNT(DISTINCT staff.id) AS staff_count'),
+                        DB::raw('COUNT(DISTINCT interns.id) + COUNT(DISTINCT staff.id) AS total_count'))
+                            ->leftJoin('interns', 'interns.position_id', '=', 'positions.id')
+                            ->leftJoin('staff', 'staff.position_id', '=', 'positions.id')
+                            ->groupBy('name')
+                            ->get();
 
         // Prepare labels and data arrays (optional)
         $labels = [];

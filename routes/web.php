@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomInternController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\InternController;
@@ -26,6 +27,14 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware(['auth', 'prevent-back'])->group(function () {
     Route::resource('/intern', InternController::class);
+    Route::post('/intern', [InternController::class, 'import']);
+    Route::get('/exportIntern', [InternController::class, 'export']);
+    Route::post('/selected-intern', [CustomInternController::class, 'deleteAll']);
+
     Route::resource('/staff', StaffController::class);
+    Route::post('/staff', [StaffController::class, 'import']);
+    Route::get('/exportStaff', [StaffController::class, 'export']);
+
     Route::resource('/talent', TalentController::class);
+    Route::get('/exportTalent', [TalentController::class, 'export']);
 });
