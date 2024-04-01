@@ -23,7 +23,7 @@
                         <tr>
                             <th scope="col" class="p-4">
                                 <div class="flex items-center">
-                                    <input id="select_all_ids" aria-describedby="checkbox-1" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="select_all_ids" name="" aria-describedby="checkbox-1" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="checkbox-all" class="sr-only">checkbox</label>
                                 </div>
                             </th>
@@ -31,16 +31,25 @@
                                 Name
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Biography
+                                Address
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Position
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                University
+                                Phone
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Place and date of birth
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Domicile
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Social Media
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Status
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Actions
@@ -48,10 +57,8 @@
                         </tr>
                     </thead>
                     
-                    <form action="/selected-intern" method="POST" id="selectedData">                        
-                        @csrf
-                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                            @foreach ($tables as $intern)
+                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                        @foreach ($tables as $intern)
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $intern->id }}">
                                 <td class="w-4 p-4">
                                     <div class="flex items-center">
@@ -66,24 +73,30 @@
                                         <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $intern->email }}</div>
                                     </div>
                                 </td>
-                                <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $intern->biography }}</td>
+                                <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $intern->address }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->position->name }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->university }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->phone }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->place }}, {{ $intern->birth }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->domicile }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->instagram }}, {{ $intern->linkedin }}</td>
+                                <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Active</h2>
+                                    </div>
+                                </td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
                                     @include('interns.edit')
-                                    <form action="/intern/{{ $intern->id }}" method="POST" class="inline-flex">
+                                    {{-- <form action="/intern/{{ $intern->id }}" method="POST" class="inline-flex">
                                         @method('delete')
                                         @csrf
                                         <!-- Delete User Modal -->
                                         @include('interns.delete')
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>    
-                            @endforeach
-                        </tbody>
-                    </form>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -98,47 +111,5 @@
 
 @include('interns.import')
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const deleteForm = document.getElementById("selectedData");
-
-        document.getElementById("deleteAllSelectorRecord").addEventListener("click", function() {
-            const selectedCheckboxes = document.querySelectorAll(".checkbox_ids:checked");
-            const ids = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
-
-            if (ids.length > 0) {
-                if (confirm("Are you sure you want to delete selected records?")) {
-                    deleteForm.ids.value = JSON.stringify(ids);
-                    deleteForm.submit();
-                }
-            } else {
-                alert("Please select at least one record to delete.");
-            }
-        });
-    });
-
-    function editIntern(id) {
-        window.location.href = "/edit-intern/" + id;
-    }
-
-    function deleteIntern(id) {
-        if (confirm("Are you sure you want to delete this record?")) {
-            document.getElementById(id).remove();
-            fetch("/selected-intern/" + id, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json, text-plain, */*",
-                    "X-Requested-With": "XMLHttpRequest",
-                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                }
-            }).then((data) => {
-                console.log(data);
-            }).catch((error) => {
-                console.error("Error:", error);
-            });
-        }
-    }
-</script>
 
 @endsection

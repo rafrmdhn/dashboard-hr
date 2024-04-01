@@ -24,7 +24,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            $intendedUrl = session()->pull('url.intended', '/');
+            $intendedUrl = session()->pull('url.intended', '/fdashboard');
             return redirect()->intended($intendedUrl);
         }
 
@@ -41,6 +41,6 @@ class LoginController extends Controller
  
         session()->regenerateToken();
  
-        return redirect('/');
+        return redirect('/flogin');
     }
 }

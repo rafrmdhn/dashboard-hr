@@ -46,11 +46,11 @@
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div class="p-6 relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
+        <div class="p-6 relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words w-full shadow-lg rounded">
             <div class="rounded-t mb-0 px-0 border-0">
               <div class="flex flex-wrap items-center px-4 py-2">
                 <div class="relative w-full max-w-full flex-grow flex-1">
-                  <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Users</h3>
+                  <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Kinerja</h3>
                 </div>
               </div>
               <div class="block w-full overflow-x-auto">
@@ -59,6 +59,9 @@
             </div>
           </div>
             <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
+              <div class="relative w-full max-w-full flex-grow flex-1">
+                <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Total Posisi</h3>
+              </div>
                 <div class="py-6" id="pie-chart"></div>
             </div>
             
@@ -288,7 +291,7 @@
 
 const getChartOptions = () => {
   return {
-    series: {!! json_encode($data) !!},
+    series: {!! json_encode($pie) !!},
     colors: ["#1C64F2", "#16BDCA", "#9061F9", "#F21C64", "#CA16BD", "#F99061", "#F9F91C", "#64F21C", "#1CAAF2", "#F21CA3"],
     chart: {
       height: 420,
@@ -353,113 +356,32 @@ if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
 
 <script>
     const options = {
-      colors: ["#1A56DB", "#FDBA8C"],
-      series: [
-        {
-          name: "Organic",
-          color: "#1A56DB",
-          data: [
-            { x: "Mon", y: 231 },
-            { x: "Tue", y: 122 },
-            { x: "Wed", y: 63 },
-            { x: "Thu", y: 421 },
-            { x: "Fri", y: 122 },
-            { x: "Sat", y: 323 },
-            { x: "Sun", y: 111 },
-          ],
-        },
-        {
-          name: "Social media",
-          color: "#FDBA8C",
-          data: [
-            { x: "Mon", y: 232 },
-            { x: "Tue", y: 113 },
-            { x: "Wed", y: 341 },
-            { x: "Thu", y: 224 },
-            { x: "Fri", y: 522 },
-            { x: "Sat", y: 411 },
-            { x: "Sun", y: 243 },
-          ],
-        },
-      ],
-      chart: {
-        type: "bar",
-        height: "320px",
-        fontFamily: "Inter, sans-serif",
-        toolbar: {
-          show: false,
-        },
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-          columnWidth: "70%",
-          borderRadiusApplication: "end",
-          borderRadius: 8,
-        },
-      },
-      tooltip: {
-        shared: true,
-        intersect: false,
-        style: {
-          fontFamily: "Inter, sans-serif",
-        },
-      },
-      states: {
-        hover: {
-          filter: {
-            type: "darken",
-            value: 1,
-          },
-        },
-      },
-      stroke: {
-        show: true,
-        width: 0,
-        colors: ["transparent"],
-      },
-      grid: {
-        show: false,
-        strokeDashArray: 4,
-        padding: {
-          left: 2,
-          right: 2,
-          top: -14
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      legend: {
-        show: false,
-      },
-      xaxis: {
-        floating: false,
-        labels: {
-          show: true,
-          style: {
+        colors: ["#1A56DB", "#FDBA8C"],
+        series: [
+            {
+                name: "Intern",
+                color: "#1A56DB",
+                data: {!! json_encode($internData) !!}.map(item => ({ x: item.month_name, y: item.result }))
+            },
+            {
+                name: "Staff",
+                color: "#FDBA8C",
+                data: {!! json_encode($staffData) !!}.map(item => ({ x: item.month_name, y: item.result }))
+            },
+        ],
+        chart: {
+            type: "bar",
+            height: "420px",
             fontFamily: "Inter, sans-serif",
-            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-          }
+            toolbar: {
+                show: false,
+            },
         },
-        axisBorder: {
-          show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
-      },
-      yaxis: {
-        show: false,
-      },
-      fill: {
-        opacity: 1,
-      },
+    };
+
+    if (document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(document.getElementById("column-chart"), options);
+        chart.render();
     }
-    
-    if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
-      const chart = new ApexCharts(document.getElementById("column-chart"), options);
-      chart.render();
-    }
-    </script>
+</script>
 @endsection

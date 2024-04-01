@@ -17,11 +17,15 @@ class StaffImport implements ToModel
         return new Staff([
             'position_id' => $row[1],
             'name' => $row[2],
-            'email' => $row[3],            
-            'biography'=>$row[4],
-            'instagram'=>$row[5],
-            'linkedin'=>$row[6],
-            'photo'=>$row[7],
+            'email' => $row[3],   
+            'phone' => $row[4],
+            'place' => $row[5],
+            'birth' => $row[6],
+            'address'=>$row[7],
+            'domicile'=>$row[8],
+            'instagram'=>$row[9],
+            'linkedin'=>$row[10],
+            'photo'=>$row[11],
         ]);
     }
 }

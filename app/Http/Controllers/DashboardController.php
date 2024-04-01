@@ -6,13 +6,34 @@ use App\Models\Staff;
 use App\Models\Intern;
 use App\Models\Talent;
 use App\Models\Position;
+use App\Models\Indicator;
+use App\Models\Performance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $internData = Performance::selectRaw('MONTH(created_at) as month, SUM(result) as result')
+                        ->whereBetween('created_at', ['2024-02-01', '2024-06-30'])
+                        ->groupByRaw('MONTH(created_at)')
+                        ->get()
+                        ->map(function ($item) {
+                            $item->month_name = Carbon::createFromDate(null, $item->month)->monthName;
+                            return $item;
+                        });
+
+        $staffData  = Indicator::selectRaw('MONTH(created_at) as month, SUM(result) as result')
+                        ->whereBetween('created_at', ['2024-02-01', '2024-06-30'])
+                        ->groupByRaw('MONTH(created_at)')
+                        ->get()
+                        ->map(function ($item) {
+                            $item->month_name = Carbon::createFromDate(null, $item->month)->monthName;
+                            return $item;
+                        });
+
         $positionData = Position::select('positions.name AS name', 
                         DB::raw('COUNT(DISTINCT interns.id) AS intern_count'),
                         DB::raw('COUNT(DISTINCT staff.id) AS staff_count'),
@@ -32,7 +53,7 @@ class DashboardController extends Controller
 
         // 4. Get additional counts for view (optional)
         $staffCount = Staff::count();
-        $talentCount = Talent::count(); // Modify model name as needed
+        $talentCount = Talent::where('status', 1)->count();
         $internCount = Intern::count();
 
         return view('dashboard', [
@@ -42,7 +63,9 @@ class DashboardController extends Controller
             'talents' => $talentCount,
             'interns' => $internCount,
             'labels' => $labels,
-            'data' => $data,
+            'pie' => $data,
+            'internData' => $internData,
+            'staffData' => $staffData
         ]);
     }
 }

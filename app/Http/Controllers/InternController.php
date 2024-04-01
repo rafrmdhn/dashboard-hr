@@ -49,9 +49,12 @@ class InternController extends Controller
         $validatedData = $request->validate([
             'email' => 'required',
             'name' => 'required|max:255',
-            'biography' => 'required|max:255',
+            'phone' => 'required|max:12',
+            'place' => 'required',
+            'birth' => 'required',
+            'domicile' => 'required',
+            'address' => 'required|max:255',
             'position_id' => 'required|max:255',
-            'university' => 'required|max:255',
             'photo' => 'image|file|max:1024', // 1MB Max
             'instagram' => 'required',
             'linkedin' => 'required'
@@ -90,10 +93,13 @@ class InternController extends Controller
         $validatedData = $request->validate([
             'email' => 'required',
             'name' => 'required|max:255',
-            'biography' => 'required|max:255',
+            'phone' => 'required|max:12',
+            'place' => 'required',
+            'birth' => 'required',
+            'domicile' => 'required',
+            'address' => 'required|max:255',
             'position_id' => 'required|max:255',
-            'university' => 'required|max:255',
-            'photo' => 'nullable|image|file|max:1024', // 1MB Max
+            'photo' => 'image|file|max:1024', // 1MB Max
             'instagram' => 'required',
             'linkedin' => 'required'
         ]);

@@ -19,11 +19,15 @@ class StaffFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'biography' => $this->faker->paragraph(mt_rand(3, 5)),
+            'phone' => $this->faker->phoneNumber(),
+            'place' => $this->faker->city(),
+            'birth' => $this->faker->date(),
+            'address' => $this->faker->address(),
+            'domicile' => $this->faker->city(),
             'instagram' => $this->faker->userName(),
             'linkedin' => $this->faker->userName(),
             'photo' => $this->withPhoto($this->faker->image('public/storage/images/staffs', 300, 300)),
-            'position_id' => mt_rand(1, 11)
+            'position_id' => mt_rand(1, 2)
         ];
     }
 
