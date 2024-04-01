@@ -45,7 +45,11 @@ class StaffController extends Controller
         $validatedData = $request->validate([
             'email' => 'required',
             'name' => 'required|max:255',
-            'biography' => 'required|max:255',
+            'phone' => 'required|max:12',
+            'place' => 'required',
+            'birth' => 'required',
+            'domicile' => 'required',
+            'address' => 'required|max:255',
             'position_id' => 'required|max:255',
             'photo' => 'image|file|max:1024', // 1MB Max
             'instagram' => 'required',
@@ -85,7 +89,11 @@ class StaffController extends Controller
         $validatedData = $request->validate([
             'email' => 'required',
             'name' => 'required|max:255',
-            'biography' => 'required|max:255',
+            'phone' => 'required|max:12',
+            'place' => 'required',
+            'birth' => 'required',
+            'domicile' => 'required',
+            'address' => 'required|max:255',
             'position_id' => 'required|max:255',
             'photo' => 'image|file|max:1024', // 1MB Max
             'instagram' => 'required',

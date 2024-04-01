@@ -19,12 +19,15 @@ class InternFactory extends Factory
         return [
             'email' => $this->faker->unique()->safeEmail(),
             'name' => $this->faker->name(),
-            'photo' => $this->withPhoto($this->faker->image('public/storage/images/interns', 300, 300)),
-            'biography' => $this->faker->paragraph(mt_rand(3, 5)),
-            'university' => $this->faker->company(),
+            'phone' => $this->faker->phoneNumber(),
+            'place' => $this->faker->city(),
+            'birth' => $this->faker->date(),
+            'address' => $this->faker->address(),
+            'domicile' => $this->faker->city(),
             'instagram' => $this->faker->userName(),
             'linkedin' => $this->faker->userName(),
-            'position_id' => mt_rand(1, 11)
+            'photo' => $this->withPhoto($this->faker->image('public/storage/images/interns', 300, 300)),
+            'position_id' => mt_rand(1, 2)
         ];
     }
 

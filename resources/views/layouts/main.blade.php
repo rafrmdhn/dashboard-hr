@@ -15,8 +15,11 @@
     
     @include('partials.aside')
 
-    @if (!request()->is('/'))
+    @if (!request()->is('fdashboard', 'fregistrasi'))
         @include('partials.header')
+    @endif
+    @if (request()->is('fregistrasi'))
+        @include('partials.link')
     @endif
     
     <div class="container max-w-full {{ Request::is('/') ? 'bg-gray-300' : '' }}">
@@ -25,7 +28,7 @@
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="{{ asset('js/index.js') }}"></script>
-    {{-- <script>
+    <script>
         $(function(e){
             $("#select_all_ids").click(function(){
                 $('.checkbox_ids').prop('checked', $(this).prop('checked'));
@@ -56,6 +59,7 @@
                 // })
             });
         });
-    </script> --}}
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 </body>
 </html>

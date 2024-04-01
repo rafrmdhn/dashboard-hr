@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Category;
 use App\Models\Intern;
 use App\Models\Position;
 use App\Models\Staff;
@@ -24,14 +25,21 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        // User::factory()->create();
+        User::factory()->create();
 
-        // Intern::factory(20)->create();
+        Intern::factory(2)->create();
 
-        Talent::factory(20)->create();
+        // Talent::factory(20)->create();
 
-        // Staff::factory(20)->create();
+        Staff::factory(2)->create();
 
-        // Position::factory(5)->create();
+        Position::factory(2)->create();
+
+        Category::create([
+            'name' => 'Model, Fashion',            
+        ]);
+        Category::create([
+            'name' => 'Food',            
+        ]);
     }
 }

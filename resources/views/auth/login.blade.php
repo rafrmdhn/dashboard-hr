@@ -29,7 +29,7 @@
                 </div>
             @endif
 
-            <form action="/login" method="POST">
+            <form action="/flogin" method="POST">
                 @csrf
                 <div class="mb-4">
                     <label class="block mb-1 text-white" for="email">Email-Address</label>

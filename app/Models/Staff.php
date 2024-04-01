@@ -17,6 +17,36 @@ class Staff extends Model
         return $this->belongsTo(Position::class);
     }
 
+    public function talents()
+    {
+        return $this->hasMany(Talent::class);
+    }
+
+    public function indicator()
+    {
+        return $this->hasMany(Indicator::class);
+    }
+
+    public function finance()
+    {
+        return $this->hasMany(Earning::class);
+    }
+
+    public function brand()
+    {
+        return $this->hasMany(Brand::class);
+    }
+
+    public function agency()
+    {
+        return $this->hasMany(Agency::class);
+    }
+
+    public function spend()
+    {
+        return $this->hasMany(Spending::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search) {

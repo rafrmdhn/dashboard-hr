@@ -17,6 +17,11 @@ class Intern extends Model
         return $this->belongsTo(Position::class);
     }
 
+    public function perform()
+    {
+        return $this->hasMany(Performance::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search) {
