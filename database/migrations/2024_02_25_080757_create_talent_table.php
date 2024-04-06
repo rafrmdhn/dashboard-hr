@@ -34,7 +34,7 @@ return new class extends Migration
             $table->decimal('rate_yt', 16, 2);
             $table->decimal('rate_event', 16, 2);
             $table->boolean('talent_exclusive');
-            $table->foreignId('staff_id');
+            $table->foreignId('staff_id')->constrained();
             $table->boolean('shopee_affiliate');
             $table->boolean('tiktok_affiliate');
             $table->boolean('mcn_tiktok');            

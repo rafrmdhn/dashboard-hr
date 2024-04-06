@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css','resources/js/app.js'])
     <title>Dashboard HR | {{ $title }}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -36,27 +37,34 @@
 
             $('#deleteAllSelectorRecord').click(function(e){
                 e.preventDefault();
-                console.log("Hello")
-                let form = $('#selectedData');
-                form.submit();
-                // var all_ids = [];
-                // $('input:checkbox[name=ids]:checked').each(function(){
-                //     all_ids.push($(this).val());
-                // });
+                let token = $("meta[name='csrf-token']").attr("content");
+                let all_ids = [];
+                $('input:checkbox[name=ids]:checked').each(function(){
+                    all_ids.push($(this).val());
+                });
 
-                // $.ajax({
-                //     url:"",
-                //     type:"DELETE",
-                //     data:{
-                //         ids:all.ids,
-                //         _token:'@csrf'
-                //     },
-                //     success:function(response){
-                //         $.each(all_ids,function(key, val){
-                //             $('#_ids' + val).remove();
-                //         })
-                //     }
-                // })
+                if(all_ids.length <= 0){
+                    alert("Please select records.");
+                    return;
+                }
+
+                $.ajax({
+                    url:"/bulk-action",
+                    type:"DELETE",
+                    data:{
+                        ids:all_ids,
+                        model:{!! json_encode(request()->path()) !!},
+                        _token:token
+                    },
+                    success: function(response) {
+                        // console.log(response);
+                        location.reload();
+                    },
+                    error: e => {
+                        // console.log(e.responseText)
+                    }
+                    
+                })
             });
         });
     </script>

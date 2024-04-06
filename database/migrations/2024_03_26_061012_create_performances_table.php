@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('performances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('intern_id');
+            $table->foreignId('intern_id')->constrained();
             $table->integer('target');
             $table->integer('result');
             $table->timestamps();

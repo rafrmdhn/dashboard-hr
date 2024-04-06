@@ -6,6 +6,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\BulkActionController;
 use App\Http\Controllers\InternController;
 use App\Http\Controllers\TalentController;
 use App\Http\Controllers\EarningController;
@@ -40,6 +41,7 @@ Route::middleware(['auth', 'prevent-back'])->group(function () {
     Route::post('/intern-import', [InternController::class, 'import']);
     Route::get('/exportIntern', [InternController::class, 'export']);
     Route::delete('/selected-intern', [CustomInternController::class, 'deleteAll']);
+    Route::delete('/bulk-action', [BulkActionController::class, 'deleteAll']);
 
     Route::resource('/staff', StaffController::class);
     Route::post('/staff-import', [StaffController::class, 'import']);

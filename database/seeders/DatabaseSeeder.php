@@ -27,13 +27,15 @@ class DatabaseSeeder extends Seeder
         // ]);
         User::factory()->create();
 
-        Intern::factory(2)->create();
-
-        // Talent::factory(20)->create();
-
-        Staff::factory(2)->create();
-
         Position::factory(2)->create();
+
+        Intern::factory(20)->create();
+
+        Staff::factory(20)->create();
+        
+        Talent::factory(20)->create();
+
+
 
         Category::create([
             'name' => 'Model, Fashion',            

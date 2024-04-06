@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('earnings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('brand_id');
-            $table->foreignId('agency_id');
+            $table->foreignId('brand_id')->constrained();
+            $table->foreignId('agency_id')->constrained();
             $table->decimal('percent', 5, 2);
             $table->decimal('profit', 16, 2);
             $table->timestamps();
