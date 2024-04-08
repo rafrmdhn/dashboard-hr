@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Staff;
 use App\Models\Agency;
+use App\Models\Earning;
 use App\Models\Intern;
 use App\Models\Talent;
 use Illuminate\Http\Request;
@@ -31,6 +32,9 @@ class BulkActionController extends Controller
                     break;
                 case 'agency':
                     Agency::destroy($ids);
+                    break;
+                case 'earnings':
+                    Earning::destroy($ids);
                     break;
                 default:
                     break;

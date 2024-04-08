@@ -11,14 +11,19 @@ class Earning extends Model
 
     protected $guarded = ['id'];
 
-    public function brand()
+    public function earnable()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->morphTo();
     }
 
-    public function agency()
+    public function sows()
     {
-        return $this->belongsTo(Agency::class);
+        return $this->belongsToMany(Sow::class, 'earning_sow')->withPivot(['talent_rate', 'note'])->withTimestamps();
+    }
+
+    public function talent()
+    {
+        return $this->belongsTo(Talent::class);
     }
 
     public function scopeFilter($query, array $filters)

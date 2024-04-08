@@ -13,6 +13,7 @@ use App\Http\Controllers\EarningController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\CustomInternController;
+use App\Http\Controllers\DependantDropdownController;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\ProfileController;
@@ -68,6 +69,9 @@ Route::middleware(['auth', 'prevent-back'])->group(function () {
 
     Route::get('/fregistrasi', [TalentController::class, 'page']);
     Route::put('/fregistrasi/{talent}', [TalentController::class, 'updateForm']);
+
+    Route::get('/getAgencies', [DependantDropdownController::class, 'getAgencies']);
+    Route::get('/getBrands', [DependantDropdownController::class, 'getBrands']);
 });
 
 Route::get('/registrasi-talent', function(){

@@ -22,6 +22,11 @@ class Talent extends Model
         return $this->belongsTo(Staff::class);
     }
 
+    public function earning()
+    {
+        return $this->hasMany(Earning::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search) {
