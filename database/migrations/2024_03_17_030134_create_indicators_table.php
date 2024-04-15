@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('indicators', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id');
+            $table->foreignId('staff_id')->constrained();
             $table->integer('target');
             $table->integer('result');
             $table->timestamps();

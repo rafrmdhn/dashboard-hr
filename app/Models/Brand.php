@@ -16,14 +16,14 @@ class Brand extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function finance()
-    {
-        return $this->hasMany(Earning::class);
-    }
-
     public function staff()
     {
         return $this->belongsTo(Staff::class);
+    }
+
+    public function earnings()
+    {
+        return $this->morphMany(Earning::class, 'earnable');
     }
 
     public function scopeFilter($query, array $filters)

@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('earnings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('brand_id');
-            $table->foreignId('agency_id');
-            $table->decimal('percent', 5, 2);
-            $table->decimal('profit', 16, 2);
+            $table->morphs('earnable'); // brand, agency
+            $table->foreignId('talent_id')->constrained();
+            $table->string('name');
+            $table->date('date');
+            $table->decimal('rate', 16, 2)->default(0);
+            // $table->decimal('fee_for_talent', 16, 2)->default(0);
+            $table->enum('status', ['proses', 'selesai', 'gagal'])->default('proses');
+            $table->text('note')->nullable();
+            $table->string('link_project')->nullable();
             $table->timestamps();
         });
     }

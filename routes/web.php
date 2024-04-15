@@ -6,12 +6,14 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\BulkActionController;
 use App\Http\Controllers\InternController;
 use App\Http\Controllers\TalentController;
 use App\Http\Controllers\EarningController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\CustomInternController;
+use App\Http\Controllers\DependantDropdownController;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\ProfileController;
@@ -40,6 +42,7 @@ Route::middleware(['auth', 'prevent-back'])->group(function () {
     Route::post('/intern-import', [InternController::class, 'import']);
     Route::get('/exportIntern', [InternController::class, 'export']);
     Route::delete('/selected-intern', [CustomInternController::class, 'deleteAll']);
+    Route::delete('/bulk-action', [BulkActionController::class, 'deleteAll']);
 
     Route::resource('/staff', StaffController::class);
     Route::post('/staff-import', [StaffController::class, 'import']);
@@ -66,6 +69,9 @@ Route::middleware(['auth', 'prevent-back'])->group(function () {
 
     Route::get('/fregistrasi', [TalentController::class, 'page']);
     Route::put('/fregistrasi/{talent}', [TalentController::class, 'updateForm']);
+
+    Route::get('/getAgencies', [DependantDropdownController::class, 'getAgencies']);
+    Route::get('/getBrands', [DependantDropdownController::class, 'getBrands']);
 });
 
 Route::get('/registrasi-talent', function(){

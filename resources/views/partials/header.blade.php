@@ -1,4 +1,4 @@
-<div class="p-4 bg-white  p-4 max-w-full sm:ml-64 block sm:flex items-center justify-between border-b border-gray-200 mt-16 dark:bg-gray-800 dark:border-gray-700">
+<div class="p-4 bg-white max-w-full sm:ml-64 block sm:flex items-center justify-between border-b border-gray-200 mt-16 dark:bg-gray-800 dark:border-gray-700">
     <div class="w-full mb-1">
         <div class="mb-4">
             <nav class="flex mb-5" aria-label="Breadcrumb">

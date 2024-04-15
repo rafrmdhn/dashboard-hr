@@ -11,9 +11,9 @@ class Agency extends Model
 
     protected $guarded = ['id'];
 
-    public function finance()
+    public function earnings()
     {
-        return $this->hasMany(Earning::class);
+        return $this->morphMany(Earning::class, 'earnable');
     }
 
     public function staff()

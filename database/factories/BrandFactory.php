@@ -17,7 +17,12 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'staff_id' => $this->faker->numberBetween(1, 10),
+            'name' => $this->faker->name(),
+            'email' => $this->faker->email(),
+            'phone' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
+            'photo' => '-'
         ];
     }
 }

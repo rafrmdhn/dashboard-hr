@@ -26,7 +26,8 @@ class InternFactory extends Factory
             'domicile' => $this->faker->city(),
             'instagram' => $this->faker->userName(),
             'linkedin' => $this->faker->userName(),
-            'photo' => $this->withPhoto($this->faker->image('public/storage/images/interns', 300, 300)),
+            // 'photo' => $this->withPhoto($this->faker->image('public/storage/images/interns', 300, 300)),
+            'photo' => '-',
             'position_id' => mt_rand(1, 2)
         ];
     }
