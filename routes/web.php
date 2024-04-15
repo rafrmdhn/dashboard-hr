@@ -37,7 +37,7 @@ Route::get('/flogin', [LoginController::class, 'index'])->name('login')->middlew
 Route::post('/flogin', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::middleware(['auth', 'prevent-back'])->group(function () {
+Route::middleware(['auth', 'master', 'prevent-back'])->group(function () {
     Route::resource('/intern', InternController::class);
     Route::post('/intern-import', [InternController::class, 'import']);
     Route::get('/exportIntern', [InternController::class, 'export']);
@@ -55,7 +55,7 @@ Route::middleware(['auth', 'prevent-back'])->group(function () {
 
     Route::resource('/agency', AgencyController::class);
 
-    Route::get('/edit-profile', [ProfileController::class, 'index']);
+    Route::resource('/edit-profile', ProfileController::class);
 
     Route::resource('/users-list', UserListController::class);
 

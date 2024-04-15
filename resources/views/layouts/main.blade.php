@@ -68,6 +68,15 @@
             });
         });
     </script>
+    <script>
+        document.getElementById('photo').addEventListener('change', function() {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('photo-preview').src = e.target.result;
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 </body>
 </html>

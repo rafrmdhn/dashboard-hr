@@ -41,33 +41,41 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                    {{-- @foreach ($tables as $indicator)
-                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $indicator->id }}">
+                    @foreach ($users as $user)
+                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $user->id }}">
                             <td class="w-4 p-4">
                                 <div class="flex items-center">
-                                    <input id="" aria-describedby="checkbox-1" name="ids[]" type="checkbox" class="checkbox_ids w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" value="{{ $indicator->id }}">
+                                    <input id="" aria-describedby="checkbox-1" name="ids[]" type="checkbox" class="checkbox_ids w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" value="{{ $user->id }}">
                                     <label for="checkbox" class="sr-only">checkbox</label>
                                 </div>
                             </td>
                             <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
-                                <img class="w-10 h-10 rounded-full" src="{{ asset($indicator->staff->photo) }}" alt="{{ $indicator->staff->name }}">
+                                <img class="w-10 h-10 rounded-full" src="{{ asset($user->photo) }}" alt="{{ $user->name }}">
                                 <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                    <div class="text-base font-semibold text-gray-900 dark:text-white">{{ $indicator->staff->name }}</div>
-                                    <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $indicator->staff->email }}</div>
+                                    <div class="text-base font-semibold text-gray-900 dark:text-white">{{ $user->name }}</div>
+                                    <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $user->email }}</div>
                                 </div>
                             </td>
-                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->target }} Project</td>
-                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->result }} Project</td>
+                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $user->role }}</td>
+                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                @if ($user->status == 1)
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Active</h2>
+                                    </div>
+                                @endif
+                            </td>
                             <td class="p-4 space-x-2 whitespace-nowrap">
                                 <!-- Edit User Modal -->
-                                @include('sperform.edit')
+                                @include('userlist.edit')
                             </td> 
                         </tr>    
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 </div>
+
+@include('userlist.create')
 @endsection
