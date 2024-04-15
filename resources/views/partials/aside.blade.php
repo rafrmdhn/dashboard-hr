@@ -45,14 +45,14 @@
                 <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
                 </svg>
-                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Data</span>
+                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Profile</span>
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
             </button>
             <ul id="dropdown-users" class="{{ Request::is('edit-profile*') || Request::is('users-list*') ? '' : 'hidden' }}  py-2 space-y-2">
                 <li>
-                   <a href="/edit-profile" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('edit-profile') ? 'bg-gray-200' : '' }}">Profile</a>
+                   <a href="/edit-profile" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('edit-profile') ? 'bg-gray-200' : '' }}">Edit Profile</a>
                 </li>
                 <li>
                    <a href="/users-list" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('users-list') ? 'bg-gray-200' : '' }}">Users List</a>
@@ -104,6 +104,14 @@
                     <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>
                 </svg>                  
                 <span class="flex-1 ms-3 whitespace-nowrap">Form Registrasi</span>
+            </a>
+        </li>
+        <li>
+            <a href="/artikel" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ Request::is('fregistrasi') ? 'bg-gray-200 hover:text-gray-600' : '' }}">
+                <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white {{ Request::is('fregistrasi') ? 'text-gray-900 group-hover:text-gray-600' : '' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd"/>
+                </svg>                  
+                <span class="flex-1 ms-3 whitespace-nowrap">Artikel</span>
             </a>
         </li>
         {{--

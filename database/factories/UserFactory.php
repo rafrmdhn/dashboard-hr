@@ -28,6 +28,7 @@ class UserFactory extends Factory
             'email' => 'hellofypagency@gmail.com',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'photo' => 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
         ];
     }
 
