@@ -16,7 +16,7 @@ class AgencyController extends Controller
         return view('agency.main', [
             'title' => 'Agency',
             'search' => 'agency',
-            'tables' => Agency::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
+            'tables' => Agency::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString(),
             'staffs' => Staff::all(),
             'export' => 'exportAgency'
         ]);
@@ -98,6 +98,12 @@ class AgencyController extends Controller
      */
     public function destroy(Agency $agency)
     {
-        //
+        try {
+            Agency::destroy($agency->id);
+
+            return redirect('/agency')->with('success', 'Data has been deleted!');
+        } catch (\Throwable $th) {
+            return redirect('/agency')->with('error', 'Data cannot Delete');
+        }
     }
 }

@@ -125,7 +125,7 @@
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->ttl }}</td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->domicile }}</td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        @foreach ($talent->category as $index => $category)
+                                        @foreach ($talent->categories as $index => $category)
                                             @if ($index > 0)
                                                 ,
                                             @endif
@@ -220,12 +220,12 @@
                                     <td class="p-4 space-x-2 whitespace-nowrap">
                                         <!-- Edit User Modal -->
                                         @include('talents.edit')
-                                        {{-- <form action="/talent/{{ $talent->id }}" method="POST" class="inline-flex">
+                                        <form action="/talent/{{ $talent->id }}" method="POST" class="inline-flex">
                                             @method('DELETE')
                                             @csrf
                                             <!-- Delete User Modal -->
                                             @include('talents.delete')
-                                        </form> --}}
+                                        </form>
                                     </td>
                                 </tr>
                             @endif
@@ -239,8 +239,4 @@
 
 {{-- Paginate --}}
 {{ $tables->links('partials.paginate') }}
-
-<!-- Add User Modal -->
-@include('talents.create')
-
 @endsection

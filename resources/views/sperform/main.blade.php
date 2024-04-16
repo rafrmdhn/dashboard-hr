@@ -61,6 +61,12 @@
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
                                     @include('sperform.edit')
+                                    <form action="/kinerja-staff/{{ $indicator->id }}" method="POST" class="inline-flex">
+                                        @method('delete')
+                                        @csrf
+                                        <!-- Delete User Modal -->
+                                        @include('sperform.delete')
+                                    </form>
                                 </td> 
                             </tr>    
                         @endforeach

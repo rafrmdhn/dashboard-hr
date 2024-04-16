@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+            <a href="/staff" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
         </div>
         <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
             <div class="flex justify-between mb-6">
@@ -22,7 +22,7 @@
                     <div class="text-sm font-medium text-gray-400">Talent</div>
                 </div>
             </div>
-            <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+            <a href="/talent" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
         </div>
         <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
             <div class="flex justify-between mb-6">
@@ -31,7 +31,7 @@
                     <div class="text-sm font-medium text-gray-400">Intern</div>
                 </div>
             </div>
-            <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+            <a href="/intern" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
         </div>
         <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
             <div class="flex justify-between mb-4">
@@ -42,7 +42,6 @@
                     <div class="text-sm font-medium text-gray-400">Position</div>
                 </div>
             </div>
-            <a href="#" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -115,20 +114,7 @@
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
             <div class="flex justify-between mb-4 items-start">
                 <div class="font-medium">Earnings</div>
-                <div class="dropdown">
-                    <button type="button" class="dropdown-toggle text-gray-400 hover:text-gray-600"><i class="ri-more-fill"></i></button>
-                    <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                        <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+                <a href="/earnings" class="text-sm text-blue-600 hover:text-blue-800">See All</a>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full min-w-[460px]">
@@ -140,146 +126,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-emerald-500">+$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-rose-500">-$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-rose-500/10 text-rose-500 font-medium text-[12px] leading-none">Withdrawn</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-emerald-500">+$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-rose-500">-$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-rose-500/10 text-rose-500 font-medium text-[12px] leading-none">Withdrawn</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-emerald-500">+$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-rose-500">-$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-rose-500/10 text-rose-500 font-medium text-[12px] leading-none">Withdrawn</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-emerald-500">+$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-rose-500">-$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-rose-500/10 text-rose-500 font-medium text-[12px] leading-none">Withdrawn</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-emerald-500">+$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                    <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                </div>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-rose-500">-$235</span>
-                            </td>
-                            <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="inline-block p-1 rounded bg-rose-500/10 text-rose-500 font-medium text-[12px] leading-none">Withdrawn</span>
-                            </td>
-                        </tr>
+                        @foreach ($earnings as $earning)
+                            <tr>
+                                <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <div class="flex items-center">
+                                        <a href="{{ $earning->link_project }}" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{ $earning->name }}</a>
+                                    </div>
+                                </td>
+                                @php
+                                    $talent_rate = $earning->sows->sum(function ($sow) use ($earning) {
+                                        return $sow->pivot->talent_rate;
+                                    });
+                                @endphp
+                                <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <span class="text-[13px] font-medium text-emerald-500">{{ 'Rp' . number_format($earning->rate - $talent_rate, 2, ',', '.') }}</span>
+                                </td>
+                                <td class="py-2 px-4 border-b border-b-gray-50">
+                                    @if ($earning->status == 'proses')
+                                        <span class="inline-block p-1 rounded bg-yellow-100 text-yellow-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
+                                    @elseif ($earning->status == 'selesai')
+                                        <span class="inline-block p-1 rounded bg-green-100 text-green-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
+                                    @elseif ($earning->status == 'gagal')
+                                    <span class="inline-block p-1 rounded bg-red-100 text-red-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

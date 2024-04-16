@@ -56,4 +56,15 @@ class IndicatorController extends Controller
     
         return redirect('/kinerja-staff')->with('success', 'Data has been updated!');
     }
+
+    public function destroy(Indicator $indicator)
+    {
+        try {
+            Indicator::destroy($indicator->id);
+
+            return redirect('/kinerja-staff')->with('success', 'Data has been deleted!');
+        } catch (\Throwable $th) {
+            return redirect('/kinerja-staff')->with('error', 'Data cannot Delete');
+        }
+    }
 }

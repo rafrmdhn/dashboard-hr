@@ -153,6 +153,13 @@
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
                                     @include('earnings.edit')
+                                    <!-- Delete User Modal -->
+                                    <form action="/earnings/{{ $finance->id }}" method="POST" class="inline-flex">
+                                        @method('delete')
+                                        @csrf
+                                        <!-- Delete User Modal -->
+                                        @include('earnings.delete')
+                                    </form>
                                 </td> 
                                 </tr>
                             @endforeach

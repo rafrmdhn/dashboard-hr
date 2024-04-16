@@ -138,6 +138,12 @@ class EarningController extends Controller
      */
     public function destroy(Earning $earning)
     {
-        //
+        try {
+            Earning::destroy($earning->id);
+
+            return redirect('/earnings')->with('success', 'Data has been deleted!');
+        } catch (\Throwable $th) {
+            return redirect('/earnings')->with('error', 'Data cannot Delete');
+        }
     }
 }

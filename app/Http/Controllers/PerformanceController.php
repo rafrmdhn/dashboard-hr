@@ -95,6 +95,12 @@ class PerformanceController extends Controller
      */
     public function destroy(Performance $performance)
     {
-        //
+        try {
+            Performance::destroy($performance->id);
+
+            return redirect('/kinerja-intern')->with('success', 'Data has been deleted!');
+        } catch (\Throwable $th) {
+            return redirect('/kinerja-intern')->with('error', 'Data cannot Delete');
+        }
     }
 }

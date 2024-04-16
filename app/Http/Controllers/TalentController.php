@@ -20,40 +20,21 @@ class TalentController extends Controller
         return view('talents.main', [
             'title' => 'Talent',
             'search' => 'talent',
-            'tables' => Talent::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString(),
+            'tables' => Talent::latest()->filter(request(['search', 'name', 'category']))->paginate(10)->withQueryString(),
+            'categories' => Category::all(),
             'export' => 'exportTalent'
         ]);
     }
 
     public function store(Request  $request)
     {
-        $validatedData = $request->validate([
-            'email' => 'required',
-            'name' => 'required|max:255',
-            'biography' => 'required|max:255',
-            'photo' => 'image|file|max:1024', // 1MB Max
-            'instagram' => 'required',
-            'linkedin' => 'required'
-        ]);
-
-        if($request->file('photo')) {
-            $validatedData['photo'] = $request->file('photo')->store('images/talents');
-        }
-
-        Talent::create($validatedData);
-
-        return redirect('/talent')->with('success', 'Data has been added!');
+        //
     }
 
     public function update(Request $request, Talent $talent)
     {
         $validatedData = $request->validate([
-            'email' => 'required',
-            'name' => 'required|max:255',
-            'biography' => 'required|max:255',
-            'photo' => 'image|file|max:1024', // 1MB Max
-            'instagram' => 'required',
-            
+            'status' => 'required'
         ]);
 
         // Check if a new photo is uploaded
@@ -73,9 +54,13 @@ class TalentController extends Controller
 
     public function destroy(Talent $talent)
     {
-        Talent::destroy($talent->id);
+        try {
+            Talent::destroy($talent->id);
 
-        return redirect('/talent')->with('success', 'Data has been deleted!');
+            return redirect('/talent')->with('success', 'Data has been deleted!');
+        } catch (\Throwable $th) {
+            return redirect('/talent')->with('error', 'Data cannot Delete');
+        }
     }
 
     public function export()
@@ -156,7 +141,6 @@ class TalentController extends Controller
     public function updateForm(Request $request, Talent $talent)
     {
         $validatedData = $request->validate([
-            'photo' => 'image|file|max:1024',
             'status' => 'required'
         ]);
 

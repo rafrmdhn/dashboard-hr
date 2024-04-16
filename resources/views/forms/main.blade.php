@@ -124,7 +124,7 @@
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->ttl }}</td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->domicile }}</td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        @foreach ($talent->category as $index => $category)
+                                        @foreach ($talent->categories as $index => $category)
                                             @if ($index > 0)
                                                 ,
                                             @endif

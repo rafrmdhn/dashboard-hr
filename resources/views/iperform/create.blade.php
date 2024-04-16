@@ -18,8 +18,8 @@
                     <div class="grid grid-cols-6 gap-6">     
                         <div class="col-span-6">
                             <label for="intern_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Staff</label>
-                            <select name="intern_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected>Choose Intern</option>
+                            <select name="intern_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                <option value="" selected>Choose Intern</option>
                                     @foreach ($interns as $intern)
                                         @if (old('intern_id') == $intern->id)
                                             <option value="{{ $intern->id }}" selected>{{$intern->name}}</option>

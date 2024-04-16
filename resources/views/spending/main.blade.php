@@ -76,7 +76,7 @@
                                 <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $spend->requirement }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $spend->budget }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="h-auto rounded-lg shadow-xl dark:shadow-gray-800" src="{{ asset($spend->proof) }}" alt="{{ $spend->name }}"></td>
+                                    <img class="h-10 rounded-lg shadow-xl dark:shadow-gray-800" src="{{ asset($spend->proof) }}" alt="{{ $spend->name }}"></td>
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if($spend->status == 2)

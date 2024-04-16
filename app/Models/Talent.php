@@ -12,7 +12,7 @@ class Talent extends Model
 
     protected $guarded = ['id'];
 
-    public function category()
+    public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
@@ -38,6 +38,12 @@ class Talent extends Model
                         ->orWhere('tiktok', 'like', '%' . $search . '%')
                         ->orWhere('domicile', 'like', '%' . $search . '%')
                         ->orWhere('phone', 'like', '%' . $search . '%');
+            });
+        });
+
+        $query->when($filters['category'] ?? null, function($query, $categories) {
+            $query->whereHas('categories', function($query) use ($categories) {
+                $query->whereIn('name', (array) $categories);
             });
         });
     }

@@ -59,7 +59,7 @@ class BrandController extends Controller
 
         foreach ($categories as $category)
         {
-            $brand->category()->attach($category);
+            $brand->categories()->attach($category);
         }
 
         return redirect('/brand')->with('success', 'Data has been added!');
@@ -87,11 +87,29 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255'           
+            'name' => 'required|max:255',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'staff_id' => 'required',
+            'category_id' => 'required',
+            'photo' => 'image|file|max:1024'
         ]);
 
-        Brand::where('id', $brand->id)
-                ->update($validatedData);
+        $categories = $validatedData['category_id'];
+        unset($validatedData['category_id']);
+        
+        if ($request->file('photo')) {
+            $validatedData['photo'] = $request->file('photo')->store('images/brands');
+        } else {
+            $validatedData['photo'] = $brand->photo;
+        }
+
+        // Update the brand without reassigning it
+        Brand::where('id', $brand->id)->update($validatedData);
+                    
+        // Now use the existing model instance to manage the relationship
+        $brand->categories()->sync($categories);
 
         return redirect('/brand')->with('success', 'Data has been updated!');
     }
@@ -101,6 +119,12 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        try {
+            Brand::destroy($brand->id);
+
+            return redirect('/brand')->with('success', 'Data has been deleted!');
+        } catch (\Throwable $th) {
+            return redirect('/brand')->with('error', 'Data cannot Delete');
+        }
     }
 }
