@@ -12,7 +12,7 @@ class ProfileController extends Controller
     {
         return view('profile.main', [
             'title' => 'Edit Profile',
-            'profile' => User::findOrFail(Auth::user()->id),
+            'user' => User::findOrFail(Auth::user()->id),
         ]);
     }
 
@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'password' => 'sometimes|nullable',
             'photo' => 'image|file|max:1024'
         ]);
-        // dd($validatedData);
+        $user = User::findOrFail(Auth::user()->id);
 
         if ($request->password != ''){
             $validatedData['password'] = bcrypt($request->password);
@@ -41,7 +41,6 @@ class ProfileController extends Controller
             $validatedData['photo'] = $user->photo;
         }
 
-        $user = auth()->user();
         $user->fill($validatedData);
         $user->save();
 

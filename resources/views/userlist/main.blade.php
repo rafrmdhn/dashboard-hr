@@ -67,6 +67,15 @@
                             <td class="p-4 space-x-2 whitespace-nowrap">
                                 <!-- Edit User Modal -->
                                 @include('userlist.edit')
+                                <!-- Delete User Modal -->
+                                @if ($user->role == 'non-master')
+                                    <form action="/users-list/{{ $user->id }}" method="POST" class="inline-flex">
+                                        @method('DELETE')
+                                        @csrf
+                                        <!-- Delete User Modal -->
+                                        @include('userlist.delete')
+                                    </form>
+                                @endif
                             </td> 
                         </tr>    
                     @endforeach

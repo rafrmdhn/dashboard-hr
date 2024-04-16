@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Earning;
 use App\Models\Staff;
 use App\Models\Intern;
 use App\Models\Talent;
@@ -65,7 +66,8 @@ class DashboardController extends Controller
             'labels' => $labels,
             'pie' => $data,
             'internData' => $internData,
-            'staffData' => $staffData
+            'staffData' => $staffData,
+            'earnings' => Earning::latest()->paginate(5),
         ]);
     }
 }

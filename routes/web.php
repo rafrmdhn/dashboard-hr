@@ -57,11 +57,11 @@ Route::middleware(['auth', 'master', 'prevent-back'])->group(function () {
 
     Route::resource('/edit-profile', ProfileController::class);
 
-    Route::resource('/users-list', UserListController::class);
+    Route::resource('/users-list', UserListController::class)->parameters(["users-list" => 'user']);
 
-    Route::resource('/kinerja-intern', PerformanceController::class);
+    Route::resource('/kinerja-intern', PerformanceController::class)->parameters(["kinerja-intern" => 'performance']);
 
-    Route::resource('/kinerja-staff', IndicatorController::class);
+    Route::resource('/kinerja-staff', IndicatorController::class)->parameters(["kinerja-staff" => 'indicator']);
 
     Route::resource('/earnings', EarningController::class);
     

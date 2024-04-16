@@ -45,38 +45,38 @@
                     <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
                         <div class="mb-4">
                             <label class="block uppercase tracking-wide text-xs font-bold">Nama Lengkap</label>
-                            <input class="w-full shadow-inner p-4 border-0.5" type="text" name="name" id="name" placeholder="">
+                            <input class="w-full shadow-inner p-4 border-0.5" type="text" name="name" id="name" placeholder="" required>
                         </div>
                         <div class="md:flex mb-4">        
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Email</label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="email" name="email" id="email" placeholder="">
+                                <input class="w-full shadow-inner p-4 border-0.5" type="email" name="email" id="email" placeholder="" required>
                             </div>
                             <div class="md:flex-1 md:pl-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Tempat dan Tanggal Lahir</label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="ttl" id="ttl" placeholder="">
+                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="ttl" id="ttl" placeholder="" required>
                                 <span class="text-xs mb-4 font-thin">Ex: Mataram, 19 September 2000</span>
                             </div>
                         </div>
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-xs font-bold">No. Telp</label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="phone" id="phone" placeholder="">
+                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="phone" id="phone" placeholder="" required>
                             </div>
                             <div class="md:flex-1 md:pl-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Domisili</label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="domicile" id="domicile" placeholder="">
+                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="domicile" id="domicile" placeholder="" required>
                             </div>
                         </div>
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-xs font-bold">Engagement Rate</label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="engagement" id="engagement" placeholder="">
+                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="engagement" id="engagement" placeholder="" required>
                                 <span class="text-xs mb-4 font-thin">check on <a href="https://phlanx.com/engagement-calculator" class="text-blue-800">here</a></span>
                             </div>
                             <div class="md:flex-1 md:pl-3">
                                 <label class="block uppercase tracking-wide text-xs font-bold">Photo</label>
-                                <input class="w-full shadow-inner border-0.5" type="file" name="photo" id="photo">
+                                <input class="w-full shadow-inner border-0.5" type="file" name="photo" id="photo" required>
                                 <span class="text-xs mb-4 font-thin">SVG, PNG, JPG or GIF (MAX. 800x400px).</span>
                             </div>
                         </div>
@@ -111,13 +111,13 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">username</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="instagram" id="instagram" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="instagram" id="instagram" placeholder="" required>
                                 </div>
                             </div>
                             <div class="md:flex-1 md:pl-3 mt-2 md:mt-0">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Followers IG</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="finstagram" id="finstagram" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="finstagram" id="finstagram" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">Username Ig</span>
                             </div>
@@ -126,14 +126,14 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate Card IG Story</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igs" id="rate_igs" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igs" id="rate_igs" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
                             <div class="md:flex-1 md:pl-3 mt-2 md:mt-0">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate Card IG Feed</label>
                                 <div class="w-full flex">                  
-                                <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igf" id="rate_igf" placeholder="">
+                                <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igf" id="rate_igf" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -142,14 +142,14 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate Card IG Reels</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igr" id="rate_igr" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igr" id="rate_igr" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
                             <div class="md:flex-1 md:pl-3 mt-2 md:mt-0">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate Card IG Live</label>
                                 <div class="w-full flex">                  
-                                <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igl" id="rate_igl" placeholder="">
+                                <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igl" id="rate_igl" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -165,13 +165,13 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">username</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="tiktok" id="tiktok" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="tiktok" id="tiktok" placeholder="" required>
                                 </div>
                             </div>
                             <div class="md:flex-1 md:pl-3 mt-2 md:mt-0">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Followers Tiktok</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="ftiktok" id="ftiktok" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="ftiktok" id="ftiktok" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -180,14 +180,14 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate Card Tiktok Feed</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_ttf" id="rate_ttf" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_ttf" id="rate_ttf" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
                             <div class="md:flex-1 md:pl-3 mt-2 md:mt-0">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate Card Tiktok Live</label>
                                 <div class="w-full flex">                  
-                                <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_ttl" id="rate_ttl" placeholder="">
+                                <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_ttl" id="rate_ttl" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -203,7 +203,7 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">username</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="youtube" id="youtube" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="youtube" id="youtube" placeholder="" required>
                                 </div>
                             </div>
                         </div>
@@ -211,14 +211,14 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Subscriber Youtube</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="syoutube" id="syoutube" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="syoutube" id="syoutube" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
                             <div class="md:flex-1 md:pl-3 mt-2 md:mt-0">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate Card Youtube</label>
                                 <div class="w-full flex">                  
-                                <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_yt" id="rate_yt" placeholder="">
+                                <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_yt" id="rate_yt" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -233,7 +233,7 @@
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_event" placeholder="">
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_event" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -249,11 +249,11 @@
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
                                 <div class="flex items-center mb-4">
-                                    <input id="talent_exclusive" type="radio" name="talent_exclusive" value="1" name="default-radio" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 focus:ring-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="talent_exclusive" type="radio" name="talent_exclusive" value="1" name="default-radio" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 focus:ring-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" required>
                                     <label for="talent_exclusive" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ya, saya bersedia (Of course)</label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input id="talent_exclusive" type="radio" name="talent_exclusive" value="0" name="default-radio" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 focus:ring-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="talent_exclusive" type="radio" name="talent_exclusive" value="0" name="default-radio" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 focus:ring-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" required>
                                     <label for="talent_exclusive" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tidak, saya ingin menjadi talent basic saja (No, i am not)</label>
                                 </div>
                             </div>
@@ -268,8 +268,8 @@
                     <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
-                                <select class="w-full shadow-inner p-4 border-0.5" name="staff_id">
-                                    <option selected>Pilih PIC</option>
+                                <select class="w-full shadow-inner p-4 border-0.5" name="staff_id" required>
+                                    <option value="" selected>Pilih PIC</option>
                                     @foreach ($staffs as $staff)
                                         <option value="{{ $staff->id }}">{{ $staff->name }}</option>
                                     @endforeach
@@ -286,8 +286,8 @@
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Apakah Tertarik Bergabung Menjadi Shopee Affiliate?</label>
-                                <select class="w-full shadow-inner p-4 border-0.5" name="shopee_affiliate" placeholder="">
-                                    <option selected>Choose option</option>
+                                <select class="w-full shadow-inner p-4 border-0.5" name="shopee_affiliate" placeholder="" required>
+                                    <option value="" selected>Choose option</option>
                                     <option value="1">Ya, saya mau</option>
                                     <option value="0">Tidak</option>
                                 </select>
@@ -297,8 +297,8 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Apakah Tertarik Bergabung Menjadi Tiktok Affiliate?</label>
                                 <div class="w-full flex">
-                                    <select class="w-full shadow-inner p-4 border-0.5" name="tiktok_affiliate" placeholder="">
-                                        <option selected>Choose option</option>
+                                    <select class="w-full shadow-inner p-4 border-0.5" name="tiktok_affiliate" placeholder="" required>
+                                        <option value="" selected>Choose option</option>
                                         <option value="1">Ya, saya mau</option>
                                         <option value="0">Tidak</option>
                                     </select>
@@ -307,8 +307,8 @@
                             <div class="md:flex-1 md:pl-3 mt-2 md:mt-0">
                                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Apakah Tertarik Bergabung di MCN Tiktok FYP?</label>
                                 <div class="w-full flex">                 
-                                    <select class="w-full shadow-inner p-4 border-0.5" name="mcn_tiktok" placeholder="">
-                                        <option selected>Choose option</option>
+                                    <select class="w-full shadow-inner p-4 border-0.5" name="mcn_tiktok" placeholder="" required>
+                                        <option value="" selected>Choose option</option>
                                         <option value="1">Ya, saya mau</option>
                                         <option value="0">Tidak</option>
                                     </select>

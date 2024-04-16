@@ -91,10 +91,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $brands = Brand::all();
+        $talents = Talent::all();
         $categories = Category::all();
         foreach ($brands as $brand) {
             $randomCategory = $categories->random();
             $brand->categories()->attach($randomCategory);
+        }
+        foreach ($talents as $talent) {
+            $randomCategory = $categories->random();
+            $talent->categories()->attach($randomCategory);
         }
     }
 }

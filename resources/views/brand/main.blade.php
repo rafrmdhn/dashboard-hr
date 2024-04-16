@@ -12,6 +12,17 @@
         </div>
     </div>
 @endif
+@if (session()->has('error'))
+    <div class="flex sm:ml-72 sm:mr-8 mt-4 mitems-center p-4 mb-4 text-sm text-pink-800 border border-pink-300 rounded-lg bg-pink-50 dark:bg-gray-800 dark:text-pink-400 dark:border-pink-800" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+        <span class="font-medium">{{ session('error') }}
+        </div>
+    </div>
+@endif
 
 <div class="flex flex-col sm:ml-64 ">
     <div class="overflow-x-auto">
@@ -51,7 +62,7 @@
                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $brand->id }}">
                             <td class="w-4 p-4">
                                 <div class="flex items-center">
-                                    <input id="" aria-describedby="checkbox-1" name="ids[]" type="checkbox" class="checkbox_ids w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" value="{{ $brand->id }}">
+                                    <input id="" aria-describedby="checkbox-1" name="ids" type="checkbox" class="checkbox_ids w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" value="{{ $brand->id }}">
                                     <label for="checkbox" class="sr-only">checkbox</label>
                                 </div>
                             </td>
@@ -76,12 +87,12 @@
                             <td class="p-4 space-x-2 whitespace-nowrap">
                                 <!-- Edit User Modal -->
                                 @include('brand.edit')
-                                    {{-- <form action="/brand/{{ $brand->id }}" method="POST" class="inline-flex">
+                                    <form action="/brand/{{ $brand->id }}" method="POST" class="inline-flex">
                                         @method('delete')
                                         @csrf
                                         <!-- Delete User Modal -->
-                                        @include('interns.delete')
-                                    </form> --}}
+                                        @include('brand.delete')
+                                    </form>
                             </td> 
                         </tr>    
                         @endforeach

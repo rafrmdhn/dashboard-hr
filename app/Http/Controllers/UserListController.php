@@ -39,4 +39,15 @@ class UserListController extends Controller
 
         return redirect('/users-list')->with('success', 'Data has been added!');
     }
+
+    public function destroy(User $user)
+    {
+        try {
+            User::destroy($user->id);
+
+            return redirect('/users-list')->with('success', 'Data has been deleted!');
+        } catch (\Throwable $th) {
+            return redirect('/users-list')->with('error', 'Data cannot Delete');
+        }
+    }
 }

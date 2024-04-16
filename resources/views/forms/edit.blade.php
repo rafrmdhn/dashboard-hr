@@ -21,17 +21,22 @@
                 <form action="/fregistrasi/{{ $talent->id }}" method="POST" enctype="multipart/form-data">
                     @method("PUT")
                     @csrf
-                    <label for="underline_select" class="sr-only">Status</label>
-                    <select id="underline_select" name="status" class="block mb-10 p-6 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option selected >Pilih Status</option>
-                        <option value="0" {{ $talent->status == 0 ? 'selected' : '' }}>Tidak</option>
-                        <option value="1" {{ $talent->status == 1 ? 'selected' : '' }}>Ya</option>
-                    </select>
+                    <div class="grid grid-cols-6 gap-6">
+                        <div class="col-span-6">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                            <select id="underline_select" name="status" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
+                                <option value="" selected >Pilih Status</option>
+                                <option value="0" {{ $talent->status == 0 ? 'selected' : '' }}>Tidak</option>
+                                <option value="1" {{ $talent->status == 1 ? 'selected' : '' }}>Ya</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <!-- Modal footer -->
                 <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
                     <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Save all</button>
                 </div>
-            </form>
+                </form>
         </div>
     </div>
 </div>
