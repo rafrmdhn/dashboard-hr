@@ -72,7 +72,14 @@ class SpendingController extends Controller
      */
     public function update(Request $request, Spending $spending)
     {
-        //
+        $validatedData = $request->validate([
+            'status' => 'required'
+        ]);
+
+        Spending::where('id', $spending->id)
+                ->update($validatedData);
+
+        return redirect('/spendings')->with('success', 'Data has been updated!');
     }
 
     /**
@@ -80,6 +87,8 @@ class SpendingController extends Controller
      */
     public function destroy(Spending $spending)
     {
-        //
+        Spending::destroy($spending->id);
+
+        return redirect('/spendings')->with('success', 'Data has been deleted!');
     }
 }

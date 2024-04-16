@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BrandExport;
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Staff;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BrandController extends Controller
 {
@@ -126,5 +128,10 @@ class BrandController extends Controller
         } catch (\Throwable $th) {
             return redirect('/brand')->with('error', 'Data cannot Delete');
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new BrandExport, 'brand.xlsx');
     }
 }

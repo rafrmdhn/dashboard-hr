@@ -21,7 +21,10 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        // Menerima input dari request untuk remember me
+        $remember = $request->filled('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
             $intendedUrl = session()->pull('url.intended', '/fdashboard');

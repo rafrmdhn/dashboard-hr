@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agency;
+use App\Exports\AgencyExport;
 use App\Models\Staff;
+use App\Models\Agency;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AgencyController extends Controller
 {
@@ -105,5 +107,10 @@ class AgencyController extends Controller
         } catch (\Throwable $th) {
             return redirect('/agency')->with('error', 'Data cannot Delete');
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new AgencyExport, 'agency.xlsx');
     }
 }
