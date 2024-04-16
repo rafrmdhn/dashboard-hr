@@ -23,7 +23,7 @@ class StaffController extends Controller
         return view('staff.main', [
             'title' => 'Staff',
             'search' => 'staff',
-            'tables' => Staff::latest()->filter(request(['search', 'name', 'position']))->paginate(6)->withQueryString(),
+            'tables' => Staff::latest()->filter(request(['search', 'name', 'position']))->paginate(10)->withQueryString(),
             'positions' => Position::all(),
             'export' => 'exportStaff'
         ]);

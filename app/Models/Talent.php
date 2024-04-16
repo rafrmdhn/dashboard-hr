@@ -32,8 +32,12 @@ class Talent extends Model
         $query->when($filters['search'] ?? false, function($query, $search) {
             $query->where(function($subquery) use ($search) {
                 $subquery->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('email', 'like', '%' . $search . '%')
                         ->orWhere('instagram', 'like', '%' . $search . '%')
-                        ->orWhere('linkedin', 'like', '%' . $search . '%');
+                        ->orWhere('youtube', 'like', '%' . $search . '%')
+                        ->orWhere('tiktok', 'like', '%' . $search . '%')
+                        ->orWhere('domicile', 'like', '%' . $search . '%')
+                        ->orWhere('phone', 'like', '%' . $search . '%');
             });
         });
     }

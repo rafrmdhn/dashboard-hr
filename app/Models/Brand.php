@@ -33,5 +33,11 @@ class Brand extends Model
                 $subquery->where('name', 'like', '%' . $search . '%');
             });
         });
+
+        $query->when($filters['categories'] ?? false, function($query, $position) {
+            return $query->whereHas('categories', function($query) use ($position) {
+                $query->where('name', $position);
+            });
+        });
     }
 }

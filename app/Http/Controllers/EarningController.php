@@ -20,10 +20,10 @@ class EarningController extends Controller
         return view('earnings.main', [
             'title' => 'Pendapatan',
             'search' => 'earnings',
-            'tables' => Earning::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
+            'tables' => Earning::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString(),
             'export' => 'exportEarnings',
             'talents' => Talent::orderBy('name')->get(),
-            'sows' => Sow::orderBy('name')->get(),
+            'sows' => Sow::orderBy('id')->get(),
         ]);
     }
 
@@ -68,16 +68,28 @@ class EarningController extends Controller
                 foreach ($sows as $sow) {
                     $talent_rate = 0;
                     switch ($sow->name) {
+                        case 'IG Feed':
+                            $talent_rate = $talent->rate_igf;
+                            break;
                         case 'IG Story':
                             $talent_rate = $talent->rate_igs;
                             break;
                         case 'IG Reels':
                             $talent_rate = $talent->rate_igr;
                             break;
+                        case 'IG Live':
+                            $talent_rate = $talent->rate_igl;
+                            break;
                         case 'Tiktok':
                             $talent_rate = $talent->rate_ttf;
                             break;
+                        case 'Tiktok Live':
+                            $talent_rate = $talent->rate_ttl;
+                            break;
                         case 'Youtube':
+                            $talent_rate = $talent->rate_yt;
+                            break;
+                        case 'Attandance':
                             $talent_rate = $talent->rate_yt;
                             break;
                         default:

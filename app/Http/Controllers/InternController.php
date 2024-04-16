@@ -27,7 +27,7 @@ class InternController extends Controller
         return view('interns.main', [
             'title' => 'Intern',
             'search' => 'intern',
-            'tables' => Intern::latest()->filter(request(['search', 'name', 'position']))->paginate(6)->withQueryString(),
+            'tables' => Intern::latest()->filter(request(['search', 'name', 'position']))->paginate(10)->withQueryString(),
             'positions' => Position::all(),
             'export' => 'exportIntern'
         ]);

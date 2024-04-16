@@ -149,17 +149,11 @@
                                     {{-- <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $intern->biography }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->position->name }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->university }}</td>
-                                <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->instagram }}, {{ $intern->linkedin }}</td>
+                                <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->instagram }}, {{ $intern->linkedin }}</td>--}}
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
-                                    @include('interns.edit')
-                                    <form action="/intern/{{ $intern->id }}" method="POST" class="inline-flex">
-                                        @method('delete')
-                                        @csrf
-                                        <!-- Delete User Modal -->
-                                        @include('interns.delete')
-                                    </form>
-                                </td> --}}
+                                    @include('earnings.edit')
+                                </td> 
                                 </tr>
                             @endforeach
                         </tbody>
