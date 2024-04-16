@@ -44,10 +44,14 @@ class DatabaseSeeder extends Seeder
         Agency::factory(20)->create();
 
         $sows = [
+            'IG Feed',
             'IG Story',
             'IG Reels',
+            'IG Live',
             'Tiktok',
-            'Youtube'
+            'Tiktok Live',
+            'Youtube',
+            'Attandance'
         ]; 
         foreach ($sows as $sow) {
             Sow::create([

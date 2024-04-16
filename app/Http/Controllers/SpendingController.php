@@ -16,7 +16,7 @@ class SpendingController extends Controller
         return view('spending.main', [
             'title' => 'Pengeluaran',
             'search' => 'pengeluaran',
-            'tables' => Spending::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
+            'tables' => Spending::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString(),
             'staffs' => Staff::all(),
             'export' => 'exportSpending'
         ]);

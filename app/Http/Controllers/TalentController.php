@@ -20,7 +20,7 @@ class TalentController extends Controller
         return view('talents.main', [
             'title' => 'Talent',
             'search' => 'talent',
-            'tables' => Talent::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
+            'tables' => Talent::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString(),
             'export' => 'exportTalent'
         ]);
     }
@@ -53,7 +53,7 @@ class TalentController extends Controller
             'biography' => 'required|max:255',
             'photo' => 'image|file|max:1024', // 1MB Max
             'instagram' => 'required',
-            'linkedin' => 'required'
+            
         ]);
 
         // Check if a new photo is uploaded

@@ -17,7 +17,7 @@ class BrandController extends Controller
         return view('brand.main', [
             'title' => 'Brand',
             'search' => 'brand',
-            'tables' => Brand::latest()->filter(request(['search', 'name']))->paginate(6)->withQueryString(),
+            'tables' => Brand::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString(),
             'categories' => Category::all(),
             'staffs' => Staff::all(),
             'export' => 'exportBrand'
