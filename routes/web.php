@@ -41,7 +41,6 @@ Route::middleware(['auth', 'master', 'prevent-back'])->group(function () {
     Route::resource('/intern', InternController::class);
     Route::post('/intern-import', [InternController::class, 'import']);
     Route::get('/exportIntern', [InternController::class, 'export']);
-    Route::delete('/selected-intern', [CustomInternController::class, 'deleteAll']);
     Route::delete('/bulk-action', [BulkActionController::class, 'deleteAll']);
 
     Route::resource('/staff', StaffController::class);
@@ -52,8 +51,10 @@ Route::middleware(['auth', 'master', 'prevent-back'])->group(function () {
     Route::get('/exportTalent', [TalentController::class, 'export']);
 
     Route::resource('/brand', BrandController::class);
+    Route::get('/exportBrand', [BrandController::class, 'export']);
 
     Route::resource('/agency', AgencyController::class);
+    Route::get('/exportAgency', [AgencyController::class, 'export']);
 
     Route::resource('/edit-profile', ProfileController::class);
 

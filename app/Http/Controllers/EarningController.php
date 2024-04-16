@@ -128,9 +128,17 @@ class EarningController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFinanceRequest $request, Earning $earning)
+    public function update(Request $request, Earning $earning)
     {
-        //
+        $validatedData = $request->validate([
+            'status' => 'required',
+            'link_project' => 'nullable|url',
+        ]);
+
+        Earning::where('id', $earning->id)
+                ->update($validatedData);
+
+        return redirect('/earnings')->with('success', 'Data has been updated!');
     }
 
     /**

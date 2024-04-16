@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('requirement');
             $table->decimal('budget', 16, 2);
             $table->string('proof');
-            $table->boolean('status')->default(false);
+            $table->enum('status', ['proses', 'selesai', 'gagal'])->default('proses');
             $table->timestamps();
         });
     }

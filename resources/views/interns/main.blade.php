@@ -121,7 +121,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>x`    
+        </div>
     </div>
 </div>
 

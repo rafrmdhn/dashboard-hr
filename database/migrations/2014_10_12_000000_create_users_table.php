@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('photo');
             $table->enum('role', ['master', 'non-master']);
             $table->boolean('status')->default(true);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

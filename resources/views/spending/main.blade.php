@@ -53,10 +53,6 @@
                             --}}
                         </tr>
                     </thead>
-                    
-                    <form action="/selected-intern" method="POST" id="selectedData">
-                        @method('delete')
-                        @csrf
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                             @foreach ($tables as $spend)
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $spend->id }}">
@@ -79,15 +75,15 @@
                                     <img class="h-10 rounded-lg shadow-xl dark:shadow-gray-800" src="{{ asset($spend->proof) }}" alt="{{ $spend->name }}"></td>
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    @if($spend->status == 2)
+                                    @if($spend->status == 'gagal')
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-pink-500 bg-pink-100/60 dark:bg-gray-800">
                                             <h2 class="text-sm font-normal">Gagal</h2>
                                         </div>
-                                    @elseif($spend->status == 1)
+                                    @elseif($spend->status == 'selesai')
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
                                             <h2 class="text-sm font-normal">Selesai</h2>
                                         </div>
-                                    @elseif($spend->status == 0)
+                                    @elseif($spend->status == 'proses')
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-blue-500 bg-blue-100/60 dark:bg-gray-800">
                                             <h2 class="text-sm font-normal">Proses</h2>
                                         </div>
@@ -98,17 +94,16 @@
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
                                     @include('spending.edit')
-                                    {{-- <form action="/intern/{{ $intern->id }}" method="POST" class="inline-flex">
+                                    <form action="/spendings/{{ $spend->id }}" method="POST" class="inline-flex">
                                         @method('delete')
                                         @csrf
                                         <!-- Delete User Modal -->
-                                        @include('interns.delete')
-                                    </form> --}}
+                                        @include('spending.delete')
+                                    </form>
                                 </td>
                             </tr>    
                             @endforeach
                         </tbody>
-                    </form>
                 </table>
             </div>
         </div>

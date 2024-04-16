@@ -51,7 +51,7 @@
                 </div>
                 <div class="mt-6 flex items-center justify-between">
                 <div class="flex items-center">
-                    <input id="remember_me" type="checkbox" class="border border-gray-300 text-red-600 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50" />
+                    <input id="remember_me" name="remember" value="1" type="checkbox" class="border border-gray-300 text-red-600 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50" />
                     <label for="remember_me" class="ml-2 block text-sm leading-5 text-white"> Remember me </label>
                 </div>
                 <a href="#" class="text-sm text-white hover:underline"> Forgot your password? </a>

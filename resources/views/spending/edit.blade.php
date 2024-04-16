@@ -18,15 +18,15 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form action="/fregistrasi/{{ $spend->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/spendings/{{ $spend->id }}" method="POST" enctype="multipart/form-data">
                     @method("PUT")
                     @csrf
                         <label for="name" class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <select id="underline_select" name="status" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
                             <option value="" selected >Pilih Status</option>
-                            <option value="0" {{ $spend->status == 0 ? 'selected' : '' }}>Proses</option>
-                            <option value="1" {{ $spend->status == 1 ? 'selected' : '' }}>Selesai</option>
-                            <option value="1" {{ $spend->status == 2 ? 'selected' : '' }}>Gagal</option>
+                            <option value="proses" {{ $spend->status == 'proses' ? 'selected' : '' }}>Proses</option>
+                            <option value="selesai" {{ $spend->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                            <option value="gagal" {{ $spend->status == 'gagal' ? 'selected' : '' }}>Gagal</option>
                         </select>
                 </div>
                 <!-- Modal footer -->
