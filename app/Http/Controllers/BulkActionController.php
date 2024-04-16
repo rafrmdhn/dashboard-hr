@@ -28,9 +28,19 @@ class BulkActionController extends Controller
                     Intern::destroy($ids);
                     break;
                 case 'brand':
+                    // Check if the brand used in earning
+                    $earnings = Earning::where('earnable_type', 'App\Models\Brand')->whereIn('earnable_id', $ids)->get();
+                    if ($earnings->count() > 0) {
+                        return response()->json(['error' => "Gagal menghapus! Brand ini terhubung dengan data pendapatan. Jika ingin tetap menghapus brand ini maka hapus semua pendapatan dengan brand ini terlebih dahulu."]);
+                    }
                     Brand::destroy($ids);
                     break;
                 case 'agency':
+                    // Check if the agency used in earning
+                    $earnings = Earning::where('earnable_type', 'App\Models\Agency')->whereIn('earnable_id', $ids)->get();
+                    if ($earnings->count() > 0) {
+                        return response()->json(['error' => "Gagal menghapus! Agency ini terhubung dengan data pendapatan. Jika ingin tetap menghapus agency ini maka hapus semua pendapatan dengan agency ini terlebih dahulu."]);
+                    }
                     Agency::destroy($ids);
                     break;
                 case 'earnings':
@@ -41,7 +51,8 @@ class BulkActionController extends Controller
             }
             return response()->json(['success' => "Data Deleted successfully.", 'ids' => $request['ids'], 'model' => $request['model']]);
         } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()]);
+            // return response()->json(['error' => $e->getMessage()]);
+            return response()->json(['error' => "Gagal menghapus! Data ini terhubung dengan data lain."]);
         }
     }
 }
