@@ -31,17 +31,24 @@ class DatabaseSeeder extends Seeder
         // ]);
         User::factory()->create();
 
-        Position::factory(2)->create();
-
-        Intern::factory(20)->create();
-
-        Staff::factory(20)->create();
-        
-        Talent::factory(20)->create();
-
-        Brand::factory(20)->create();
-
-        Agency::factory(20)->create();
+        $positions = [
+            'Business Development',
+            'Copy Writer',
+            'Media And P.R Spesialist',
+            'UI/UX',
+            'SEO',
+            'Designer',
+            'Video Editor',
+            'Content Creator',
+            'Programmer',
+            'Project Manager',
+            'Digital Marketing (Ads)'
+        ];
+        foreach ($positions as $position) {
+            Position::create([
+                'name' => $position,
+            ]);
+        }
 
         $sows = [
             'IG Feed',
@@ -59,47 +66,27 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        Earning::factory(20)->create();
-
-        # earning_sow
-        $earnings = Earning::all();
-        $sows = Sow::all();
-        foreach ($earnings as $earning) {
-            $randomSow = $sows->random();
-            $earning->sows()->attach($randomSow, [
-                'talent_rate' => rand(1000, 1000000),
-                'note' => fake()->optional()->sentence(),
+        $categories = [
+            'Model, Fashion',
+            'Food',
+            'Dancer, Singer',
+            'Education',
+            'Travel',
+            'Finance',
+            'Beauty',
+            'Health',
+            'Mom',
+            'Lifestyle',
+            'Music',
+            'Sport',
+            'Entertaiment',
+            'Otomotif',
+            'Gadget'
+        ];
+        foreach ($categories as $category) {
+            Category::create([
+                'name' => $category,
             ]);
-
-            $randomSow2 = $sows->random();
-            while($randomSow == $randomSow2) {
-                $randomSow2 = $sows->random();
-            }
-            if(rand(0, 1)) {
-                $earning->sows()->attach($randomSow2, [
-                    'talent_rate' => rand(1000, 1000000),
-                    'note' => fake()->optional()->sentence(),
-                ]);
-            }
-        }
-
-        Category::create([
-            'name' => 'Model, Fashion',            
-        ]);
-        Category::create([
-            'name' => 'Food',            
-        ]);
-
-        $brands = Brand::all();
-        $talents = Talent::all();
-        $categories = Category::all();
-        foreach ($brands as $brand) {
-            $randomCategory = $categories->random();
-            $brand->categories()->attach($randomCategory);
-        }
-        foreach ($talents as $talent) {
-            $randomCategory = $categories->random();
-            $talent->categories()->attach($randomCategory);
         }
     }
 }
