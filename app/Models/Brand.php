@@ -11,7 +11,7 @@ class Brand extends Model
 
     protected $guarded = ['id'];
 
-    public function category()
+    public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
@@ -34,9 +34,9 @@ class Brand extends Model
             });
         });
 
-        $query->when($filters['categories'] ?? false, function($query, $position) {
-            return $query->whereHas('categories', function($query) use ($position) {
-                $query->where('name', $position);
+        $query->when($filters['category'] ?? null, function($query, $categories) {
+            $query->whereHas('categories', function($query) use ($categories) {
+                $query->whereIn('name', (array) $categories);
             });
         });
     }

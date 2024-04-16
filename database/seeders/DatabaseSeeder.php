@@ -89,5 +89,12 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'name' => 'Food',            
         ]);
+
+        $brands = Brand::all();
+        $categories = Category::all();
+        foreach ($brands as $brand) {
+            $randomCategory = $categories->random();
+            $brand->categories()->attach($randomCategory);
+        }
     }
 }
