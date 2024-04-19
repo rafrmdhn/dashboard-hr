@@ -30,7 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="{{ asset('js/index.js') }}"></script>
     <script>
-        $(function(e){
+        $(document).ready(function() {
             $("#select_all_ids").click(function(){
                 $('.checkbox_ids').prop('checked', $(this).prop('checked'));
             });
@@ -83,6 +83,18 @@
                     }
                     
                 })
+            });
+
+            // Fix bug for backdrop sidebar
+            $('body').on('click', '[drawer-backdrop]', function() {
+                $(this).remove();                
+            });
+
+            $('[data-drawer-toggle="logo-sidebar"]').on('click', function() {
+                // Check if body have overflow-hidden class
+                if ($('body').hasClass('overflow-hidden')) {
+                    $('[drawer-backdrop]').remove();
+                }
             });
         });
     </script>
