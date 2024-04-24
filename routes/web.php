@@ -77,6 +77,6 @@ Route::middleware(['auth', 'master', 'prevent-back'])->group(function () {
 
 Route::get('/registrasi-talent', function(){
     return redirect('/form/498c62cf2582c9ef765d1154b0a64032');
-});
+})->name('registrasi-talent');
 Route::get('/form/498c62cf2582c9ef765d1154b0a64032', [TalentController::class, 'registrasi']);
 Route::post('/form/498c62cf2582c9ef765d1154b0a64032', [TalentController::class, 'form']);
