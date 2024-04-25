@@ -343,12 +343,25 @@
                     <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
-                                <select class="w-full shadow-inner p-4 border-0.5" name="staff_id" required>
+                                <select class="w-full shadow-inner p-4 border-0.5" id="staff_id" name="staff_id"
+                                    required>
                                     <option value="" selected>Pilih PIC</option>
+                                    <option value="input_manual">Input Manual</option>
                                     @foreach ($staffs as $staff)
                                         <option value="{{ $staff->id }}">{{ $staff->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+
+                        {{-- INPUT PIC  (MANUAL) --}}
+                        <div id="staff_name_manual_input" class="mb-4 hidden">
+                            <div class="md:flex-1 md:pr-3">
+                                <label
+                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">NAMA
+                                    PIC </label>
+                                <input class="w-full shadow-inner p-4 border-0.5" type="text"
+                                    name="staff_name_manual_input">
                             </div>
                         </div>
                     </div>
@@ -439,5 +452,21 @@
                 labelElements[i].appendChild(asteriskSpan);
             }
         }
+
+
+        // DROPDOWN PIC
+        // ------------------------------------------------------------------------
+        var staffID = document.getElementById('staff_id');
+        var staffNameManualInput = document.getElementById('staff_name_manual_input');
+
+        staffID.addEventListener('change', function() {
+            if (this.value === 'input_manual') {
+                staffNameManualInput.style.display = 'block';
+                staffNameManualInput.setAttribute('required', 'required');
+            } else {
+                staffNameManualInput.style.display = 'none';
+                staffNameManualInput.removeAttribute('required');
+            }
+        });
     </script>
 </body>
