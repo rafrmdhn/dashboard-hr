@@ -355,13 +355,30 @@
                         </div>
 
                         {{-- INPUT PIC  (MANUAL) --}}
-                        <div id="staff_name_manual_input" class="mb-4 hidden">
-                            <div class="md:flex-1 md:pr-3">
-                                <label
-                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">NAMA
-                                    PIC </label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="text"
-                                    name="staff_name_manual_input">
+                        <div class="mb-4 hidden" id="input_data_pic_manual">
+                            <div class="mb-4">
+                                <div class="md:flex-1 md:pr-3">
+                                    <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">NAMA PIC </label>
+                                    <input class="w-full shadow-inner p-4 border-0.5" type="text" name="manual_staff_name" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="md:flex-1 md:pr-3">
+                                    <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">EMAIL PIC </label>
+                                    <input class="w-full shadow-inner p-4 border-0.5" type="text" name="manual_staff_email" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="md:flex-1 md:pr-3">
+                                    <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">NO HP PIC</label>
+                                    <input class="w-full shadow-inner p-4 border-0.5" type="text" name="manual_staff_phone" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="md:flex-1 md:pr-3">
+                                    <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">TANGGAL LAHIR PIC</label>
+                                    <input class="w-full shadow-inner p-4 border-0.5" type="date" name="manual_staff_birth" required>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -457,15 +474,15 @@
         // DROPDOWN PIC
         // ------------------------------------------------------------------------
         var staffID = document.getElementById('staff_id');
-        var staffNameManualInput = document.getElementById('staff_name_manual_input');
+        var stafDataManualy = document.getElementById('input_data_pic_manual');
 
         staffID.addEventListener('change', function() {
             if (this.value === 'input_manual') {
-                staffNameManualInput.style.display = 'block';
-                staffNameManualInput.setAttribute('required', 'required');
+                stafDataManualy.style.display = 'block';
+                stafDataManualy.setAttribute('required', 'required');
             } else {
-                staffNameManualInput.style.display = 'none';
-                staffNameManualInput.removeAttribute('required');
+                stafDataManualy.style.display = 'none';
+                stafDataManualy.removeAttribute('required');
             }
         });
     </script>

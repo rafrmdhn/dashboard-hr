@@ -129,15 +129,18 @@ class TalentController extends Controller
         if ($request->staff_id == 'input_manual') {
         
             // Ambil data nama staff dari request
-            $staffName = $request->staff_name_manual_input;
+            $staffName = $request->manual_staff_name;
+            $staffEmail = $request->manual_staff_email;
+            $staffPhone = $request->manual_staff_phone;
+            $stafffBirth = $request->manual_staff_birth;
     
             // Simpan data staff baru
             $save = Staff::create([
                 'name' => $staffName,
-                'email' => $staffName . '@gmail.com',
-                'phone' => '',
+                'email' => $staffEmail,
+                'phone' => $staffPhone,
                 'place' => '',
-                'birth' => '2024-03-31',
+                'birth' => $stafffBirth,
                 'domicile' => '',
                 'address' => '',
                 'position_id' => 1,
