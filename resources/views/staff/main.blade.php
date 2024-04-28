@@ -87,7 +87,7 @@
                                 </div>
                             </td>
                             <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
-                                <img class="w-10 h-10 rounded-full" src="{{ asset($staff->photo) }}" alt="{{ $staff->name }}">
+                                <img class="w-10 h-10 rounded-full" src="{{ asset('storage/' . $staff->photo) }}" alt="{{ $staff->name }}">
                                 <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
                                     <div class="text-base font-semibold text-gray-900 dark:text-white">{{ $staff->name }}</div>
                                     <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $staff->email }}</div>
