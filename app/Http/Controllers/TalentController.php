@@ -79,7 +79,13 @@ class TalentController extends Controller
 
     public function form(Request $request)
     {   
+
+        // DAPATKAN DATA ID STAFF TERAKHIR
+        // $result = $request->staff_id == 'input_manual';
+        // dd($result);
+        // dd($request->staff_name_manual_input);
         // dd($request->all());
+
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
@@ -118,14 +124,46 @@ class TalentController extends Controller
             $validatedData['photo'] = $request->file('photo')->store('images/talents');
         }
 
-        $talent = Talent::create($validatedData);
 
-        foreach ($categories as $category)
-        {
-            $talent->category()->attach($category);
+        // CEK NILAI DARI staff_id
+        if ($request->staff_id == 'input_manual') {
+        
+            // Ambil data nama staff dari request
+            $staffName = $request->manual_staff_name;
+            $staffEmail = $request->manual_staff_email;
+            $staffPhone = $request->manual_staff_phone;
+            $stafffBirth = $request->manual_staff_birth;
+    
+            // Simpan data staff baru
+            $save = Staff::create([
+                'name' => $staffName,
+                'email' => $staffEmail,
+                'phone' => $staffPhone,
+                'place' => '',
+                'birth' => $stafffBirth,
+                'domicile' => '',
+                'address' => '',
+                'position_id' => 1,
+                'photo' => '', // 1MB Max
+                'instagram' => '',
+                'linkedin' => ''
+            ]);
+    
+            // Tambahkan ID staff yang baru ditambahkan ke data yang divalidasi
+            $validatedData['staff_id'] = $save->id;
+
         }
 
+        $talent = Talent::create($validatedData);
+        
+        foreach ($categories as $category)
+        {
+            $talent->categories()->attach($category);
+        }
+
+        // Redirect ke halaman registrasi talent dengan pesan sukses
         return redirect('/registrasi-talent')->with('success', 'Berhasil Mendaftar!');
+
     }
 
     public function page()
