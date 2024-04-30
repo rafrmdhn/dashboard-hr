@@ -30,6 +30,9 @@
                                 Name
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Bulan, Tahun
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Kebutuhan
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
@@ -69,8 +72,11 @@
                                         <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $spend->staff->email }}</div>
                                     </div>
                                 </td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ \Carbon\Carbon::parse($spend->date)->format('d F Y') }}</td>
                                 <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $spend->requirement }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $spend->budget }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ 'Rp' . number_format($spend->budget, 2, ',', '.') }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <img class="h-10 rounded-lg shadow-xl dark:shadow-gray-800" src="{{ asset($spend->proof) }}" alt="{{ $spend->name }}"></td>
                                 </td>
