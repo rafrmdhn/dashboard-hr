@@ -18,10 +18,17 @@ class Spending extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? false, function($query, $search) {
-            $query->where(function($subquery) use ($search) {
-                $subquery->where('name', 'like', '%' . $search . '%');
-            });
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        });
+    
+        $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
+            $query->whereMonth('date', $bulan);
+        });
+    
+        // Filter by tahun (year)
+        $query->when($filters['tahun'] ?? false, function ($query, $tahun) {
+            $query->whereYear('date', $tahun);
         });
     }
 }

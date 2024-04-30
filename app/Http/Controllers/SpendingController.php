@@ -15,8 +15,8 @@ class SpendingController extends Controller
     {
         return view('spending.main', [
             'title' => 'Pengeluaran',
-            'search' => 'pengeluaran',
-            'tables' => Spending::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString(),
+            'search' => 'spendings',
+            'tables' => Spending::latest()->filter(request(['search', 'name', 'bulan', 'tahun']))->paginate(10)->withQueryString(),
             'staffs' => Staff::all(),
             'export' => 'exportSpending'
         ]);
@@ -39,6 +39,7 @@ class SpendingController extends Controller
             'staff_id' => 'required',
             'requirement' => 'required',
             'budget' => 'required',
+            'date' => 'required',
             'proof' => 'image|file|max:1024', // 1MB Max
         ]);
 

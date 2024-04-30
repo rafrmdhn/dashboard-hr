@@ -17,7 +17,7 @@
                     @csrf
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Lengkap</label>
                             <select name="staff_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                 <option value="" selected>Choose Staff</option>
                                     @foreach ($staffs as $staff)
@@ -30,14 +30,30 @@
                             </select>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Need</label>
+                            <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kebutuhan</label>
                             <input type="text" name="requirement" id="requirement" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Membeli Barang A" required>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="budget" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Budget</label>
+                            <label for="budget" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Biaya</label>
                             <input type="number" name="budget" id="budget" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="100000" required>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
+                            <label for="date"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </div>
+                                <input datepicker datepicker-format="yyyy-mm-dd" type="text" name="date"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Select date" required>
+                            </div>
+                        </div>
+                        <div class="col-span-6">
                             <label for="proof" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="photo">Bukti</label>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="proof" type="file" name="proof" required>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>

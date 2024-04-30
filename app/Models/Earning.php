@@ -10,6 +10,7 @@ class Earning extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $dates = ['date'];
 
     public function earnable()
     {
@@ -28,10 +29,28 @@ class Earning extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? false, function($query, $search) {
-            $query->where(function($subquery) use ($search) {
-                $subquery->where('name', 'like', '%' . $search . '%');
-            });
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        });
+    
+        $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
+            $query->whereMonth('date', $bulan);
+        });
+    
+        $query->when($filters['tahun'] ?? false, function ($query, $tahun) {
+            $query->whereYear('date', $tahun);
+        });
+
+        $query->when($filters['tipe'] ?? false, function ($query, $tipe) {
+            switch ($tipe) {
+                case 'Brand':
+                    $tipe = 'App\Models\Brand';
+                    break;
+                case 'Agency':
+                    $tipe = 'App\Models\Agency';
+                    break;
+            }
+            $query->where('earnable_type', $tipe);
         });
     }
 }

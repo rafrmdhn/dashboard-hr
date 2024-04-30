@@ -49,19 +49,12 @@ class Staff extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? false, function($query, $search) {
-            $query->where(function($subquery) use ($search) {
-                $subquery->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('instagram', 'like', '%' . $search . '%')
-                        ->orWhere('linkedin', 'like', '%' . $search . '%');
-            })
-            ->orWhereHas('position', function($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%');
-            });
+        $query->when($filters['search'] ?? null, function($query, $search) {
+            $query->where('name', 'like', '%' . $search . '%');
         });
 
-        $query->when($filters['position'] ?? false, function($query, $position) {
-            return $query->whereHas('position', function($query) use ($position) {
+        $query->when($filters['position'] ?? null, function($query, $position) {
+            $query->whereHas('position', function($query) use ($position) {
                 $query->where('name', $position);
             });
         });

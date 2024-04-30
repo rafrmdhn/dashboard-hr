@@ -44,22 +44,98 @@
         @if (!request()->is('edit-profile'))
         <div class="sm:flex">
             <div class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
-                <form class="lg:pr-3" action="/{{ $search }}">
-                @if (request('intern'))
-                    <input type="hidden" name="intern" value="{{ request('intern') }}">
-                @endif
-                @if (request('employee'))
-                    <input type="hidden" name="employee" value="{{ request('employee') }}">
-                @endif
-                @if (request('talent'))
-                    <input type="hidden" name="talent" value="{{ request('talent') }}">
-                @endif
-                <label for="users-search" class="sr-only">Search</label>
-                <div class="relative mt-1 lg:w-64 xl:w-96">
-                    <input type="search" name="search" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Cari {{ $title }}" value="{{ request('search') }}">
-                </div>
+                <form id="searchForm" class="lg:pr-3 flex items-center" method="GET" action="/{{ $search }}">
+                    @if (request('intern'))
+                        <input type="hidden" name="intern" value="{{ request('intern') }}">
+                    @endif
+                    @if (request('employee'))
+                        <input type="hidden" name="employee" value="{{ request('employee') }}">
+                    @endif
+                    @if (request('talent'))
+                        <input type="hidden" name="talent" value="{{ request('talent') }}">
+                    @endif
+                    <div class="relative mt-1 lg:w-64 xl:w-96">
+                        <input type="search" name="search" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search {{ $title }}" value="{{ request('search') }}">
+                    </div>
+                    @if(isset($positions) && count($positions) > 0)
+                    <div class="pl-3 mt-1">
+                        <select name="position" id="position" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Select Position</option>
+                            @foreach($positions as $position)
+                                <option value="{{ $position->name }}" {{ request('position') === $position->name ? 'selected' : '' }}>{{ $position->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @endif
+                    @if(isset($categories) && count($categories) > 0)
+                    <div class="pl-3 mt-1">
+                        <select name="category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Select Category</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->name }}" {{ request('category') === $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @endif
+                    @if(request()->is('earnings', 'spendings'))
+                    <div class="relative mt-1 pl-3">
+                        <select id="bulan" name="bulan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
+                            <option value="">Pilih Bulan</option>
+                            @foreach(range(1, 12) as $month)
+                                <option value="{{ $month }}" {{ request('bulan') == $month ? 'selected' : '' }}>{{ date("F", mktime(0, 0, 0, $month, 10)) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="relative mt-1 pl-3">
+                        <select id="tahun" name="tahun" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
+                            <option value="">Pilih Tahun</option>
+                            @foreach(range(2020, date('Y')) as $year)
+                                <option value="{{ $year }}" {{ request('tahun') == $year ? 'selected' : '' }}>{{ $year }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @endif
+                    @if(request()->is('earnings'))
+                    <div class="relative mt-1 pl-3">
+                        <select id="tipe" name="tipe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Tipe">
+                            <option value="">Pilih Tipe</option>
+                            <option value="Brand" {{ request('tipe') == 'Brand' ? 'selected' : '' }}>Brand</option>
+                            <option value="Agency" {{ request('tipe') == 'Agency' ? 'selected' : '' }}>Agency</option>
+                        </select>
+                    </div>
+                    @endif
                 </form>
-                @if(isset($positions) && count($positions) > 0)
+                {{-- <form class="lg:pr-3">
+                    <div class="relative mt-1">
+                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
+                            <option disabled selected>Pilih Bulan</option>
+                            <option value="1" selected>Januari</option>
+                            <option value="2">Februari</option>
+                            <option value="3">Maret</option>
+                            <option value="4">April</option>
+                            <option value="4">Mei</option>
+                            <option value="4">Juni</option>
+                            <option value="4">Juli</option>
+                            <option value="4">Agustus</option>
+                            <option value="4">September</option>
+                            <option value="4">Oktober</option>
+                            <option value="4">November</option>
+                            <option value="4">Desember</option>
+                        </select>
+                    </div>
+                </form> --}}
+                {{-- <form class="lg:pr-3">
+                    <div class="relative mt-1">
+                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
+                            <option disabled selected>Pilih Tahun</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+                </form> --}}
+                {{-- @if(isset($positions) && count($positions) > 0)
                 <div class="pl-3 mt-1">
                     <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" type="button">
                         <span class="sr-only">Action button</span>
@@ -78,8 +154,8 @@
                         </ul>
                     </div>
                 </div>
-                @endif
-                @if(isset($categories) && count($categories) > 0)
+                @endif --}}
+                {{-- @if(isset($categories) && count($categories) > 0)
                 <div class="pl-3 mt-1">
                     <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" type="button">
                         <span class="sr-only">Action button</span>
@@ -98,7 +174,7 @@
                         </ul>
                     </div>
                 </div>
-                @endif
+                @endif --}}
                 <div class="flex pl-0 mt-3 space-x-1 sm:pl-2 sm:mt-0">
                     <a href="#" id="deleteAllSelectorRecord" class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
@@ -110,7 +186,7 @@
                 @if (!request()->is('talent'))
                     <button type="button" data-modal-target="add-user-modal" data-modal-toggle="add-user-modal" class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                        Tambah Data
+                        Tambah
                     </button>
                 @endif
 
@@ -147,3 +223,29 @@
         @endif
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to handle form submission
+        function submitForm() {
+            var form = document.getElementById("searchForm");
+            clearTimeout(form.dataset.timeoutId);  // Clear the existing timeout, if any
+            form.dataset.timeoutId = setTimeout(function() {  // Set a new timeout
+                form.submit();
+            }, 0);  // Delay in milliseconds before the form is submitted
+        }
+    
+        // Attach change event listeners to dropdowns
+        var selectElements = document.querySelectorAll('#searchForm select');
+        selectElements.forEach(function(elem) {
+            elem.addEventListener('change', submitForm);
+        });
+    
+        // Attach input event listener to the search input with debouncing
+        var searchInput = document.getElementById('search');
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchInput.dataset.timeoutId);  // Clear the existing timeout
+            searchInput.dataset.timeoutId = setTimeout(submitForm, 500);  // Set a new timeout
+        });
+    });
+    </script>

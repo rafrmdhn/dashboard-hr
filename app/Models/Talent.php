@@ -29,16 +29,8 @@ class Talent extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? false, function($query, $search) {
-            $query->where(function($subquery) use ($search) {
-                $subquery->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('email', 'like', '%' . $search . '%')
-                        ->orWhere('instagram', 'like', '%' . $search . '%')
-                        ->orWhere('youtube', 'like', '%' . $search . '%')
-                        ->orWhere('tiktok', 'like', '%' . $search . '%')
-                        ->orWhere('domicile', 'like', '%' . $search . '%')
-                        ->orWhere('phone', 'like', '%' . $search . '%');
-            });
+        $query->when($filters['search'] ?? null, function($query, $search) {
+            $query->where('name', 'like', '%' . $search . '%');
         });
 
         $query->when($filters['category'] ?? null, function($query, $categories) {
