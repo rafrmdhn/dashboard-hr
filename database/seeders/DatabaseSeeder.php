@@ -15,6 +15,7 @@ use App\Models\Earning;
 use App\Models\Category;
 use App\Models\Position;
 use Illuminate\Database\Seeder;
+use Database\Seeders\IndoRegionSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -49,9 +50,19 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        // Call artisan for indo region
+        $this->call(IndoRegionSeeder::class);
+
+        // Get all village_id from database and store in array
+        $villageIds = \App\Models\Village::pluck('id')->toArray();
+
         Intern::factory(20)->create();
 
-        Staff::factory(20)->create();
+        Staff::factory(20)->create([
+            'village_id' => function() use ($villageIds) {
+                return $villageIds[array_rand($villageIds)];
+            },
+        ]);
         
         Talent::factory(20)->create();
 

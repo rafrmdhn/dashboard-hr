@@ -75,6 +75,11 @@ Route::middleware(['auth', 'master', 'prevent-back'])->group(function () {
     Route::get('/getBrands', [DependantDropdownController::class, 'getBrands']);
 });
 
+// Route for return regencies by province_id
+Route::get('/getRegencies/{province_id}', [DependantDropdownController::class, 'getRegencies']);
+Route::get('/getDistricts/{regency_id}', [DependantDropdownController::class, 'getDistricts']);
+Route::get('/getVillages/{district_id}', [DependantDropdownController::class, 'getVillages']);
+
 Route::get('/registrasi-talent', function(){
     return redirect('/form/498c62cf2582c9ef765d1154b0a64032');
 })->name('registrasi-talent');
