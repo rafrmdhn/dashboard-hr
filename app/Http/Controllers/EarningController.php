@@ -20,7 +20,7 @@ class EarningController extends Controller
         return view('earnings.main', [
             'title' => 'Pendapatan',
             'search' => 'earnings',
-            'tables' => Earning::latest()->filter(request(['search', 'name', 'bulan', 'tahun', 'tipe']))->paginate(10)->withQueryString(),
+            'tables' => Earning::latest()->filter(request(['search', 'name', 'bulan', 'tahun', 'tipe', 'status']))->paginate(10)->withQueryString(),
             'export' => 'exportEarnings',
             'talents' => Talent::orderBy('name')->get(),
             'sows' => Sow::orderBy('id')->get(),

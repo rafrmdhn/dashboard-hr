@@ -64,8 +64,10 @@
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Tempat
                                     dan Tanggal Lahir</label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="ttl"
-                                    id="ttl" placeholder="" required>
+                                    <div class="flex">
+                                        <input class="flex-1 shadow-inner p-4 border-0.5 mr-2" type="text" name="place" id="place" placeholder="Tempat Lahir" required>
+                                        <input class="flex-1 shadow-inner p-4 border-0.5" type="date" name="date" id="date" required>
+                                    </div>
                                 <span class="text-xs mb-4 font-thin">Ex: Mataram, 19 September 2000</span>
                             </div>
                         </div>
@@ -255,7 +257,7 @@
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">username</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="youtube"
+                                    <input class="w-full shadow-inner p-4 border-0.5" type="text" name="youtube"
                                         id="youtube" placeholder="" required>
                                 </div>
                             </div>
@@ -292,7 +294,7 @@
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number"
+                                    <input class="w-full shadow-inner p-4 border-0.5" type="number"
                                         name="rate_event" placeholder="" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -362,7 +364,7 @@
                                     <input class="w-full shadow-inner p-4 border-0.5" type="text" name="manual_staff_name" required>
                                 </div>
                             </div>
-                            <div class="mb-4">
+                            {{-- <div class="mb-4">
                                 <div class="md:flex-1 md:pr-3">
                                     <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">EMAIL PIC </label>
                                     <input class="w-full shadow-inner p-4 border-0.5" type="text" name="manual_staff_email" required>
@@ -379,7 +381,7 @@
                                     <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">TANGGAL LAHIR PIC</label>
                                     <input class="w-full shadow-inner p-4 border-0.5" type="date" name="manual_staff_birth" required>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

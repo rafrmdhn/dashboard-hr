@@ -1,6 +1,6 @@
 <button type="button" data-modal-target="edit-user-modal-{{ $talent->id }}" data-modal-toggle="edit-user-modal-{{ $talent->id }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-    Edit user
+    Edit
 </button>
 
 <div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full" id="edit-user-modal-{{ $talent->id }}">
@@ -23,7 +23,10 @@
                     @csrf
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                            <div class="flex justify-between">
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                <a href="" class="block mb-2 text-sm font-medium text-gray-900 hover:text-blue-600">Edit data</a>
+                            </div>
                             <select id="underline_select" name="status" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected >Pilih Status</option>
                                 <option value="0" {{ $talent->status == 0 ? 'selected' : '' }}>Tidak</option>
@@ -34,7 +37,7 @@
             </div>
                 <!-- Modal footer -->
                 <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
-                    <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Save all</button>
+                    <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Save</button>
                 </div>
             </form>
         </div>

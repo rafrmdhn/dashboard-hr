@@ -55,14 +55,9 @@ class InternController extends Controller
             'domicile' => 'required',
             'address' => 'required|max:255',
             'position_id' => 'required|max:255',
-            'photo' => 'image|file|max:1024', // 1MB Max
             'instagram' => 'required',
             'linkedin' => 'required'
         ]);
-
-        if($request->file('photo')) {
-            $validatedData['photo'] = $request->file('photo')->store('images/interns');
-        }
 
         Intern::create($validatedData);
 
@@ -99,19 +94,9 @@ class InternController extends Controller
             'domicile' => 'required',
             'address' => 'required|max:255',
             'position_id' => 'required|max:255',
-            'photo' => 'image|file|max:1024', // 1MB Max
             'instagram' => 'required',
             'linkedin' => 'required'
         ]);
-        
-        // Check if a new photo is uploaded
-        if($request->file('photo')) {
-            $validatedData['photo'] = $request->file('photo')->store('images/interns');
-        } 
-        else {
-            // No new photo uploaded, keep the existing one
-            $validatedData['photo'] = $intern->photo;
-        }
 
         Intern::where('id', $intern->id)
                 ->update($validatedData);

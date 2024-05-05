@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->string('ttl');
+            $table->string('place');
+            $table->date('date');
             $table->string('domicile');
             $table->string('instagram');
             $table->string('engagement');
