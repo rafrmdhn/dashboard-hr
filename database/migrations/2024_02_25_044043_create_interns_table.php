@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('domicile');
             $table->string('instagram');
             $table->string('linkedin');
-            $table->string('photo');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

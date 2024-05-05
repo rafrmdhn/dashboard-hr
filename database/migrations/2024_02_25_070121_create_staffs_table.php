@@ -18,12 +18,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('place');
-            $table->date('birth');
+            $table->date('birth')->nullable();
             $table->text('address');
             $table->string('domicile');
             $table->string('instagram');
             $table->string('linkedin');
-            $table->string('photo');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

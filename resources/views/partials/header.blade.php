@@ -35,16 +35,26 @@
                     </li>
                 </ol>
             </nav>
-            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+                    @if (!request()->is('edit-profile'))
+                    All 
+                    @endif
+                    {{ $title }}
+                </h1>
                 @if (!request()->is('edit-profile'))
-                All 
+                    <form id="searchFormTop" action="/{{ $search }}" method="GET">
+                        <div class="relative md:hidden mt-1">
+                            <input type="search" name="search" id="searchTop" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search {{ $title }}" value="{{ request('search') }}">
+                        </div>
+                    </form>    
                 @endif
-                {{ $title }}</h1>
+            </div>
         </div>
         @if (!request()->is('edit-profile'))
         <div class="sm:flex">
             <div class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
-                <form id="searchForm" class="lg:pr-3 flex items-center" method="GET" action="/{{ $search }}">
+                <form id="searchFormBottom" class="lg:pr-3 flex items-center" method="GET" action="/{{ $search }}">
                     @if (request('intern'))
                         <input type="hidden" name="intern" value="{{ request('intern') }}">
                     @endif
@@ -54,8 +64,8 @@
                     @if (request('talent'))
                         <input type="hidden" name="talent" value="{{ request('talent') }}">
                     @endif
-                    <div class="relative mt-1 lg:w-64 xl:w-96">
-                        <input type="search" name="search" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search {{ $title }}" value="{{ request('search') }}">
+                    <div class="relative mt-1 lg:w-52 xl:w-64">
+                        <input type="search" name="search" id="searchBottom" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search {{ $title }}" value="{{ request('search') }}">
                     </div>
                     @if(isset($positions) && count($positions) > 0)
                     <div class="pl-3 mt-1">
@@ -101,6 +111,14 @@
                             <option value="">Pilih Tipe</option>
                             <option value="Brand" {{ request('tipe') == 'Brand' ? 'selected' : '' }}>Brand</option>
                             <option value="Agency" {{ request('tipe') == 'Agency' ? 'selected' : '' }}>Agency</option>
+                        </select>
+                    </div>
+                    <div class="relative mt-1 pl-3">
+                        <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Status">
+                            <option value="">Pilih Status</option>
+                            <option value="proses" {{ request('status') == 'proses' ? 'selected' : '' }}>Proses</option>
+                            <option value="selesai" {{ request('status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                            <option value="gagal" {{ request('status') == 'gagal' ? 'selected' : '' }}>Gagal</option>
                         </select>
                     </div>
                     @endif
@@ -201,7 +219,7 @@
                 @if (request()->is('talent'))
                     <a href="{{ route('registrasi-talent') }}" data-modal-target="add-user-modal" data-modal-toggle="add-user-modal" class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                         <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                        Tambah Data
+                        Tambah
                     </a>
                 @endif
 
@@ -226,26 +244,30 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Function to handle form submission
-        function submitForm() {
-            var form = document.getElementById("searchForm");
-            clearTimeout(form.dataset.timeoutId);  // Clear the existing timeout, if any
-            form.dataset.timeoutId = setTimeout(function() {  // Set a new timeout
-                form.submit();
-            }, 0);  // Delay in milliseconds before the form is submitted
-        }
-    
-        // Attach change event listeners to dropdowns
-        var selectElements = document.querySelectorAll('#searchForm select');
+    function submitForm(formId) {
+        var form = document.getElementById(formId);
+        clearTimeout(form.dataset.timeoutId);  // Clear the existing timeout, if any
+        form.dataset.timeoutId = setTimeout(function() {  // Set a new timeout
+            form.submit();
+        }, 0);  // Delay in milliseconds before the form is submitted
+    }
+
+    // Function to handle changes and input for both forms
+    function setupFormListeners(formId, inputId) {
+        var selectElements = document.querySelectorAll(`#${formId} select`);
         selectElements.forEach(function(elem) {
-            elem.addEventListener('change', submitForm);
+            elem.addEventListener('change', function() { submitForm(formId); });
         });
-    
-        // Attach input event listener to the search input with debouncing
-        var searchInput = document.getElementById('search');
+
+        var searchInput = document.getElementById(inputId);
         searchInput.addEventListener('input', function() {
             clearTimeout(searchInput.dataset.timeoutId);  // Clear the existing timeout
-            searchInput.dataset.timeoutId = setTimeout(submitForm, 500);  // Set a new timeout
+            searchInput.dataset.timeoutId = setTimeout(function() { submitForm(formId); }, 500);  // Set a new timeout
         });
+    }
+
+    // Setup listeners for both forms
+    setupFormListeners('searchFormTop', 'searchTop');
+    setupFormListeners('searchFormBottom', 'searchBottom');
     });
-    </script>
+</script>

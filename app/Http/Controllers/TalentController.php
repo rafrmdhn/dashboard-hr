@@ -84,13 +84,14 @@ class TalentController extends Controller
         // $result = $request->staff_id == 'input_manual';
         // dd($result);
         // dd($request->staff_name_manual_input);
-        // dd($request->all());
+        // dd($request->all());/
 
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
             'phone' => 'required|max:12',
-            'ttl' => 'required',
+            'place' => 'required',
+            'date' => 'required',
             'domicile' => 'required',
             'engagement' => 'required',
             'category_id' => 'required',
@@ -130,17 +131,14 @@ class TalentController extends Controller
         
             // Ambil data nama staff dari request
             $staffName = $request->manual_staff_name;
-            $staffEmail = $request->manual_staff_email;
-            $staffPhone = $request->manual_staff_phone;
-            $stafffBirth = $request->manual_staff_birth;
     
             // Simpan data staff baru
             $save = Staff::create([
                 'name' => $staffName,
-                'email' => $staffEmail,
-                'phone' => $staffPhone,
+                'email' => '',
+                'phone' => '',
                 'place' => '',
-                'birth' => $stafffBirth,
+                'birth' => null,
                 'domicile' => '',
                 'address' => '',
                 'position_id' => 1,

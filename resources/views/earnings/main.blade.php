@@ -94,12 +94,11 @@
                                             <label for="checkbox" class="sr-only">checkbox</label>
                                         </div>
                                     </td>
-                                    <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
+                                    <td class="items-center p-4 mr-12 space-x-6 whitespace-nowrap">
                                         {{-- <img class="w-10 h-10 rounded-full" src="{{ asset($finance->photo) }}" alt="{{ $finance->name }}"> --}}
                                         <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
                                             <div class="text-base font-semibold text-gray-900 dark:text-white">
                                                 {{ $finance->name }}</div>
-                                            {{-- <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $intern->email }}</div> --}}
                                         </div>
                                     </td>
                                     <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
