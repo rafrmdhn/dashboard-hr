@@ -18,7 +18,7 @@
             <div>
                 <button type="button" class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-50 hover:text-gray-900 dark:text-gray-900 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-900" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                 <span class="sr-only">Open user menu</span>
-                {{ auth()->user()->name }}
+                <img class="w-8 h-8 rounded-full" src="{{ asset('storage/' . auth()->user()->photo) }}" alt="{{ auth()->user()->name }}">
                 </button>
             </div>
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">

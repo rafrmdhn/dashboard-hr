@@ -22,7 +22,7 @@
         <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
           <span class="text-gray-600">This information is secret so be careful</span>
           <div class="w-full p-8 mx-2 flex justify-center">
-            <img id="photo-preview" class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500" src="{{ old('photo', $user->photo) }}" alt="Bordered avatar">
+            <img id="photo-preview" class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500" src="{{ old('photo', asset('storage/' . $user->photo)) }}" alt="Bordered avatar">
           </div>
           <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="photo" type="file" name="photo">
         </div>
