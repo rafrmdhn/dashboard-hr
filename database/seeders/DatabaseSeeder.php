@@ -56,7 +56,11 @@ class DatabaseSeeder extends Seeder
         // Get all village_id from database and store in array
         $villageIds = \App\Models\Village::pluck('id')->toArray();
 
-        Intern::factory(20)->create();
+        Intern::factory(20)->create([
+            'village_id' => function() use ($villageIds) {
+                return $villageIds[array_rand($villageIds)];
+            },
+        ]);
 
         Staff::factory(20)->create([
             'village_id' => function() use ($villageIds) {
@@ -64,7 +68,11 @@ class DatabaseSeeder extends Seeder
             },
         ]);
         
-        Talent::factory(20)->create();
+        Talent::factory(20)->create([
+            'village_id' => function() use ($villageIds) {
+                return $villageIds[array_rand($villageIds)];
+            },
+        ]);
 
         Brand::factory(20)->create();
 

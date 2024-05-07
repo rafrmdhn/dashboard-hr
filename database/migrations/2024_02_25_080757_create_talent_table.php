@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('ttl');
-            $table->string('domicile');
+            $table->char('village_id', 10);
             $table->string('instagram');
             $table->string('engagement');
             $table->bigInteger('finstagram');
@@ -41,6 +41,11 @@ return new class extends Migration
             $table->string('photo');
             $table->boolean('status')->default(false);
             $table->timestamps();
+
+            $table->foreign('village_id')
+                ->references('id')
+                ->on('villages')
+                ->onUpdate('cascade');
         });
     }
 

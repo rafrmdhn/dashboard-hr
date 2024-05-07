@@ -12,6 +12,7 @@ use App\Imports\InternImport;
 use App\Exports\InternExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Models\Province;
 
 class InternController extends Controller
 {
@@ -29,6 +30,7 @@ class InternController extends Controller
             'search' => 'intern',
             'tables' => Intern::latest()->filter(request(['search', 'name', 'position']))->paginate(10)->withQueryString(),
             'positions' => Position::all(),
+            'provinces' => Province::all(),
             'export' => 'exportIntern'
         ]);
     }
@@ -52,7 +54,7 @@ class InternController extends Controller
             'phone' => 'required|max:12',
             'place' => 'required',
             'birth' => 'required',
-            'domicile' => 'required',
+            'village_id' => 'required',
             'address' => 'required|max:255',
             'position_id' => 'required|max:255',
             'photo' => 'image|file|max:1024', // 1MB Max
@@ -96,7 +98,7 @@ class InternController extends Controller
             'phone' => 'required|max:12',
             'place' => 'required',
             'birth' => 'required',
-            'domicile' => 'required',
+            'village_id' => 'required',
             'address' => 'required|max:255',
             'position_id' => 'required|max:255',
             'photo' => 'image|file|max:1024', // 1MB Max

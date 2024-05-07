@@ -52,6 +52,16 @@ class Village extends Model
         return $this->hasMany(Staff::class);
     }
 
+    public function interns()
+    {
+        return $this->hasMany(Intern::class);
+    }
+
+    public function talents()
+    {
+        return $this->hasMany(Talent::class);
+    }
+
     // Accessor
     protected function name(): Attribute
     {

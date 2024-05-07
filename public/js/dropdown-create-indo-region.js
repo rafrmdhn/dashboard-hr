@@ -1,17 +1,17 @@
 $(document).ready(function () {
     // Make ajax request to get regencies based on selected province
-    $('select[name="province_id"]').on("change", function () {
-        $('select[name="regency_id"]').prop("disabled", true);
-        $('select[name="district_id"]').prop("disabled", true);
-        $('select[name="village_id"]').prop("disabled", true);
+    $('.province-create').on("change", function () {
+        $('.regency-create').prop("disabled", true);
+        $('.district-create').prop("disabled", true);
+        $('.village-create').prop("disabled", true);
 
-        $('select[name="regency_id"]').html(
+        $('.regency-create').html(
             '<option selected value="">Pilih Kabupaten/Kota</option>'
         );
-        $('select[name="district_id"]').html(
+        $('.district-create').html(
             '<option selected value="">Pilih Kecamatan</option>'
         );
-        $('select[name="village_id"]').html(
+        $('.village-create').html(
             '<option selected value="">Pilih Desa/Kelurahan</option>'
         );
 
@@ -22,12 +22,12 @@ $(document).ready(function () {
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $('select[name="regency_id"]').empty();
-                    $('select[name="regency_id"]').append(
+                    $('.regency-create').empty();
+                    $('.regency-create').append(
                         '<option selected value="">Pilih Kabupaten/Kota</option>'
                     );
                     $.each(data, function (key, value) {
-                        $('select[name="regency_id"]').append(
+                        $('.regency-create').append(
                             '<option value="' +
                                 value.id +
                                 '">' +
@@ -35,21 +35,21 @@ $(document).ready(function () {
                                 "</option>"
                         );
                     });
-                    $('select[name="regency_id"]').prop("disabled", false);
+                    $('.regency-create').prop("disabled", false);
                 },
             });
         }
     });
 
     // Make ajax request to get districts based on selected regency
-    $('select[name="regency_id"]').on("change", function () {
-        $('select[name="district_id"]').prop("disabled", true);
-        $('select[name="village_id"]').prop("disabled", true);
+    $('.regency-create').on("change", function () {
+        $('.district-create').prop("disabled", true);
+        $('.village-create').prop("disabled", true);
 
-        $('select[name="district_id"]').html(
+        $('.district-create').html(
             '<option selected value="">Pilih Kecamatan</option>'
         );
-        $('select[name="village_id"]').html(
+        $('.village-create').html(
             '<option selected value="">Pilih Desa/Kelurahan</option>'
         );
 
@@ -60,12 +60,12 @@ $(document).ready(function () {
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $('select[name="district_id"]').empty();
-                    $('select[name="district_id"]').append(
+                    $('.district-create').empty();
+                    $('.district-create').append(
                         '<option selected value="">Pilih Kecamatan</option>'
                     );
                     $.each(data, function (key, value) {
-                        $('select[name="district_id"]').append(
+                        $('.district-create').append(
                             '<option value="' +
                                 value.id +
                                 '">' +
@@ -73,16 +73,16 @@ $(document).ready(function () {
                                 "</option>"
                         );
                     });
-                    $('select[name="district_id"]').prop("disabled", false);
+                    $('.district-create').prop("disabled", false);
                 },
             });
         }
     });
 
     // Make ajax request to get villages based on selected district
-    $('select[name="district_id"]').on("change", function () {
-        $('select[name="village_id"]').prop("disabled", true);
-        $('select[name="village_id"]').html(
+    $('.district-create').on("change", function () {
+        $('.village-create').prop("disabled", true);
+        $('.village-create').html(
             '<option selected value="">Pilih Desa/Kelurahan</option>'
         );
 
@@ -93,12 +93,12 @@ $(document).ready(function () {
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $('select[name="village_id"]').empty();
-                    $('select[name="village_id"]').append(
+                    $('.village-create').empty();
+                    $('.village-create').append(
                         '<option selected value="">Pilih Desa/Kelurahan</option>'
                     );
                     $.each(data, function (key, value) {
-                        $('select[name="village_id"]').append(
+                        $('.village-create').append(
                             '<option value="' +
                                 value.id +
                                 '">' +
@@ -106,7 +106,7 @@ $(document).ready(function () {
                                 "</option>"
                         );
                     });
-                    $('select[name="village_id"]').prop("disabled", false);
+                    $('.village-create').prop("disabled", false);
                 },
             });
         }

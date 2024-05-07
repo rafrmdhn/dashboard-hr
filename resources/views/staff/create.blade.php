@@ -49,7 +49,7 @@
                                 <option selected value="">Pilih Posisi</option>
                                     @foreach ($positions as $position)
                                         @if (old('position_id') == $position->id)
-                                            <option value="{{ $position->id }}">{{$position->name}}</option>
+                                            <option value="{{ $position->id }}" selected>{{$position->name}}</option>
                                         @else
                                             <option value="{{ $position->id }}">{{$position->name}}</option>
                                         @endif
@@ -58,11 +58,11 @@
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label for="province" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi<span class="text-red-500">*</span></label>
-                            <select name="province_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <select name="province_id" class="province-create bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                 <option selected value="">Pilih Provinsi</option>
                                     @foreach ($provinces as $province)
                                         @if (old('province_id') == $province->id)
-                                            <option value="{{ $province->id }}">{{$province->name}}</option>
+                                            <option value="{{ $province->id }}" selected>{{$province->name}}</option>
                                         @else
                                             <option value="{{ $province->id }}">{{$province->name}}</option>
                                         @endif
@@ -71,19 +71,19 @@
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label for="regency" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten/Kota<span class="text-red-500">*</span></label>
-                            <select name="regency_id" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <select name="regency_id" disabled class="regency-create bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                 <option selected value="">Pilih Kabupaten/Kota</option>
                             </select>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label for="district" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan<span class="text-red-500">*</span></label>
-                            <select name="district_id" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <select name="district_id" disabled class="district-create bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                 <option selected value="">Pilih Kecamatan</option>
                             </select>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label for="village" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Desa/Kelurahan<span class="text-red-500">*</span></label>
-                            <select name="village_id" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <select name="village_id" disabled class="village-create bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                 <option selected value="">Pilih Desa/Kelurahan</option>
                             </select>
                         </div>

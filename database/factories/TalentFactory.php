@@ -21,7 +21,6 @@ class TalentFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
             'ttl' => $this->faker->date(),
-            'domicile' => $this->faker->city(),
             'instagram' => $this->faker->userName(),
             'engagement' => $this->faker->randomDigit(),
             'finstagram' => $this->faker->randomDigit(),
