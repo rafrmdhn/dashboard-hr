@@ -88,7 +88,7 @@
                             <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-xs font-bold">Engagement Rate</label>
                                 <input class="w-full shadow-inner p-4 border-0.5" type="text" name="engagement"
-                                    id="engagement" placeholder="" required>
+                                    id="engagement" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 <span class="text-xs mb-4 font-thin">check on <a
                                         href="https://phlanx.com/engagement-calculator"
                                         class="text-blue-800">here</a></span>
@@ -138,7 +138,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">username</label>
                                 <div class="w-full flex">
                                     <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="instagram"
-                                        id="instagram" placeholder="" required>
+                                        id="instagram" placeholder=""  required>
                                 </div>
                             </div>
                             <div class="md:flex-1 md:pl-3 mt-2 md:mt-0">
@@ -146,8 +146,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Followers
                                     IG</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number"
-                                        name="finstagram" id="finstagram" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text"
+                                        name="finstagram" id="finstagram" placeholder=""  pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">Username Ig</span>
                             </div>
@@ -158,8 +158,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card IG Story</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igs"
-                                        id="rate_igs" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_igs"
+                                        id="rate_igs" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -168,8 +168,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card IG Feed</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igf"
-                                        id="rate_igf" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_igf"
+                                        id="rate_igf" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -180,8 +180,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card IG Reels</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igr"
-                                        id="rate_igr" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_igr"
+                                        id="rate_igr" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -190,8 +190,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card IG Live</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igl"
-                                        id="rate_igl" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_igl"
+                                        id="rate_igl" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -217,8 +217,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Followers
                                     Tiktok</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="ftiktok"
-                                        id="ftiktok" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="ftiktok"
+                                        id="ftiktok" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -229,8 +229,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card Tiktok Feed</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_ttf"
-                                        id="rate_ttf" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_ttf"
+                                        id="rate_ttf" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -239,8 +239,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card Tiktok Live</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_ttl"
-                                        id="rate_ttl" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_ttl"
+                                        id="rate_ttl" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -268,8 +268,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Subscriber
                                     Youtube</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="syoutube"
-                                        id="syoutube" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="syoutube"
+                                        id="syoutube" placeholder=""  pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -278,8 +278,8 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card Youtube</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_yt"
-                                        id="rate_yt" placeholder="" required>
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_yt"
+                                        id="rate_yt" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
@@ -294,8 +294,8 @@
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
                                 <div class="w-full flex">
-                                    <input class="w-full shadow-inner p-4 border-0.5" type="number"
-                                        name="rate_event" placeholder="" required>
+                                    <input class="w-full shadow-inner p-4 border-0.5" type="text"
+                                        name="rate_event" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
                             </div>
