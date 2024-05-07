@@ -47,6 +47,11 @@ class Staff extends Model
         return $this->hasMany(Spending::class);
     }
 
+    public function village()
+    {
+        return $this->belongsTo(Village::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function($query, $search) {

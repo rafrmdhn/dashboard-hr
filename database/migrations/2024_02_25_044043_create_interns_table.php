@@ -20,11 +20,16 @@ return new class extends Migration
             $table->string('place');
             $table->date('birth');
             $table->text('address');
-            $table->string('domicile');
+            $table->char('village_id', 10);
             $table->string('instagram');
             $table->string('linkedin');
             $table->boolean('status')->default(true);
             $table->timestamps();
+
+            $table->foreign('village_id')
+                ->references('id')
+                ->on('villages')
+                ->onUpdate('cascade');
         });
     }
 

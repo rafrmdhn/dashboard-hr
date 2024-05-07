@@ -1,11 +1,11 @@
-<div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full" id="add-user-modal">
-    <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
+<div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 h-modal" id="add-user-modal">
+    <div class="relative w-full h-full max-w-2xl px-4">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                 <h3 class="text-xl font-semibold dark:text-white">
-                    Add data staff
+                    Tambah Data Staff
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white" data-modal-toggle="add-user-modal">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
@@ -17,38 +17,78 @@
                     @csrf
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Lengkap<span class="text-red-500">*</span></label>
                             <input type="text" name="name" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 @error('name') border border-red-500 text-red-900 placeholder-red-700 @enderror" placeholder="John Doe" required>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                            <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 @error('name') border border-red-500 text-red-900 placeholder-red-700 @enderror" placeholder="example@company.com" required>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email<span class="text-red-500">*</span></label>
+                            <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 @error('name') border border-red-500 text-red-900 placeholder-red-700 @enderror" placeholder="johndoe@gmail.com" required>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Place of Birth</label>
+                            <label for="place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir<span class="text-red-500">*</span></label>
                             <input type="text" name="place" id="place" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Jakarta" required>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="birth" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Birth</label>
+                            <label for="birth" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir<span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
                                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                                     </svg>                                  
                                 </div>
-                                <input datepicker datepicker-format="yyyy-mm-dd" type="text" name="birth" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" required>
+                                <input datepicker datepicker-autohide datepicker-format="yyyy-mm-dd" type="text" name="birth" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" required>
                             </div>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-                            <input type="text" name="phone" id="phone" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="123-456-789" required>
+                            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor HP<span class="text-red-500">*</span></label>
+                            <input type="text" name="phone" id="phone" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="081234567890" required>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="domicile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Domicile</label>
-                            <input type="text" name="domicile" id="domicile" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="South Tangerang" required>
+                            <label for="position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posisi<span class="text-red-500">*</span></label>
+                            <select name="position_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                <option selected value="">Pilih Posisi</option>
+                                    @foreach ($positions as $position)
+                                        @if (old('position_id') == $position->id)
+                                            <option value="{{ $position->id }}" selected>{{$position->name}}</option>
+                                        @else
+                                            <option value="{{ $position->id }}">{{$position->name}}</option>
+                                        @endif
+                                    @endforeach
+                            </select>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="instagram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram</label>
+                            <label for="province" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi<span class="text-red-500">*</span></label>
+                            <select name="province_id" class="province-create bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                <option selected value="">Pilih Provinsi</option>
+                                    @foreach ($provinces as $province)
+                                        @if (old('province_id') == $province->id)
+                                            <option value="{{ $province->id }}" selected>{{$province->name}}</option>
+                                        @else
+                                            <option value="{{ $province->id }}">{{$province->name}}</option>
+                                        @endif
+                                    @endforeach
+                            </select>
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="regency" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten/Kota<span class="text-red-500">*</span></label>
+                            <select name="regency_id" disabled class="regency-create bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                <option selected value="">Pilih Kabupaten/Kota</option>
+                            </select>
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="district" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan<span class="text-red-500">*</span></label>
+                            <select name="district_id" disabled class="district-create bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                <option selected value="">Pilih Kecamatan</option>
+                            </select>
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="village" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Desa/Kelurahan<span class="text-red-500">*</span></label>
+                            <select name="village_id" disabled class="village-create bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                <option selected value="">Pilih Desa/Kelurahan</option>
+                            </select>
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="instagram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram<span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
                                     <svg class="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -59,7 +99,7 @@
                             </div>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="linkedin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LinkedIn</label>
+                            <label for="linkedin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LinkedIn<span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
                                     <svg class="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -71,25 +111,12 @@
                             </div>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
-                            <select name="position_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                                <option selected value="">Choose a Position</option>
-                                    @foreach ($positions as $position)
-                                        @if (old('position_id') == $position->id)
-                                            <option value="{{ $position->id }}">{{$position->name}}</option>
-                                        @else
-                                            <option value="{{ $position->id }}">{{$position->name}}</option>
-                                        @endif
-                                    @endforeach
-                            </select>
-                        </div>
-                        <div class="col-span-6 sm:col-span-3">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="photo">Upload file</label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="photo">Upload Foto<span class="text-red-500">*</span></label>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="photo" type="file" name="photo" required>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                         </div>
                         <div class="col-span-6">
-                            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address<span class="text-red-500">*</span></label>
                             <textarea id="address" name="address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Input address" required></textarea>
                         </div>
                     </div> 
@@ -102,3 +129,5 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('js/dropdown-create-indo-region.js') }}"></script>

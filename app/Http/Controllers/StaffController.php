@@ -6,6 +6,7 @@ use App\Models\Staff;
 use App\Models\Position;
 use App\Exports\StaffExport;
 use App\Imports\StaffImport;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -25,6 +26,7 @@ class StaffController extends Controller
             'search' => 'staff',
             'tables' => Staff::latest()->filter(request(['search', 'name', 'position']))->paginate(10)->withQueryString(),
             'positions' => Position::all(),
+            'provinces' => Province::all(),
             'export' => 'exportStaff'
         ]);
     }
@@ -48,7 +50,7 @@ class StaffController extends Controller
             'phone' => 'required|max:12',
             'place' => 'required',
             'birth' => 'required',
-            'domicile' => 'required',
+            'village_id' => 'required',
             'address' => 'required|max:255',
             'position_id' => 'required|max:255',
             'instagram' => 'required',
@@ -87,7 +89,7 @@ class StaffController extends Controller
             'phone' => 'required|max:12',
             'place' => 'required',
             'birth' => 'required',
-            'domicile' => 'required',
+            'village_id' => 'required',
             'address' => 'required|max:255',
             'position_id' => 'required|max:255',
             'instagram' => 'required',

@@ -23,6 +23,7 @@ class TalentFactory extends Factory
             'place' => $this->faker->city(),
             'date' => $this->faker->date(),
             'domicile' => $this->faker->city(),
+            'ttl' => $this->faker->date(),
             'instagram' => $this->faker->userName(),
             'engagement' => $this->faker->randomDigit(),
             'finstagram' => $this->faker->randomDigit(),

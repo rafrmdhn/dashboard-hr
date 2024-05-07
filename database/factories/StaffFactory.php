@@ -19,11 +19,11 @@ class StaffFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'phone' => $this->faker->phoneNumber(),
+            'phone' => $this->faker->numerify('08##########'),
             'place' => $this->faker->city(),
             'birth' => $this->faker->date(),
             'address' => $this->faker->address(),
-            'domicile' => $this->faker->city(),
+            // 'village_id' => ,
             'instagram' => $this->faker->userName(),
             'linkedin' => $this->faker->userName(),
             // 'photo' => $this->withPhoto($this->faker->image('public/storage/images/staffs', 300, 300)),
