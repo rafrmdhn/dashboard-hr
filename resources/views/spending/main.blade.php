@@ -44,9 +44,11 @@
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Status
                             </th>
+                            @can('edit earnings')
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Actions
                             </th>
+                            @endcan
                             {{-- <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 University
                             </th>
@@ -97,6 +99,7 @@
                                 </td>
                                 {{-- <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->university }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->instagram }}, {{ $intern->linkedin }}</td>--}}
+                                @can('edit spendings')
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
                                     @include('spending.edit')
@@ -107,6 +110,7 @@
                                         @include('spending.delete')
                                     </form>
                                 </td>
+                                @endcan
                             </tr>    
                             @endforeach
                         </tbody>

@@ -9,6 +9,7 @@ use App\Models\Talent;
 use App\Models\Position;
 use App\Models\Indicator;
 use App\Models\Performance;
+use App\Models\Spending;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -68,6 +69,7 @@ class DashboardController extends Controller
             'internData' => $internData,
             'staffData' => $staffData,
             'earnings' => Earning::latest()->paginate(5),
+            'spendings' => Spending::latest()->paginate(5)
         ]);
     }
 }

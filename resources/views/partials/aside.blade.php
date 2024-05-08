@@ -54,9 +54,11 @@
                 <li>
                    <a href="/edit-profile" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('edit-profile') ? 'bg-gray-200' : '' }}">Edit Profile</a>
                 </li>
+                @can('view users')
                 <li>
-                   <a href="/users-list" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('users-list') ? 'bg-gray-200' : '' }}">Users List</a>
-                </li>
+                    <a href="/users-list" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('users-list') ? 'bg-gray-200' : '' }}">Users List</a>
+                 </li>    
+                @endcan
             </ul>
         </li>
         <li>
@@ -78,6 +80,7 @@
                 </li>
             </ul>
         </li>
+        @can('view spendings')
         <li>
             <span class="text-sm">Keuangan</span>
             <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-earns" data-collapse-toggle="dropdown-earns">
@@ -97,7 +100,8 @@
                    <a href="/spendings" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('spendings') ? 'bg-gray-200' : '' }}">Pengeluaran</a>
                 </li>
             </ul>
-        </li>
+        </li>    
+        @endcan
         <li>
             <a href="/fregistrasi" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ Request::is('fregistrasi') ? 'bg-gray-200 hover:text-gray-600' : '' }}">
                 <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white {{ Request::is('fregistrasi') ? 'text-gray-900 group-hover:text-gray-600' : '' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -131,19 +135,19 @@
                 <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
             </a>
         </li> --}}
-    </div>
-    <div class="absolute bottom-0 w-full px-3">
-        @auth
-            <form action="/logout" method="POST" class="pb-4">
-                @csrf
-                <button type="submit" class="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group hover:bg-pink-100 hover:text-pink-600">
-                    <svg class="w-6 h-6 inline-block mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
-                    </svg>
-                    Sign Out
-                </button>
-            </form>
-        @endauth
+        <li>
+            @auth
+                <form action="/logout" method="POST" class="pb-4">
+                    @csrf
+                    <button type="submit" class="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group hover:bg-pink-100 hover:text-pink-600">
+                        <svg class="w-6 h-6 inline-block mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
+                        </svg>
+                        Sign Out
+                    </button>
+                </form>
+            @endauth
+        </li>
     </div>
     
 </aside>

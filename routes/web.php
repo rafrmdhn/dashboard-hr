@@ -37,48 +37,51 @@ Route::get('/flogin', [LoginController::class, 'index'])->name('login')->middlew
 Route::post('/flogin', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::middleware(['auth', 'master', 'prevent-back'])->group(function () {
-    Route::resource('/intern', InternController::class);
+Route::middleware(['role_or_permission:master', 'prevent-back'])->group(function () {
     Route::post('/intern-import', [InternController::class, 'import']);
     Route::get('/exportIntern', [InternController::class, 'export']);
     Route::delete('/bulk-action', [BulkActionController::class, 'deleteAll']);
-
-    Route::resource('/staff', StaffController::class);
     Route::post('/staff-import', [StaffController::class, 'import']);
     Route::get('/exportStaff', [StaffController::class, 'export']);
-
-    Route::resource('/talent', TalentController::class);
     Route::get('/exportTalent', [TalentController::class, 'export']);
-
-    Route::resource('/brand', BrandController::class);
     Route::get('/exportBrand', [BrandController::class, 'export']);
-
-    Route::resource('/agency', AgencyController::class);
-    Route::get('/exportAgency', [AgencyController::class, 'export']);
-
-    Route::resource('/edit-profile', ProfileController::class);
-
-    Route::resource('/users-list', UserListController::class)->parameters(["users-list" => 'user']);
-
-    Route::resource('/kinerja-intern', PerformanceController::class)->parameters(["kinerja-intern" => 'performance']);
-
-    Route::resource('/kinerja-staff', IndicatorController::class)->parameters(["kinerja-staff" => 'indicator']);
-
-    Route::resource('/earnings', EarningController::class);
-    
-    Route::resource('/spendings', SpendingController::class);
-
-    Route::get('/fregistrasi', [TalentController::class, 'page']);
-    Route::put('/fregistrasi/{talent}', [TalentController::class, 'updateForm']);
-
-    Route::get('/getAgencies', [DependantDropdownController::class, 'getAgencies']);
-    Route::get('/getBrands', [DependantDropdownController::class, 'getBrands']);
+    Route::get('/exportAgency', [AgencyController::class, 'export']);    
 });
 
-// Route for return regencies by province_id
-Route::get('/getRegencies/{province_id}', [DependantDropdownController::class, 'getRegencies']);
-Route::get('/getDistricts/{regency_id}', [DependantDropdownController::class, 'getDistricts']);
-Route::get('/getVillages/{district_id}', [DependantDropdownController::class, 'getVillages']);
+Route::middleware(['auth', 'prevent-back'])->group(function () {
+    Route::resource('/edit-profile', ProfileController::class);
+    Route::resource('/kinerja-intern', PerformanceController::class)->parameters(["kinerja-intern" => 'performance']);
+    Route::resource('/kinerja-staff', IndicatorController::class)->parameters(["kinerja-staff" => 'indicator']);
+    Route::get('/getAgencies', [DependantDropdownController::class, 'getAgencies']);
+    Route::get('/getBrands', [DependantDropdownController::class, 'getBrands']);
+    
+    // Route for return regencies by province_id
+    Route::get('/getRegencies/{province_id}', [DependantDropdownController::class, 'getRegencies']);
+    Route::get('/getDistricts/{regency_id}', [DependantDropdownController::class, 'getDistricts']);
+    Route::get('/getVillages/{district_id}', [DependantDropdownController::class, 'getVillages']);
+});
+
+Route::middleware('role_or_permission:view data')->group(function () {
+    Route::resource('/intern', InternController::class);
+    Route::resource('/staff', StaffController::class);
+    Route::resource('/talent', TalentController::class);
+    Route::resource('/brand', BrandController::class);
+    Route::resource('/agency', AgencyController::class);
+    Route::get('/fregistrasi', [TalentController::class, 'page']);
+    Route::put('/fregistrasi/{talent}', [TalentController::class, 'updateForm']);
+});
+
+Route::middleware('role_or_permission:view users')->group(function () {
+    Route::resource('/users-list', UserListController::class)->parameters(["users-list" => 'user']);
+});
+
+Route::middleware('role_or_permission:view spendings')->group(function () {
+    Route::resource('/spendings', SpendingController::class);
+});
+
+Route::middleware('role_or_permission:view earnings')->group(function () {
+    Route::resource('/earnings', EarningController::class);
+});
 
 Route::get('/registrasi-talent', function(){
     return redirect('/form/498c62cf2582c9ef765d1154b0a64032');

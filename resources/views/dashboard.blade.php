@@ -65,16 +65,54 @@
             </div>
             
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+    <div class="grid grid-cols-4 gap-6 mb-6">
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
             <div class="flex justify-between mb-4 items-start">
-                <div class="font-medium"></div>
+                <div class="font-medium">Spendings</div>
+                <a href="/spendings" class="text-sm text-blue-600 hover:text-blue-800">See All</a>
             </div>
-            <div>
-                <canvas id="order-chart"></canvas>
+            <div class="overflow-x-auto">
+              <table class="w-full min-w-[460px]">
+                <thead>
+                    <tr>
+                        <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Nama</th>
+                        <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Pengeluaran</th>
+                        <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($spendings as $spend)
+                        <tr>
+                            <td class="py-2 px-4 border-b border-b-gray-50">
+                                <div class="flex items-center">
+                                    <p class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{ $spend->staff->name }}</a>
+                                </div>
+                            </td>
+                            <td class="py-2 px-4 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-emerald-500">{{ 'Rp' . number_format($spend->budget, 2, ',', '.') }}</span>
+                            </td>
+                            <td class="py-2 px-4 border-b border-b-gray-50">
+                                @if($spend->status == 'gagal')
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-pink-500 bg-pink-100/60 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Gagal</h2>
+                                    </div>
+                                @elseif($spend->status == 'selesai')
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Selesai</h2>
+                                    </div>
+                                @elseif($spend->status == 'proses')
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-blue-500 bg-blue-100/60 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Proses</h2>
+                                    </div>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
             </div>
         </div>
-        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
+        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
             <div class="flex justify-between mb-4 items-start">
                 <div class="font-medium">Earnings</div>
                 <a href="/earnings" class="text-sm text-blue-600 hover:text-blue-800">See All</a>
@@ -83,8 +121,8 @@
                 <table class="w-full min-w-[460px]">
                     <thead>
                         <tr>
-                            <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Service</th>
-                            <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Earning</th>
+                            <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Nama Project</th>
+                            <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Pendapatan</th>
                             <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Status</th>
                         </tr>
                     </thead>
