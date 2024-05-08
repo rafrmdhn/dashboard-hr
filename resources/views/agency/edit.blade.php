@@ -37,7 +37,7 @@
                         <div class="col-span-6 sm:col-span-3">
                             <label for="staff_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PIC</label>
                             <select name="staff_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                                <option value="" selected>Choose a PIC</option>
+                                <option value="" selected>Pilih PIC</option>
                                     @foreach ($staffs as $staff)
                                         @if (old('staff_id', $agency->staff->id ) == $staff->id)
                                             <option value="{{ $staff->id }}" selected>{{$staff->name}}</option>
@@ -48,7 +48,7 @@
                             </select>
                         </div>
                         <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="photo">Unggah Gambar</label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="photo">Unggah Foto</label>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="photo" type="file" name="photo">
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                         </div>

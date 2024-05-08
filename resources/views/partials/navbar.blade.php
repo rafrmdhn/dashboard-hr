@@ -38,13 +38,13 @@
                     <a href="/edit-profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
                 </li>
                 <li>
-                    <a href="/earnings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
+                    <a href="/earnings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Pendapatan</a>
                 </li>
                 <li>
                     <form action="/logout" method="POST">
                         @csrf
                         <button type="submit" class="flex items-center w-full px-4 py-2 text-sm text-pink-600 hover:bg-gray-100" role="menuitem">
-                            Sign out
+                            Keluar
                         </button>
                     </form>
                 </li>

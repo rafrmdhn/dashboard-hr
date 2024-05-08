@@ -146,7 +146,7 @@
                     <div class="items-center py-6 border-t border-gray-200 rounded-b">
                         <button type="submit"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                            type="submit">Add data</button>
+                            type="submit">Tambah</button>
                     </div>
                 </form>
             </div>

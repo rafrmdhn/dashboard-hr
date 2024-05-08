@@ -38,7 +38,7 @@
             <div class="flex justify-between items-center">
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
                     @if (!request()->is('edit-profile'))
-                    All 
+                    Semua
                     @endif
                     {{ $title }}
                 </h1>
@@ -70,7 +70,7 @@
                     @if(isset($positions) && count($positions) > 0)
                     <div class="pl-3 mt-1">
                         <select name="position" id="position" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="">Select Position</option>
+                            <option value="">Pilih Posisi</option>
                             @foreach($positions as $position)
                                 <option value="{{ $position->name }}" {{ request('position') === $position->name ? 'selected' : '' }}>{{ $position->name }}</option>
                             @endforeach
@@ -80,7 +80,7 @@
                     @if(isset($categories) && count($categories) > 0)
                     <div class="pl-3 mt-1">
                         <select name="category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="">Select Category</option>
+                            <option value="">Pilih Kategori</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->name }}" {{ request('category') === $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
