@@ -44,8 +44,7 @@ class TalentFactory extends Factory
             'shopee_affiliate' => $this->faker->boolean(),
             'tiktok_affiliate' => $this->faker->boolean(),
             'mcn_tiktok' => $this->faker->boolean(),
-            // 'photo' => $this->withPhoto($this->faker->image('public/storage/images/talents', 300, 300)),
-            'photo' => '-',
+            'photo' => 'images/default-profile-picture.jpg',
             'status' => 1,
         ];
     }

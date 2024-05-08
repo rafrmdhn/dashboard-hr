@@ -22,7 +22,7 @@ class BrandFactory extends Factory
             'email' => $this->faker->email(),
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
-            'photo' => '-'
+            'photo' => 'images/default-profile-picture.jpg',
         ];
     }
 }
