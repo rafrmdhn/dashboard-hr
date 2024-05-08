@@ -108,12 +108,14 @@
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
                                     @include('interns.edit')
+                                    @can('delete data')
                                     <form action="/intern/{{ $intern->id }}" method="POST" class="inline-flex">
                                         @method('delete')
                                         @csrf
                                         <!-- Delete User Modal -->
                                         @include('interns.delete')
                                     </form>
+                                    @endcan
                                 </td>
                             </tr>    
                         @endforeach

@@ -16,6 +16,9 @@ use App\Models\Category;
 use App\Models\Position;
 use Illuminate\Database\Seeder;
 use Database\Seeders\IndoRegionSeeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,13 +27,32 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // app()[PermissionRegistrar::class]->forgetCachedPermisions();
+        // $permissions = ['view spendings', 'create spendings', 'edit spendings', 'delete spendings', 'view earnings', 'create earnings', 'edit earnings', 'delete earnings', 'view users', 'create users', 'edit users', 'delete users', 'view data', 'create data', 'edit data', 'delete data', 'import data', 'export data', 'view dashboard'];
+        // foreach ($permissions as $permission) {
+        //     Permission::create(['name' => $permission]);
+        // }
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        User::factory()->create();
+        // $adminPermissions = ['view data', 'create data', 'edit data'];
+        // $role1 = Role::create(['name' => 'admin']);
+        // foreach ($adminPermissions as $permission) {
+        //     $role1->givePermissionTo($permission);
+        // }
+
+        // $superAdminPermissions = ['view dashboard', 'view spendings', 'create spendings', 'view earnings', 'create earnings', 'view users', 'create users', 'view data', 'create data', 'edit data', 'edit data'];
+        // $role2 = Role::create(['name' => 'super-admin']);
+        // foreach ($superAdminPermissions as $permission) {
+        //     $role2->givePermissionTo($permission);
+        // }
+
+        // $role3 = Role::create(['name' => 'master']);
+
+        // $user = User::factory()->create();
+        // $user->assignRole($role3);
+
+
+        $this->call(PermissionsDemoSeeder::class);
+
         $positions = [
             'Business Development',
             'Copy Writer',

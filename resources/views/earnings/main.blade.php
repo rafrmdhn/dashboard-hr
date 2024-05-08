@@ -74,10 +74,12 @@
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Link Project
                                 </th>
+                                @can('edit earnings')
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Actions
                                 </th>
+                                @endcan
                             </tr>
                         </thead>
 
@@ -149,6 +151,7 @@
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->position->name }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->university }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->instagram }}, {{ $intern->linkedin }}</td>--}}
+                                @can('edit earnings')
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
                                     @include('earnings.edit')
@@ -160,6 +163,7 @@
                                         @include('earnings.delete')
                                     </form>
                                 </td> 
+                                @endcan
                                 </tr>
                             @endforeach
                         </tbody>

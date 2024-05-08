@@ -35,13 +35,16 @@
                         <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                             Status
                         </th>
+                        @can('edit users')
                         <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                             Actions
                         </th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                     @foreach ($users as $user)
+                    @continue($user->hasRole('master') && auth()->user()->hasRole('super-admin'))
                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $user->id }}">
                             <td class="w-4 p-4">
                                 <div class="flex items-center">
@@ -56,7 +59,7 @@
                                     <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $user->email }}</div>
                                 </div>
                             </td>
-                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $user->role }}</td>
+                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ implode(" ", $user->getRoleNames()->toArray()) }}</td>
                             <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 @if ($user->status == 1)
                                     <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
@@ -64,19 +67,22 @@
                                     </div>
                                 @endif
                             </td>
+                            
+                            @can('edit users')
                             <td class="p-4 space-x-2 whitespace-nowrap">
                                 <!-- Edit User Modal -->
                                 @include('userlist.edit')
                                 <!-- Delete User Modal -->
-                                @if ($user->role == 'non-master')
+                                @can('delete users')
                                     <form action="/users-list/{{ $user->id }}" method="POST" class="inline-flex">
                                         @method('DELETE')
                                         @csrf
                                         <!-- Delete User Modal -->
                                         @include('userlist.delete')
                                     </form>
-                                @endif
+                                @endcan
                             </td> 
+                            @endcan
                         </tr>    
                     @endforeach
                 </tbody>
