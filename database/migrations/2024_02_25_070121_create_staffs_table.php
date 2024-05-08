@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('position_id')->constrained();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone');
             $table->string('place');
             $table->date('birth')->nullable();
             $table->text('address');
-            $table->char('village_id', 10);
+            $table->char('village_id', 10)->nullable();
             $table->string('instagram');
             $table->string('linkedin');
             $table->boolean('status')->default(true);

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->text('address');
-            $table->string('photo');
+            $table->string('photo')->default('images/default-profile-picture.jpg');
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use App\Models\Talent;
 use App\Models\Category;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Exports\TalentExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -74,6 +75,7 @@ class TalentController extends Controller
             'title' => "FYP Media",
             'categories' => Category::all(),
             'staffs' => Staff::all(),
+            'provinces' => Province::all()
         ]);
     }
 
@@ -92,7 +94,7 @@ class TalentController extends Controller
             'phone' => 'required|max:12',
             'place' => 'required',
             'date' => 'required',
-            'domicile' => 'required',
+            'village_id' => 'required',
             'engagement' => 'required',
             'category_id' => 'required',
             'instagram' => 'required',
@@ -114,7 +116,7 @@ class TalentController extends Controller
             'shopee_affiliate' => 'required',
             'tiktok_affiliate' => 'required',
             'mcn_tiktok' => 'required',
-            'photo' => 'image|file|max:1024',   
+            'photo' => 'image|file|max:5120',  
         ]);
 
         $categories = $validatedData['category_id'];
@@ -139,7 +141,7 @@ class TalentController extends Controller
                 'phone' => '',
                 'place' => '',
                 'birth' => null,
-                'domicile' => '',
+                'village_id' => null,
                 'address' => '',
                 'position_id' => 1,
                 'photo' => '', // 1MB Max
@@ -160,7 +162,7 @@ class TalentController extends Controller
         }
 
         // Redirect ke halaman registrasi talent dengan pesan sukses
-        return redirect('/registrasi-talent')->with('success', 'Berhasil Mendaftar!');
+        return back()->with('success', 'Berhasil Mendaftar!');
 
     }
 

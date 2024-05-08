@@ -14,6 +14,11 @@
 
 <body class="bg-cream text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
     <main class="flex-1 md:p-0 lg:pt-8 lg:px-8 lg:pb-8 flex flex-col">
+        @session('success')
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <span class="font-medium">Success!</span> {{ $value }}
+            </div>
+        @endsession
         @if ($errors->any())
             <div class="flex sm:ml-72 sm:mr-8 mt-4 mitems-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
                 role="alert">
@@ -73,31 +78,80 @@
                         </div>
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
+                                <label
+                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold" for="province_id">Provinsi</label>
+                                <div class="w-full flex">
+                                    <select class="province-create w-full shadow-inner p-4 border-0.5" name="province_id" id="province_id"
+                                        placeholder="" required>
+                                        <option selected value="">Pilih Provinsi</option>
+                                        @foreach ($provinces as $province)
+                                            @if (old('province_id') == $province->id)
+                                                <option value="{{ $province->id }}" selected>{{$province->name}}</option>
+                                            @else
+                                                <option value="{{ $province->id }}">{{$province->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="md:flex-1 md:pl-3">
+                                <label
+                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold" for="regency_id">Kabupaten/Kota</label>
+                                <div class="w-full flex">
+                                    <select class="regency-create w-full shadow-inner p-4 border-0.5" name="regency_id" id="regency_id"
+                                        placeholder="" required disabled>
+                                        <option selected value="">Pilih Kabupaten/Kota</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:flex mb-4">
+                            <div class="md:flex-1 md:pr-3">
+                                <label
+                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold" for="district_id">Kecamatan</label>
+                                <div class="w-full flex">
+                                    <select class="district-create w-full shadow-inner p-4 border-0.5" name="district_id" id="district_id"
+                                        placeholder="" required disabled>
+                                        <option selected value="">Pilih Kecamatan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="md:flex-1 md:pl-3">
+                                <label
+                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold" for="village_id">Desa/Kelurahan</label>
+                                <div class="w-full flex">
+                                    <select class="village-create w-full shadow-inner p-4 border-0.5" name="village_id" id="village_id"
+                                        placeholder="" required disabled>
+                                        <option selected value="">Pilih Desa/Kelurahan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:flex mb-4">
+                            <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-xs font-bold">No. Telp</label>
                                 <input class="w-full shadow-inner p-4 border-0.5" type="text" name="phone"
                                     id="phone" placeholder="" required>
                             </div>
                             <div class="md:flex-1 md:pl-3">
-                                <label
-                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Domisili</label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="domicile"
-                                    id="domicile" placeholder="" required>
-                            </div>
-                        </div>
-                        <div class="md:flex mb-4">
-                            <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-xs font-bold">Engagement Rate</label>
-                                <input class="w-full shadow-inner p-4 border-0.5" type="text" name="engagement"
+                                <input class="w-full shadow-inner p-4 border-0.5" type="number" name="engagement"
                                     id="engagement" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 <span class="text-xs mb-4 font-thin">check on <a
                                         href="https://phlanx.com/engagement-calculator"
                                         class="text-blue-800">here</a></span>
                             </div>
-                            <div class="md:flex-1 md:pl-3">
+                        </div>
+                        
+                        <div class="md:flex mb-4">
+                            <div class="md:flex-1 md:pr-3">
                                 <label class="block uppercase tracking-wide text-xs font-bold">Photo</label>
                                 <input class="w-full shadow-inner border-0.5" type="file" name="photo"
-                                    id="photo" required>
-                                <span class="text-xs mb-4 font-thin">SVG, PNG, JPG or GIF (MAX. 800x400px).</span>
+                                    id="photo">
+                                <span class="text-xs mb-4 font-thin">SVG, PNG, JPG or GIF (MAX. 5MB).</span>
+                                
+                            </div>
+                            <div class="md:flex-1 md:pl-3">
                             </div>
                         </div>
                     </div>
@@ -146,7 +200,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Followers
                                     IG</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number"
                                         name="finstagram" id="finstagram" placeholder=""  pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">Username Ig</span>
@@ -158,7 +212,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card IG Story</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_igs"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igs"
                                         id="rate_igs" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -168,7 +222,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card IG Feed</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_igf"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igf"
                                         id="rate_igf" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -180,7 +234,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card IG Reels</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_igr"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igr"
                                         id="rate_igr" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -190,7 +244,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card IG Live</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_igl"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_igl"
                                         id="rate_igl" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -217,7 +271,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Followers
                                     Tiktok</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="ftiktok"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="ftiktok"
                                         id="ftiktok" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -229,7 +283,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card Tiktok Feed</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_ttf"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_ttf"
                                         id="rate_ttf" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -239,7 +293,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card Tiktok Live</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_ttl"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_ttl"
                                         id="rate_ttl" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -268,7 +322,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Subscriber
                                     Youtube</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="syoutube"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="syoutube"
                                         id="syoutube" placeholder=""  pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -278,7 +332,7 @@
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Rate
                                     Card Youtube</label>
                                 <div class="w-full flex">
-                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="text" name="rate_yt"
+                                    <input class="flex-1 shadow-inner p-4 border-0.5" type="number" name="rate_yt"
                                         id="rate_yt" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -294,7 +348,7 @@
                         <div class="md:flex mb-4">
                             <div class="md:flex-1 md:pr-3">
                                 <div class="w-full flex">
-                                    <input class="w-full shadow-inner p-4 border-0.5" type="text"
+                                    <input class="w-full shadow-inner p-4 border-0.5" type="number"
                                         name="rate_event" placeholder="" pattern="^[0-9]+$" title="Tidak boleh ada koma atau titik" required>
                                 </div>
                                 <span class="text-xs mb-4 font-thin">tanpa titik atau koma</span>
@@ -488,4 +542,5 @@
             }
         });
     </script>
+    <script src="{{ asset('js/dropdown-create-indo-region.js') }}"></script>
 </body>

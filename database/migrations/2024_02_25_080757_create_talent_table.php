@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('phone');
             $table->string('place');
             $table->date('date');
-            $table->string('domicile');
-            $table->string('ttl');
             $table->char('village_id', 10);
             $table->string('instagram');
             $table->string('engagement');
@@ -41,7 +39,7 @@ return new class extends Migration
             $table->boolean('shopee_affiliate');
             $table->boolean('tiktok_affiliate');
             $table->boolean('mcn_tiktok');            
-            $table->string('photo');
+            $table->string('photo')->default('images/default-profile-picture.jpg');
             $table->boolean('status')->default(false);
             $table->timestamps();
 
