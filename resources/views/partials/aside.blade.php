@@ -139,8 +139,8 @@
             @auth
                 <form action="/logout" method="POST" class="pb-4">
                     @csrf
-                    <button type="submit" class="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group hover:bg-pink-100 hover:text-pink-600">
-                        <svg class="w-6 h-6 inline-block mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <button type="submit" class="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <svg class="w-6 h-6 text-gray-500 dark:text-gray-400 inline-block mr-2 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
                         </svg>
                         Sign Out
