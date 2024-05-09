@@ -22,7 +22,7 @@
         <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
             <div class="flex justify-between">
                 <div>
-                    <div class="text-2xl font-semibold mb-1">More Info</div>
+                    <div class="text-2xl font-semibold mb-1">Info Lebih Lanjut, Silahkan Hubungi Kami</div>
                     <div class="text-sm font-medium text-gray-400 flex flex-col gap-3">
                         <a href="https://www.instagram.com/fypmedia.id">@fypmedia.id </a>
                         <a href="https://wa.me/+6285175460533">085175460533 (Fia)</a>

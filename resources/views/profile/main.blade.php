@@ -20,7 +20,7 @@
       @csrf
       <div class="border-b-2 block md:flex">          
         <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
-          <span class="text-gray-600">This information is secret so be careful</span>
+          <span class="text-gray-600">Informasi dibawah ini sangat sensitif</span>
           <div class="w-full p-8 mx-2 flex justify-center">
             <img id="photo-preview" class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500" src="{{ old('photo', asset('storage/' . $user->photo)) }}" alt="Bordered avatar">
           </div>
@@ -30,7 +30,7 @@
         <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
           <div class="rounded  shadow p-6">
             <div class="pb-4">
-              <label for="name" class="font-semibold text-gray-700 block pb-1">Name</label>
+              <label for="name" class="font-semibold text-gray-700 block pb-1">Nama Lengkap</label>
               <input id="name" name="name" class="border-1 rounded-r px-4 py-2 w-full" type="text" value="{{ old('name', $user->name) }}" />
             </div>
             <div class="pb-4">
@@ -41,7 +41,7 @@
               <label for="password" class="font-semibold text-gray-700 block pb-1">Password</label>
               <input id="password" name="password" class="border-1 rounded-r px-4 py-2 w-full" type="password" placeholder="*******" />
             </div>
-            <button type="submit" class="text-white bg-gray-800 hover:bg-black focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Save</button>
+            <button type="submit" class="text-white bg-gray-800 hover:bg-black focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Simpan Perubahan</button>
           </div>
         </div>
       </div>
