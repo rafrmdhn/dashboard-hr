@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserListController extends Controller
 {
@@ -24,7 +26,7 @@ class UserListController extends Controller
             'email' => 'required',
             'password' => 'required',
             'photo' => 'required',
-            'role' => 'required',
+            'role' => 'required'
         ]);
 
         if ($request->password == 'password'){
@@ -35,7 +37,14 @@ class UserListController extends Controller
             $validatedData['photo'] = $request->file('photo')->store('images/users');
         } 
 
-        User::create($validatedData);
+        $user = User::create($validatedData);
+        $user->assignRole($request->role);
+
+        $role = Role::findByName($request->role);
+        $permissions = $role->permissions;
+        foreach ($permissions as $permission) {
+            $user->givePermissionTo($permission);
+        }
 
         return redirect('/users-list')->with('success', 'Data has been added!');
     }
