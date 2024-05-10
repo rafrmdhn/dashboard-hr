@@ -112,7 +112,7 @@
                                 required>
                                 <option selected value="">Pilih Provinsi</option>
                                 @foreach ($provinces as $province)
-                                    @if (old('province_id', $staff->village->province->id) == $province->id)
+                                    @if (old('province_id', $staff->village?->province?->id) == $province->id)
                                         <option value="{{ $province->id }}" selected>{{ $province->name }}</option>
                                     @else
                                         <option value="{{ $province->id }}">{{ $province->name }}</option>
@@ -219,9 +219,9 @@
 
 <script>
     $(document).ready(function() {
-        let regencies = {{ Js::from($staff->village->province->regencies->toArray()) }};
-        let districts = {{ Js::from($staff->village->regency->districts->toArray()) }};
-        let villages = {{ Js::from($staff->village->district->villages->toArray()) }};
+        let regencies = {{ Js::from($staff->village?->province?->regencies->toArray()) }};
+        let districts = {{ Js::from($staff->village?->regency?->districts->toArray()) }};
+        let villages = {{ Js::from($staff->village?->district?->villages->toArray()) }};
 
         // Populate regency
         $('.regency-edit-{{ $staff->id }}').empty();
@@ -230,7 +230,7 @@
         );
         $.each(regencies, function(i, regency) {
             $('.regency-edit-{{ $staff->id }}').append(
-                '<option ' + (regency.id == {{ $staff->village->regency->id }} ? 'selected' : '') + ' value="' +
+                '<option ' + (regency.id == {{ $staff->village?->regency?->id }} ? 'selected' : '') + ' value="' +
                 regency.id +
                 '">' +
                 regency.name +
@@ -246,7 +246,7 @@
         );
         $.each(districts, function(i, district) {
             $('.district-edit-{{ $staff->id }}').append(
-                '<option ' + (district.id == {{ $staff->village->district->id }} ? 'selected' : '') + ' value="' +
+                '<option ' + (district.id == {{ $staff->village?->district?->id }} ? 'selected' : '') + ' value="' +
                 district.id +
                 '">' +
                 district.name +
