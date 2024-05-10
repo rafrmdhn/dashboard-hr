@@ -45,18 +45,18 @@
                 <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
                 </svg>
-                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">User</span>
+                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Profil</span>
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
             </button>
             <ul id="dropdown-users" class="{{ Request::is('edit-profile*') || Request::is('users-list*') ? '' : 'hidden' }}  py-2 space-y-2">
                 <li>
-                   <a href="/edit-profile" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('edit-profile') ? 'bg-gray-200' : '' }}">Edit Profile</a>
+                   <a href="/edit-profile" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('edit-profile') ? 'bg-gray-200' : '' }}">Edit Profil</a>
                 </li>
                 @can('view users')
                 <li>
-                    <a href="/users-list" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('users-list') ? 'bg-gray-200' : '' }}">Users List</a>
+                    <a href="/users-list" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('users-list') ? 'bg-gray-200' : '' }}">Daftar User</a>
                  </li>    
                 @endcan
             </ul>
@@ -143,7 +143,7 @@
                         <svg class="w-6 h-6 text-gray-500 dark:text-red-400 inline-block mr-2 group-hover:text-red-600 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
                         </svg>
-                        <span class="ms-1">Sign Out</span>
+                        Sign Out
                     </button>
                 </form>
             @endauth

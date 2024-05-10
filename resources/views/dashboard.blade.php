@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <a href="/staff" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+            <a href="/staff" class="text-[#f84525] font-medium text-sm hover:text-red-800">Tampilkan</a>
         </div>
         <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
             <div class="flex justify-between mb-6">
@@ -22,7 +22,7 @@
                     <div class="text-sm font-medium text-gray-400">Talent</div>
                 </div>
             </div>
-            <a href="/talent" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+            <a href="/talent" class="text-[#f84525] font-medium text-sm hover:text-red-800">Tampilkan</a>
         </div>
         <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
             <div class="flex justify-between mb-6">
@@ -31,7 +31,7 @@
                     <div class="text-sm font-medium text-gray-400">Intern</div>
                 </div>
             </div>
-            <a href="/intern" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
+            <a href="/intern" class="text-[#f84525] font-medium text-sm hover:text-red-800">Tampilkan</a>
         </div>
         <div class="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
             <div class="flex justify-between mb-4">
@@ -39,7 +39,7 @@
                     <div class="flex items-center mb-1">
                         <div class="text-2xl font-semibold">{{ $positions }}</div>
                     </div>
-                    <div class="text-sm font-medium text-gray-400">Position</div>
+                    <div class="text-sm font-medium text-gray-400">Posisi</div>
                 </div>
             </div>
         </div>
@@ -68,8 +68,8 @@
     <div class="grid grid-cols-4 gap-6 mb-6">
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
             <div class="flex justify-between mb-4 items-start">
-                <div class="font-medium">Spendings</div>
-                <a href="/spendings" class="text-sm text-blue-600 hover:text-blue-800">See All</a>
+                <div class="font-medium">Pengeluaran</div>
+                <a href="/spendings" class="text-sm text-blue-600 hover:text-blue-800">Lihat Semua</a>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full min-w-[460px]">
@@ -114,8 +114,8 @@
         </div>
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
             <div class="flex justify-between mb-4 items-start">
-                <div class="font-medium">Earnings</div>
-                <a href="/earnings" class="text-sm text-blue-600 hover:text-blue-800">See All</a>
+                <div class="font-medium">Pendapatan</div>
+                <a href="/earnings" class="text-sm text-blue-600 hover:text-blue-800">Lihat Semua</a>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full min-w-[460px]">

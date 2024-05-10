@@ -111,19 +111,19 @@
                             </div>
                         </div>
                         <div class="col-span-6 sm:col-span-3">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="photo">Upload Foto<span class="text-red-500">*</span></label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="photo">Unggah Foto<span class="text-red-500">*</span></label>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="photo" type="file" name="photo" required>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                         </div>
                         <div class="col-span-6">
-                            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address<span class="text-red-500">*</span></label>
+                            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat<span class="text-red-500">*</span></label>
                             <textarea id="address" name="address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Input address" required></textarea>
                         </div>
                     </div> 
                 </div>
                 <!-- Modal footer -->
                 <div class="items-center p-6 border-t border-gray-200 rounded-b">
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add data</button>
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah</button>
                 </div>
             </form>
         </div>

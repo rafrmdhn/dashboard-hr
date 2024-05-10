@@ -39,7 +39,7 @@
             <div class="flex mb-8">
                 <h2 class="md:w-1/3 uppercase tracking-wide text-md sm:text-2xl">{{ $title }}</h2>
                 <div class="flex flex-col ms-4">
-                    <span class="text-sm">More Info :</span>
+                    <span class="text-sm">Info Lebih Lanjut, Hubungi :</span>
                     <a href="https://www.instagram.com/fypmedia.id" class="text-sm">@fypmedia.id </a>
                     <a href="https://wa.me/+6285175460533" class="text-sm">085175460533 (Fia)</a>
                     <a href="https://wa.me/+6285175123014" class="text-sm">085175123014 (Jaya)</a>
@@ -50,7 +50,7 @@
                 <div class="md:flex mb-8">
                     <div class="md:w-1/3">
                         <legend class="uppercase tracking-wide text-sm">Personal</legend>
-                        <p class="text-xs font-light text-red">This entire section is required.</p>
+                        <p class="text-xs font-light text-red">Seluruh data harus diisi</p>
                     </div>
                     <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
                         <div class="mb-4">

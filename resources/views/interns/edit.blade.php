@@ -175,7 +175,7 @@
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                for="photo">Upload file</label>
+                                for="photo">Upload Foto</label>
                             <input
                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                 aria-describedby="file_input_help" id="photo" type="file" name="photo"
@@ -185,7 +185,7 @@
                         </div>
                         <div class="col-span-6">
                             <label for="address"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
                             <textarea id="address" name="address" rows="4"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Input Address" required>{{ old('address', $intern->address) }}</textarea>
@@ -193,7 +193,7 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
-                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Save all</button>
+                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>
