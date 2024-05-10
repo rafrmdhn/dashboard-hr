@@ -535,10 +535,16 @@
         staffID.addEventListener('change', function() {
             if (this.value === 'input_manual') {
                 stafDataManualy.style.display = 'block';
-                stafDataManualy.setAttribute('required', 'required');
+                var inputsManual = stafDataManualy.querySelectorAll('input');
+                inputsManual.forEach(function(input) {
+                    input.setAttribute('required', 'required');
+                });
             } else {
                 stafDataManualy.style.display = 'none';
-                stafDataManualy.removeAttribute('required');
+                var inputsManual = stafDataManualy.querySelectorAll('input');
+                inputsManual.forEach(function(input) {
+                    input.removeAttribute('required');
+                });
             }
         });
     </script>
