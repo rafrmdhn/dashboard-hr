@@ -1,5 +1,5 @@
-<button type="button" data-modal-target="edit-user-modal-{{ $talent->id }}"
-    data-modal-toggle="edit-user-modal-{{ $talent->id }}"
+<button type="button" data-modal-target="edit-data-modal-{{ $talent->id }}"
+    data-modal-toggle="edit-data-modal-{{ $talent->id }}"
     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
@@ -10,19 +10,19 @@
     Edit
 </button>
 
-<div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full py-10"
-    id="edit-user-modal-{{ $talent->id }}">
-    <div class="relative w-full h-full max-w-3xl px-4 md:h-auto">
+<div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 h-modal"
+    id="edit-data-modal-{{ $talent->id }}">
+    <div class="relative w-full h-full max-w-2xl px-4">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
             <!-- Modal header -->
-            <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700 mt-[900px]">
+            <div class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                 <h3 class="text-xl font-semibold dark:text-white">
-                    Edit Status
+                    Edit Talent
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-700 dark:hover:text-white"
-                    data-modal-toggle="edit-user-modal-{{ $talent->id }}">
+                    data-modal-toggle="edit-data-modal-{{ $talent->id }}">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -66,6 +66,42 @@
                         <div class="col-span-2">
                             <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
                             <input type="date" value="{{ $talent->date }}" name="date" class="w-full p-2">
+                        </div>
+
+
+                        {{-- ALAMAT DOMISILI --}}
+                        {{-- Provinsi --}}
+                        <div class="col-span-3">
+                            <label for="province-edit-{{ $talent->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
+                            <select class="province-edit-{{ $talent->id }} w-full p-2" name="province_id" id="province-edit-{{ $talent->id }}" required>
+                                @foreach ($provinces as $province)
+                                    <option value="{{ $province->id }}" @selected(old('province_id', $talent->village->province->id) == $province->id)>{{ $province->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        {{-- Kabupaten/Kota --}}
+                        <div class="col-span-3">
+                            <label for="regency-edit-{{ $talent->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten/Kota</label>
+                            <select class="regency-edit-{{ $talent->id }} w-full p-2" name="regency_id" id="regency-edit-{{ $talent->id }}" disabled required>
+                                <option value="">Pilih Kabupaten/Kota</option>
+                            </select>
+                        </div>
+
+                        {{-- Kecamatan --}}
+                        <div class="col-span-3">
+                            <label for="district-edit-{{ $talent->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
+                            <select class="district-edit-{{ $talent->id }} w-full p-2" name="district_id" id="district-edit-{{ $talent->id }}" disabled required>
+                                <option value="">Pilih Kecamatan</option>
+                            </select>
+                        </div>
+
+                        {{-- Desa/Kelurahan --}}
+                        <div class="col-span-3">
+                            <label for="village-edit-{{ $talent->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Desa/Kelurahan</label>
+                            <select class="village-edit-{{ $talent->id }} w-full p-2" name="village_id" id="village-edit-{{ $talent->id }}" disabled required>
+                                <option value="">Pilih Desa/Kelurahan</option>
+                            </select>
                         </div>
 
 
@@ -173,7 +209,7 @@
 
 
                         <div class="col-span-2">
-                            <label for="shopee_affiliate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Shoope Affiliate</label>
+                            <label for="shopee_affiliate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Shopee Affiliate</label>
                             <select class="w-full p-2" name="shopee_affiliate">
                                 <option selected value="{{ $talent->shopee_affiliate }}">
                                     @if($talent->shopee_affiliate == 1)

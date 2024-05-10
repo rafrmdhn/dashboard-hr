@@ -23,6 +23,7 @@ class TalentController extends Controller
             'search' => 'talent',
             'tables' => Talent::latest()->filter(request(['search', 'name', 'category']))->where('status', '=', 1)->paginate(10)->withQueryString(),
             'categories' => Category::all(),
+            'provinces' => Province::all(),
             'export' => 'exportTalent'
         ]);
     }
@@ -60,7 +61,8 @@ class TalentController extends Controller
             'shopee_affiliate' => 'required',
             'tiktok_affiliate' => 'required',
             'mcn_tiktok' => 'required', 
-            'status' => 'required'
+            'status' => 'required',
+            'village_id' => 'required'
         ]);
 
         // Check if a new photo is uploaded
