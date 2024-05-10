@@ -45,7 +45,7 @@
                 @if (!request()->is('edit-profile'))
                     <form id="searchFormTop" action="/{{ $search }}" method="GET">
                         <div class="relative sm:hidden mt-1">
-                            <input type="search" name="search" id="searchTop" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search {{ $title }}" value="{{ request('search') }}">
+                            <input type="search" name="search" id="searchTop" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Cari {{ $title }}" value="{{ request('search') }}">
                         </div>
                     </form>    
                 @endif
@@ -65,7 +65,7 @@
                         <input type="hidden" name="talent" value="{{ request('talent') }}">
                     @endif
                     <div class="relative mt-1 lg:w-52 xl:w-64">
-                        <input type="search" name="search" id="searchBottom" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search {{ $title }}" value="{{ request('search') }}">
+                        <input type="search" name="search" id="searchBottom" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Cari {{ $title }}" value="{{ request('search') }}">
                     </div>
                     @if(isset($positions) && count($positions) > 0)
                     <div class="pl-3 mt-1">

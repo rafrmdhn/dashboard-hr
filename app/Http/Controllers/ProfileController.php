@@ -11,7 +11,7 @@ class ProfileController extends Controller
     public function index()
     {
         return view('profile.main', [
-            'title' => 'Edit Profile',
+            'title' => 'Edit Profil',
             'user' => User::findOrFail(Auth::user()->id),
         ]);
     }

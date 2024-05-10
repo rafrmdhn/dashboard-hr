@@ -35,6 +35,11 @@
                 $('.checkbox_ids').prop('checked', $(this).prop('checked'));
             });
 
+            $('input[name="phone"]').on('input', function(event) {
+                // Hilangkan karakter non-angka
+                $(this).val($(this).val().replace(/[^0-9]/g, ''));
+            });
+
             $('#deleteAllSelectorRecord').click(function(e){
                 e.preventDefault();
                 if(!confirm("Anda yakin ingin menghapus data ini?")){

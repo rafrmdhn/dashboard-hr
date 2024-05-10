@@ -36,7 +36,7 @@
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Bulan, Tahun
+                                    Tanggal
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
@@ -104,7 +104,7 @@
                                         </div>
                                     </td>
                                     <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ \Carbon\Carbon::parse($finance->date)->format('F, Y') }}</td>
+                                        {{ \Carbon\Carbon::parse($finance->date)->format('d F Y') }}</td>
                                     <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ basename(str_replace('\\', '/', $finance->earnable_type)) }}</td>
                                     <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
