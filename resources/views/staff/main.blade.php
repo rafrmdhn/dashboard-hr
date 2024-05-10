@@ -131,3 +131,158 @@
 
 @endsection
 
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            let staffs = {{ Js::from($tables->toArray()) }};
+            staffs = staffs.data;
+
+            staffs.forEach(staff => {
+                $("button[data-modal-target='edit-data-modal-" + staff.id + "']").on("click", function () {
+                    // Empty select options
+                    emptySelectOptions('regency', staff.id);
+                    emptySelectOptions('district', staff.id);
+                    emptySelectOptions('village', staff.id);
+
+                    // Return if village_id is null
+                    if (staff.village == null) {
+                        return;
+                    }
+
+                    let provinceId = staff.village.province.id;
+                    let regencyId = staff.village.district.regency.id;
+                    let districtId = staff.village.district.id;
+                    let villageId = staff.village.id;
+                    
+                    // Populate select options
+                    populateSelectOptions('regency', staff.id, provinceId, regencyId);
+                    populateSelectOptions('district', staff.id, regencyId, districtId);
+                    populateSelectOptions('village', staff.id, districtId, villageId);
+
+                });
+                
+                // Initialize ajax on onchange event
+                $(`.province-edit-${staff.id}`).on("change", function () {
+                    populateSelectOptionsOnParentChange('regency', staff.id, $(this).val());
+                });
+
+                $(`.regency-edit-${staff.id}`).on("change", function () {
+                    populateSelectOptionsOnParentChange('district', staff.id, $(this).val());
+                });
+
+                $(`.district-edit-${staff.id}`).on("change", function () {
+                    populateSelectOptionsOnParentChange('village', staff.id, $(this).val());
+                });
+            });
+
+            function emptySelectOptions(fieldName, dataId) {
+                let name = '';
+                switch (fieldName) {
+                    case 'regency':
+                        name = "Kabupaten/Kota";
+                        break;
+                    case 'district':
+                        name = "Kecamatan";
+                        break;
+                    case 'village':
+                        name = "Desa/Kelurahan";
+                        break;
+                    default:
+                        break;
+                }
+                $(`.${fieldName}-edit-${dataId}`).html(
+                    `<option value="">Pilih ${name}</option>`
+                );
+            }
+
+            function disableSelectInput(fieldName, dataId) {
+                $(`.${fieldName}-edit-${dataId}`).prop("disabled", true);
+            }
+
+            function enableSelectInput(fieldName, dataId) {
+                $(`.${fieldName}-edit-${dataId}`).prop("disabled", false);
+            }
+
+            function populateSelectOptions(fieldName, dataId, parentFieldId, currentFieldId) {
+                let url = '';
+                switch (fieldName) {
+                    case 'regency':
+                        url = "/getRegencies/" + parentFieldId;
+                        break;
+                    case 'district':
+                        url = "/getDistricts/" + parentFieldId;
+                        break;
+                    case 'village':
+                        url = "/getVillages/" + parentFieldId;
+                        break;
+                    default:
+                        break;
+                }
+
+                disableSelectInput(fieldName, dataId);
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $.each(data, function(i, field) {
+                            $(`.${fieldName}-edit-${dataId}`).append(
+                                '<option ' + (field.id == currentFieldId ? 'selected' : '') + ' value="' +
+                                field.id +
+                                '">' +
+                                field.name +
+                                "</option>"
+                            );
+                        });
+                        enableSelectInput(fieldName, dataId);
+                    },
+                });
+            }
+
+            function populateSelectOptionsOnParentChange(fieldName, dataId, parentFieldId) {
+                let url = '';
+                switch (fieldName) {
+                    case 'regency':
+                        url = "/getRegencies/" + parentFieldId;
+                        emptySelectOptions('regency', dataId);
+                        emptySelectOptions('district', dataId);
+                        emptySelectOptions('village', dataId);
+                        
+                        disableSelectInput('regency', dataId);
+                        disableSelectInput('district', dataId);
+                        disableSelectInput('village', dataId);
+                        break;
+                    case 'district':
+                        url = "/getDistricts/" + parentFieldId;
+                        emptySelectOptions('district', dataId);
+                        emptySelectOptions('village', dataId);
+
+                        disableSelectInput('district', dataId);
+                        disableSelectInput('village', dataId);
+                        break;
+                    case 'village':
+                        url = "/getVillages/" + parentFieldId;
+                        emptySelectOptions('village', dataId);
+                        disableSelectInput('village', dataId);
+                        break;
+                    default:
+                        break;
+                }
+                
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $.each(data, function(i, field) {
+                            $(`.${fieldName}-edit-${dataId}`).append(
+                                '<option' + ' value="' + field.id + '">' + field.name + "</option>"
+                            );
+                        });
+                        enableSelectInput(fieldName, dataId);
+                    },
+                });
+            }
+        });
+    </script>
+@endpush
