@@ -35,6 +35,31 @@ class TalentController extends Controller
     public function update(Request $request, Talent $talent)
     {
         $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required',
+            'phone' => 'required|max:12',
+            'place' => 'required',
+            'date' => 'required',
+            'engagement' => 'required',
+            // 'category_id' => 'required',
+            'instagram' => 'required',
+            'finstagram' => 'required',
+            'rate_igs' => 'required',
+            'rate_igf' => 'required',
+            'rate_igr' => 'required',
+            'rate_igl' => 'required',
+            'tiktok' => 'required',
+            'ftiktok' => 'required',
+            'rate_ttf' => 'required',
+            'rate_ttl' => 'required',
+            'youtube' => 'required',
+            'syoutube' => 'required',
+            'rate_yt' => 'required',
+            'rate_event' => 'required',
+            'talent_exclusive' => 'required',
+            'shopee_affiliate' => 'required',
+            'tiktok_affiliate' => 'required',
+            'mcn_tiktok' => 'required', 
             'status' => 'required'
         ]);
 
@@ -49,6 +74,9 @@ class TalentController extends Controller
 
         Talent::where('id', $talent->id)
                 ->update($validatedData);
+
+        // UPDATE DATA KATEGORY
+        // $talent->categories()->sync($request->category_id);
 
         return redirect('/talent')->with('success', 'Data has been updated!');
     }
