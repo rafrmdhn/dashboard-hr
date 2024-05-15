@@ -14,6 +14,7 @@ use App\Models\Talent;
 use App\Models\Earning;
 use App\Models\Category;
 use App\Models\Position;
+use App\Models\Spending;
 use Illuminate\Database\Seeder;
 use Database\Seeders\IndoRegionSeeder;
 use Spatie\Permission\Models\Role;
@@ -175,6 +176,19 @@ class DatabaseSeeder extends Seeder
         foreach ($talents as $talent) {
             $randomCategory = $categories->random();
             $talent->categories()->attach($randomCategory);
+        }
+
+        // Spendings
+        $staffIds = Staff::all()->pluck('id')->toArray();
+        for ($i=0; $i < 10; $i++) { 
+            Spending::create([
+                'staff_id' => fake()->randomElement($staffIds),
+                'requirement' => fake()->sentence(),
+                'budget' => fake()->numberBetween(10000, 2500000),
+                'proof' => 'images/no-image.png',
+                'date' => fake()->date('Y-m-d'),
+                'status' => fake()->randomElement(['proses', 'selesai', 'gagal'])
+            ]);
         }
     }
 }

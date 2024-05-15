@@ -84,6 +84,9 @@
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            @php
+                                $total_profit = 0;
+                            @endphp
                             @foreach ($tables as $finance)
                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-700"
                                     id="{{ $search }}_ids{{ $finance->id }}">
@@ -126,11 +129,13 @@
                                         $talent_rate = $finance->sows->sum(function ($sow) use ($finance) {
                                             return $sow->pivot->talent_rate;
                                         });
+                                        $profit = $finance->rate - $talent_rate;
+                                        $total_profit += $profit;
                                     @endphp
                                     <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ 'Rp' . number_format($talent_rate, 2, ',', '.') }}</td>
                                     <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ 'Rp' . number_format($finance->rate - $talent_rate, 2, ',', '.') }}</td>
+                                        {{ 'Rp' . number_format($profit, 2, ',', '.') }}</td>
                                     <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
                                         @php
                                             $status_color = [
@@ -167,6 +172,13 @@
                                 </tr>
                             @endforeach
                         </tbody>
+
+                        <tfoot>
+                            <tr class="font-semibold text-gray-900 dark:text-white">
+                                <th scope="row" colspan="9" class="px-6 py-3 text-base text-start">Total</th>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . number_format($total_profit, 2, ',', '.') }}</td>
+                            </tr>
+                        </tfoot>
 
                     </table>
                 </div>

@@ -68,7 +68,6 @@
                                     </div>
                                 </td>
                                 <td class="flex items-center p-4 mr-8 space-x-6 whitespace-nowrap">
-                                    <img class="w-10 h-10 rounded-full" src="{{ asset($spend->staff->photo) }}" alt="{{ $spend->staff->name }}">
                                     <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
                                         <div class="text-base font-semibold text-gray-900 dark:text-white">{{ $spend->staff->name }}</div>
                                         <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $spend->staff->email }}</div>
@@ -80,7 +79,7 @@
                                 <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ 'Rp' . number_format($spend->budget, 2, ',', '.') }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="h-10 rounded-lg shadow-xl dark:shadow-gray-800" src="{{ asset($spend->proof) }}" alt="{{ $spend->name }}"></td>
+                                    <img class="h-10 rounded-lg shadow-xl dark:shadow-gray-800" src="{{ asset('storage/' . $spend->proof) }}" alt="{{ $spend->name }}"></td>
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if($spend->status == 'gagal')
@@ -114,6 +113,13 @@
                             </tr>    
                             @endforeach
                         </tbody>
+
+                        <tfoot>
+                            <tr class="font-semibold text-gray-900 dark:text-white">
+                                <th scope="row" colspan="4" class="px-6 py-3 text-base text-start">Total</th>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . number_format($tables->sum('budget'), 2, ',', '.') }}</td>
+                            </tr>
+                        </tfoot>
                 </table>
             </div>
         </div>
