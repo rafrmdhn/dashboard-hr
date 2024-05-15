@@ -6,9 +6,11 @@ use App\Models\Sow;
 use App\Models\Talent;
 use App\Models\Earning;
 use Illuminate\Http\Request;
+use App\Exports\EarningExport;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreFinanceRequest;
 use App\Http\Requests\UpdateFinanceRequest;
-use Illuminate\Support\Facades\DB;
 
 class EarningController extends Controller
 {
@@ -21,7 +23,7 @@ class EarningController extends Controller
             'title' => 'Pendapatan',
             'search' => 'earnings',
             'tables' => Earning::latest()->filter(request(['search', 'name', 'bulan', 'tahun', 'tipe', 'status']))->paginate(10)->withQueryString(),
-            'export' => 'exportEarnings',
+            'export' => 'exportEarning',
             'talents' => Talent::orderBy('name')->get(),
             'sows' => Sow::orderBy('id')->get(),
         ]);
@@ -153,5 +155,10 @@ class EarningController extends Controller
         } catch (\Throwable $th) {
             return redirect('/earnings')->with('error', 'Data cannot Delete');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new EarningExport, 'earning.xlsx');
     }
 }

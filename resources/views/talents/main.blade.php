@@ -246,6 +246,8 @@
     </div>
 </div>
 
+@include('talents.import')
+
 {{-- Paginate --}}
 {{ $tables->links('partials.paginate') }}
 @endsection

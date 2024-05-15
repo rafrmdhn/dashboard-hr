@@ -112,4 +112,5 @@
 {{ $tables->links('partials.paginate') }}
 
 @include('brand.create')
+@include('brand.import')
 @endsection

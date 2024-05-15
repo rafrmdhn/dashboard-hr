@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Exports\TalentExport;
+use App\Imports\TalentImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TalentController extends Controller
@@ -202,6 +203,7 @@ class TalentController extends Controller
             'title' => 'Registrasi',
             'search' => 'fregsitrasi',
             'tables' => Talent::latest()->filter(request(['search', 'name']))->where('status', '=', 0)->paginate(10)->withQueryString(),
+            'categories' => Category::all(),
             'export' => 'exportRegis'
         ]);
     }
@@ -225,5 +227,17 @@ class TalentController extends Controller
                 ->update($validatedData);
 
         return redirect('/fregistrasi')->with('success', 'Data has been updated!');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('TalentData', $fileName);
+
+        Excel::import(new TalentImport, public_path('/TalentData/'.$fileName)); 
+        
+        return redirect('/talent')->with('success', 'Data has been added!');
     }
 }
