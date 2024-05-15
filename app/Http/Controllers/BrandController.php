@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\BrandExport;
+use App\Imports\BrandImport;
 use App\Models\Brand;
 use App\Models\Staff;
 use App\Models\Category;
@@ -133,5 +134,17 @@ class BrandController extends Controller
     public function export() 
     {
         return Excel::download(new BrandExport, 'brand.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('BrandData', $fileName);
+
+        Excel::import(new BrandImport, public_path('/BrandData/'.$fileName)); 
+        
+        return redirect('/brand')->with('success', 'Data has been added!');
     }
 }

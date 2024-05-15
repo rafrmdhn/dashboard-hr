@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Indicator;
 use App\Models\Staff;
+use App\Models\Indicator;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\IndicatorStaffExport;
 
 class IndicatorController extends Controller
 {
@@ -26,7 +28,7 @@ class IndicatorController extends Controller
             'search' => 'kinerja-staff',
             'tables' => $indicators,
             'staffs' => Staff::all(),
-            'export' => 'exportKinerja'
+            'export' => 'exportKinerjaStaff'
         ]);
     }
 
@@ -66,5 +68,10 @@ class IndicatorController extends Controller
         } catch (\Throwable $th) {
             return redirect('/kinerja-staff')->with('error', 'Data cannot Delete');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new IndicatorStaffExport, 'kpi_staff.xlsx');
     }
 }

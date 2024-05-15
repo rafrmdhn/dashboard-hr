@@ -7,7 +7,7 @@
                         <div class="text-2xl font-semibold">Link Registrasi Talent</div>
                     </div>
                     <div class="max-w-sm overflow-hidden text-base font-normal text-gray-400 truncate ">
-                        https://form/498c62cf2582c9ef765d1154b0a64032
+                        https://fypmedia.id/form/498c62cf2582c9ef765d1154b0a64032
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <div class="text-2xl font-semibold mb-1">Info Lebih Lanjut, Silahkan Hubungi Kami</div>
                     <div class="text-sm font-medium text-gray-400 flex flex-col gap-3">
                         <a href="https://www.instagram.com/fypmedia.id">@fypmedia.id </a>
-                        <a href="https://wa.me/+6285175460533">085175460533 (Fia)</a>
+                        <a href="https://wa.me/+6285175125712">085175125712 (Amira)</a>
                         <a href="https://wa.me/+6285175123014">085175123014 (Jaya)</a>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ class FormController extends Controller
         return view('forms.main', [
             'title' => 'Registrasi',
             'search' => 'fregsitrasi',
-            'export' => 'exportRegis'
+            'export' => 'exportRegis',
         ]);
     }
     

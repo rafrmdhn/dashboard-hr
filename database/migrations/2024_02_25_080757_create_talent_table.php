@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('place');
-            $table->date('date');
+            $table->date('date')->default(Carbon::now()->toDateString());
             $table->char('village_id', 10);
             $table->string('instagram');
             $table->string('engagement');

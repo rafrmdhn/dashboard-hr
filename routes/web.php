@@ -38,14 +38,22 @@ Route::post('/flogin', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware(['role_or_permission:master', 'prevent-back'])->group(function () {
-    Route::post('/intern-import', [InternController::class, 'import']);
-    Route::get('/exportIntern', [InternController::class, 'export']);
+    
     Route::delete('/bulk-action', [BulkActionController::class, 'deleteAll']);
+    Route::post('/talent-import', [TalentController::class, 'import']);
     Route::post('/staff-import', [StaffController::class, 'import']);
+    Route::post('/intern-import', [InternController::class, 'import']);
+    Route::post('/brand-import', [BrandController::class, 'import']);
+    Route::get('/exportIntern', [InternController::class, 'export']);
     Route::get('/exportStaff', [StaffController::class, 'export']);
     Route::get('/exportTalent', [TalentController::class, 'export']);
     Route::get('/exportBrand', [BrandController::class, 'export']);
-    Route::get('/exportAgency', [AgencyController::class, 'export']);    
+    Route::get('/exportAgency', [AgencyController::class, 'export']);
+    Route::get('/exportUsersList', [UserListController::class, 'export']);
+    Route::get('/exportKinerjaStaff', [IndicatorController::class, 'export']);
+    Route::get('/exportKinerjaIntern', [PerformanceController::class, 'export']);
+    Route::get('/exportEarning', [EarningController::class, 'export']);
+    Route::get('/exportSpending', [SpendingController::class, 'export']);
 });
 
 Route::middleware(['auth', 'prevent-back'])->group(function () {

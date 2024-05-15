@@ -41,7 +41,7 @@
                 <div class="flex flex-col ms-4">
                     <span class="text-sm">Info Lebih Lanjut, Hubungi :</span>
                     <a href="https://www.instagram.com/fypmedia.id" class="text-sm">@fypmedia.id </a>
-                    <a href="https://wa.me/+6285175460533" class="text-sm">085175460533 (Fia)</a>
+                    <a href="https://wa.me/+6285175125712" class="text-sm">085175125712 (Amira)</a>
                     <a href="https://wa.me/+6285175123014" class="text-sm">085175123014 (Jaya)</a>
                 </div>
             </div>

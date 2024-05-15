@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UserListExport;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
 
 class UserListController extends Controller
@@ -58,5 +60,10 @@ class UserListController extends Controller
         } catch (\Throwable $th) {
             return redirect('/users-list')->with('error', 'Data cannot Delete');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new UserListExport, 'userlist.xlsx');
     }
 }

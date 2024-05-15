@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use App\Models\Spending;
 use Illuminate\Http\Request;
+use App\Exports\SpendingExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SpendingController extends Controller
 {
@@ -91,5 +93,10 @@ class SpendingController extends Controller
         Spending::destroy($spending->id);
 
         return redirect('/spendings')->with('success', 'Data has been deleted!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new SpendingExport, 'spending.xlsx');
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Intern;
 use App\Models\Performance;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\IndicatorInternExport;
 
 class PerformanceController extends Controller
 {
@@ -29,7 +31,7 @@ class PerformanceController extends Controller
             'search' => 'kinerja-intern',
             'tables' => $performance,
             'interns' => Intern::all(),
-            'export' => 'exportKinerja'
+            'export' => 'exportKinerjaIntern'
         ]);
     }
 
@@ -102,5 +104,10 @@ class PerformanceController extends Controller
         } catch (\Throwable $th) {
             return redirect('/kinerja-intern')->with('error', 'Data cannot Delete');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new IndicatorInternExport, 'kpi_intern.xlsx');
     }
 }
