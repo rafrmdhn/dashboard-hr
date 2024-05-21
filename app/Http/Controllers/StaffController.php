@@ -86,6 +86,7 @@ class StaffController extends Controller
         $validatedData = $request->validate([
             'email' => 'required',
             'name' => 'required|max:255',
+            'status' => 'required',
             'phone' => 'required|max:12',
             'place' => 'required',
             'birth' => 'required',
