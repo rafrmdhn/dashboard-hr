@@ -150,6 +150,12 @@ class TalentController extends Controller
             'photo' => 'image|file|max:5120',  
         ]);
 
+        // NAMA TIDAK BOLEH SAMA 
+        $talentName = Talent::where('name', $validatedData['name'])->first();
+        if ($talentName) {
+            return redirect('/form/498c62cf2582c9ef765d1154b0a64032')->with('error', 'Name already exists');
+        }
+
         $categories = $validatedData['category_id'];
 
         unset($validatedData['category_id']);
