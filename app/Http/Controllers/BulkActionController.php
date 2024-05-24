@@ -6,7 +6,10 @@ use App\Models\Brand;
 use App\Models\Staff;
 use App\Models\Agency;
 use App\Models\Earning;
+use App\Models\Indicator;
 use App\Models\Intern;
+use App\Models\Performance;
+use App\Models\Spending;
 use App\Models\Talent;
 use Illuminate\Http\Request;
 
@@ -43,8 +46,17 @@ class BulkActionController extends Controller
                     }
                     Agency::destroy($ids);
                     break;
+                case 'performance':
+                    Performance::destroy($ids);
+                    break;
+                case 'indicator':
+                    Indicator::destroy($ids);
+                    break;
                 case 'earnings':
                     Earning::destroy($ids);
+                    break;
+                case 'spendings':
+                    Spending::destroy($ids);
                     break;
                 default:
                     break;

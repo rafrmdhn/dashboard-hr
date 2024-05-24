@@ -45,7 +45,7 @@
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $indicator->id }}">
                                 <td class="w-4 p-4">
                                     <div class="flex items-center">
-                                        <input id="" aria-describedby="checkbox-1" name="ids[]" type="checkbox" class="checkbox_ids w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" value="{{ $indicator->id }}">
+                                        <input id="" aria-describedby="checkbox-1" name="ids" type="checkbox" class="checkbox_ids w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" value="{{ $indicator->id }}">
                                         <label for="checkbox" class="sr-only">checkbox</label>
                                     </div>
                                 </td>

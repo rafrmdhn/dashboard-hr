@@ -57,12 +57,21 @@
                     return;
                 }
 
+                let model = {!! json_encode(request()->path()) !!}
+                if (model == 'kinerja-intern') {
+                    model = 'performance'
+                }
+
+                if (model == 'kinerja-staff') {
+                    model = 'indicator'
+                }
+
                 $.ajax({
                     url:"/bulk-action",
                     type:"DELETE",
                     data:{
                         ids:all_ids,
-                        model:{!! json_encode(request()->path()) !!},
+                        model: model,
                         _token:token
                     },
                     success: function(response) {
