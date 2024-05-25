@@ -26,6 +26,12 @@
             </button>
             <ul id="dropdown-example" class=" {{ Request::is('talent*') || Request::is('staff*') || Request::is('intern*') || Request::is('brand*') || Request::is('agency*') ? '' :'hidden' }} py-2 space-y-2">
                 <li>
+                   <a href="/position" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('position') ? 'bg-gray-200' : '' }}">Posisi</a>
+                </li>
+                <li>
+                   <a href="/category" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('category') ? 'bg-gray-200' : '' }}">Kategori</a>
+                </li>
+                <li>
                    <a href="/talent" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('talent') ? 'bg-gray-200' : '' }}">Talent</a>
                 </li>
                 <li>
