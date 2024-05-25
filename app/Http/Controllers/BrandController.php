@@ -50,6 +50,12 @@ class BrandController extends Controller
             'photo' => 'image|file|max:1024'
         ]);
 
+        // PENGECEKAN NAMA BRAND
+        $brand = Brand::where('name', $validatedData['name'])->first();
+        if ($brand) {
+            return redirect('/brand')->with('error', 'Brand already exists!');
+        }
+
         $categories = $validatedData['category_id'];
 
         unset($validatedData['category_id']);

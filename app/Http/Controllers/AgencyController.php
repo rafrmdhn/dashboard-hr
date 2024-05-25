@@ -46,6 +46,12 @@ class AgencyController extends Controller
             'photo' => 'image|file|max:1024'
         ]);
 
+        // NAMA TIDAK BOLEH SAMA
+        $agency = Agency::where('name', $request->name)->first();
+        if($agency) {
+            return redirect('/agency')->with('error', 'Data has been added!');
+        }
+
         if($request->file('photo')) {
             $validatedData['photo'] = $request->file('photo')->store('images/agencies');
         }
