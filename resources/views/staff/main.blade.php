@@ -109,9 +109,15 @@
                             <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->village?->province?->name }}</td>
                             <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->instagram }}, {{ $staff->linkedin }}</td>
                             <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                    <h2 class="text-sm font-normal">Active</h2>
-                                </div>
+                                @if ($staff->status == 1)
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Aktif</h2>
+                                    </div>
+                                @else
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-white bg-rose-500 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Tidak Aktif</h2>
+                                    </div>
+                                @endif
                             </td>
                             <td class="p-4 space-x-2 whitespace-nowrap">
                                 <!-- Edit User Modal -->
