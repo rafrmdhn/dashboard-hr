@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePositionRequest;
 use App\Http\Requests\UpdatePositionRequest;
 use App\Models\Position;
+use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
@@ -13,7 +14,14 @@ class PositionController extends Controller
      */
     public function index()
     {
-        //
+        $positions = Position::orderBy('created_at', 'asc')->get();
+        return view('position.main', [
+            'title' => 'Posisi',
+            'search' => '',
+            'tables' => '',
+            'export' => '',
+            'positions' => $positions
+        ]);
     }
 
     /**
@@ -29,7 +37,17 @@ class PositionController extends Controller
      */
     public function store(StorePositionRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        // NAMA TIDAK BOLEH SAMA
+        if (Position::where('name', $validatedData['name'])->exists()) {
+            return redirect('/position')->with('error', 'Posisi sudah ada');
+        }
+        Position::create($validatedData);
+
+        return redirect('/position')->with('success', 'Data has been added!');
     }
 
     /**
@@ -53,7 +71,18 @@ class PositionController extends Controller
      */
     public function update(UpdatePositionRequest $request, Position $position)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        // NAMA TIDAK BOLEH SAMA
+        if (Position::where('name', $validatedData['name'])->exists()) {
+            return redirect('/position')->with('error', 'Posisi sudah ada');
+        }
+        Position::where('id', $position->id)
+                ->update($validatedData);
+        
+        return redirect('/position')->with('success', 'Data has been updated!');
     }
 
     /**
@@ -61,6 +90,7 @@ class PositionController extends Controller
      */
     public function destroy(Position $position)
     {
-        //
+        Position::destroy($position->id);
+        return redirect('/position')->with('success', 'Data has been deleted!');
     }
 }
