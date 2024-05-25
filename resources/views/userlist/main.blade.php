@@ -27,13 +27,40 @@
                             </div>
                         </th>
                         <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                            Nama
+                            <a class="flex justify-between" href="{{ route('users-list.index', ['sort' => 'name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                Nama
+                                @if (request('sort') == 'name')
+                                    @if (request('direction') == 'asc')
+                                        ▲
+                                    @else
+                                        ▼
+                                    @endif
+                                @endif
+                            </a>
                         </th>
                         <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                            Role
+                            <a class="flex justify-between" href="{{ route('users-list.index', ['sort' => 'role', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                Role
+                                @if (request('sort') == 'role')
+                                    @if (request('direction') == 'asc')
+                                        ▲
+                                    @else
+                                        ▼
+                                    @endif
+                                @endif
+                            </a>
                         </th>
                         <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                            Status
+                            <a class="flex justify-between" href="{{ route('users-list.index', ['sort' => 'status', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                Status
+                                @if (request('sort') == 'status')
+                                    @if (request('direction') == 'asc')
+                                        ▲
+                                    @else
+                                        ▼
+                                    @endif
+                                @endif
+                            </a>
                         </th>
                         @can('edit users')
                         <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">

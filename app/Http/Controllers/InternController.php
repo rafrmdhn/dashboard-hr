@@ -25,10 +25,19 @@ class InternController extends Controller
             Intern::firstWhere('id', request(('name')));
         }
 
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
+
+        $tables = Intern::query()
+            ->orderBy($sort, $direction)
+            ->filter(request(['search', 'name', 'position']))
+            ->paginate(10)
+            ->withQueryString();
+
         return view('interns.main', [
             'title' => 'Intern',
             'search' => 'intern',
-            'tables' => Intern::latest()->filter(request(['search', 'name', 'position']))->paginate(10)->withQueryString(),
+            'tables' => $tables,
             'positions' => Position::all(),
             'provinces' => Province::all(),
             'export' => 'exportIntern'

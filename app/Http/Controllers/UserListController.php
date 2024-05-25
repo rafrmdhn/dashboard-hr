@@ -13,11 +13,28 @@ class UserListController extends Controller
 {
     public function index()
     {
+        if(request('name')){
+            User::firstWhere('id', request(('name')));
+        }
+
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
+
+        $tables = User::query()
+            ->leftJoin('role_has_permissions', 'users.id', '=', 'role_has_permissions.role_id')
+            ->leftJoin('roles', 'role_has_permissions.role_id', '=', 'roles.id')
+            ->select('users.*', 'roles.name as role_name')
+            ->distinct()
+            ->orderBy($sort === 'role' ? 'roles.name' : $sort, $direction)
+            ->filter(request(['search', 'name', 'role']))
+            ->paginate(10)
+            ->withQueryString();
+
         return view('userlist.main', [
             'title' => 'Users List',
             'search' => 'users-list',
             'export' => 'exportUsersList',
-            'users' => User::all()
+            'users' => $tables
         ]);
     }
 

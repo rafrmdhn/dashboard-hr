@@ -15,10 +15,23 @@ class AgencyController extends Controller
      */
     public function index()
     {
+        if(request('name')){
+            Agency::firstWhere('id', request(('name')));
+        }
+
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
+
+            $tables = Agency::query()
+                ->orderBy($sort, $direction)
+                ->filter(request(['search', 'name', 'position']))
+                ->paginate(10)
+                ->withQueryString();
+
         return view('agency.main', [
             'title' => 'Agency',
             'search' => 'agency',
-            'tables' => Agency::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString(),
+            'tables' => $tables,
             'staffs' => Staff::all(),
             'export' => 'exportAgency'
         ]);

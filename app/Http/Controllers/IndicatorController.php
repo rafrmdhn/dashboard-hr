@@ -12,21 +12,19 @@ class IndicatorController extends Controller
 {
     public function index(Request $request)
     {
-        $search = $request->input('search');
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
 
-        $indicators = Indicator::query()
-        ->when($search, function ($query, $search) {
-            $query->whereHas('staff', function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%');
-            });
-        })
-        ->latest()
-        ->paginate(6);
+        $tables = Indicator::query()
+            ->orderBy($sort, $direction)
+            ->filter(request(['search']))
+            ->paginate(10)
+            ->withQueryString();
 
         return view('sperform.main', [
             'title' => 'Staff',
             'search' => 'kinerja-staff',
-            'tables' => $indicators,
+            'tables' => $tables,
             'staffs' => Staff::all(),
             'export' => 'exportKinerjaStaff'
         ]);

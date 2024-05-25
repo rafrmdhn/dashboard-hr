@@ -19,8 +19,8 @@ class Indicator extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search) {
-            $query->where(function($subquery) use ($search) {
-                $subquery->where('name', 'like', '%' . $search . '%');
+            $query->whereHas('staff', function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%');
             });
         });
     }

@@ -19,10 +19,25 @@ class TalentController extends Controller
             Talent::firstWhere('id', request(('name')));
         }
 
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
+
+        $tables = Talent::query()
+            ->with('categories')
+            ->when($sort === 'category', function($query) use ($direction) {
+                $query->leftJoin('category_talent', 'talent.id', '=', 'category_talent.talent_id')
+                    ->orderBy('category_talent.category_id', $direction);
+            }, function($query) use ($sort, $direction) {
+                $query->orderBy($sort, $direction);
+            })
+            ->filter(request(['search', 'name', 'category']))
+            ->paginate(10)
+            ->withQueryString();
+
         return view('talents.main', [
             'title' => 'Talent',
             'search' => 'talent',
-            'tables' => Talent::latest()->filter(request(['search', 'name', 'category']))->where('status', '=', 1)->paginate(10)->withQueryString(),
+            'tables' => $tables,
             'categories' => Category::all(),
             'provinces' => Province::all(),
             'export' => 'exportTalent'

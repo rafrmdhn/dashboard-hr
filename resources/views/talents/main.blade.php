@@ -31,76 +31,274 @@
                                 </div>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Nama
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nama
+                                    @if (request('sort') == 'name')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Nomer Hp
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'phone', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nomor HP
+                                    @if (request('sort') == 'phone')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Tempat, Tanggal Lahir
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Domisili
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'village_id', 'direction' => request('sort') == 'village_id' && request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Domisili
+                                    @if (request('sort') == 'village_id')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Kategori
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'category', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Kategori
+                                    @if (request('sort') == 'category')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Engagement Rate
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'engagement', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Engagement Rate
+                                    @if (request('sort') == 'engagement')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Social Media
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Instagram Followers
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'finstagram', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Instagram Followers
+                                    @if (request('sort') == 'finstagram')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Rate Instagram Story
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'rate_igs', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Rate Instagram Story
+                                    @if (request('sort') == 'rate_igs')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Rate Instagram Feed
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'rate_igf', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Rate Instagram Feed
+                                    @if (request('sort') == 'rate_igf')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Rate Instagram Reels
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'rate_igr', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Rate Instagram Reels
+                                    @if (request('sort') == 'rate_igr')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Rate Instagram Live
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'rate_igl', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Rate Instagram Live
+                                    @if (request('sort') == 'rate_igl')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Tiktok Followers
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'ftiktok', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Tiktok Followers
+                                    @if (request('sort') == 'ftiktok')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Rate Tiktok Feed
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'rate_ttf', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Rate Tiktok Feed
+                                    @if (request('sort') == 'rate_ttf')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Rate Tiktok Live
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'rate_ttl', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Rate Tiktok Live
+                                    @if (request('sort') == 'rate_ttl')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Youtube Subscribers
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'syoutube', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Youtube Subscribers
+                                    @if (request('sort') == 'syoutube')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Rate Youtube
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'rate_yt', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Rate Youtube
+                                    @if (request('sort') == 'rate_yt')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Rate Event Attendance
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'rate_event', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Rate Event Attendance
+                                    @if (request('sort') == 'rate_event')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Talent Exclusive
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'talent_exclusive', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Talent Exclusive
+                                    @if (request('sort') == 'talent_exclusive')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                PIC
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'staff_id', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    PIC
+                                    @if (request('sort') == 'staff_id')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Shopee Affiliate
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'shopee_affiliate', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Shopee Affiliate
+                                    @if (request('sort') == 'shopee_affiliate')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Tiktok Affiliate
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'tiktok_affiliate', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Tiktok Affiliate
+                                    @if (request('sort') == 'tiktok_affiliate')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                MCN Tiktok
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'mcn_tiktok', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    MCN Tiktok
+                                    @if (request('sort') == 'mcn_tiktok')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Status
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'status', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Status
+                                    @if (request('sort') == 'status')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Aksi
