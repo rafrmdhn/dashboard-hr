@@ -19,9 +19,9 @@ class Performance extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function($query, $search) {
-            $query->where(function($subquery) use ($search) {
-                $subquery->where('name', 'like', '%' . $search . '%');
-            });
+            $query->whereHas('intern', function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%');
+            });;
         });
     }
 }

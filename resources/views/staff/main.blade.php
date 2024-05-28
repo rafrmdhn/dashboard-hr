@@ -57,28 +57,82 @@
                                 </div>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Nama
+                                <a class="flex justify-between" href="{{ route('staff.index', ['sort' => 'name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nama
+                                    @if (request('sort') == 'name')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Alamat
+                                <a class="flex justify-between" href="{{ route('staff.index', ['sort' => 'address', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Alamat
+                                    @if (request('sort') == 'address')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Posisi
+                                <a class="flex justify-between" href="{{ route('staff.index', ['sort' => 'position_id', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Posisi
+                                    @if (request('sort') == 'position_id')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                No HP
+                                <a class="flex justify-between" href="{{ route('staff.index', ['sort' => 'phone', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nomor HP
+                                    @if (request('sort') == 'phone')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Tempat, Tanggal Lahir
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Domisili
+                                <a class="flex justify-between" href="{{ route('staff.index', ['sort' => 'village_id', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Domisili
+                                    @if (request('sort') == 'village_id')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Social Media
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Status
+                                <a class="flex justify-between" href="{{ route('staff.index', ['sort' => 'status', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Status
+                                    @if (request('sort') == 'status')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Aksi

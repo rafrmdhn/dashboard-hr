@@ -41,19 +41,55 @@
                                 </div>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Nama
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nama
+                                    @if (request('sort') == 'name')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Alamat
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Nomer Hp
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'phone', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nomor HP
+                                    @if (request('sort') == 'phone')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Kategori
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'category', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Kategori
+                                    @if (request('sort') == 'category')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                PIC
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'staff_id', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    PIC
+                                    @if (request('sort') == 'staff_id')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Aksi

@@ -15,21 +15,19 @@ class PerformanceController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->input('search');
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
 
-        $performance = Performance::query()
-        ->when($search, function ($query, $search) {
-            $query->whereHas('intern', function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%');
-            });
-        })
-        ->latest()
-        ->paginate(6);
+        $tables = Performance::query()
+            ->orderBy($sort, $direction)
+            ->filter(request(['search']))
+            ->paginate(10)
+            ->withQueryString();
 
         return view('iperform.main', [
             'title' => 'Intern',
             'search' => 'kinerja-intern',
-            'tables' => $performance,
+            'tables' => $tables,
             'interns' => Intern::all(),
             'export' => 'exportKinerjaIntern'
         ]);

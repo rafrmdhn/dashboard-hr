@@ -17,10 +17,29 @@ class BrandController extends Controller
      */
     public function index()
     {
+        if(request('name')){
+            Brand::firstWhere('id', request(('name')));
+        }
+
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
+
+        $tables = Brand::query()
+            ->with('categories')
+            ->when($sort === 'category', function($query) use ($direction) {
+                $query->leftJoin('brand_category', 'brands.id', '=', 'brand_category.brand_id')
+                    ->orderBy('brand_category.category_id', $direction);
+            }, function($query) use ($sort, $direction) {
+                $query->orderBy($sort, $direction);
+            })
+            ->filter(request(['search', 'name', 'category']))
+            ->paginate(10)
+            ->withQueryString();
+
         return view('brand.main', [
             'title' => 'Brand',
             'search' => 'brand',
-            'tables' => Brand::latest()->filter(request(['search', 'name', 'category']))->paginate(10)->withQueryString(),
+            'tables' => $tables,
             'categories' => Category::all(),
             'staffs' => Staff::all(),
             'export' => 'exportBrand'

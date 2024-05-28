@@ -27,13 +27,43 @@
                                 </div>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Nama
+                                <a class="flex justify-between" href="{{ route('kinerja-staff.index', ['sort' => 'staff_id', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nama
+                                    @if (request('sort') == 'staff_id')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('kinerja-staff.index', ['sort' => 'date', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Bulan, Tahun
+                                    @if (request('sort') == 'date')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Target
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Capaian
+                                <a class="flex justify-between" href="{{ route('kinerja-staff.index', ['sort' => 'result', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Capaian
+                                    @if (request('sort') == 'result')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Aksi
@@ -50,12 +80,12 @@
                                     </div>
                                 </td>
                                 <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
-                                    <img class="w-10 h-10 rounded-full" src="{{ asset('storage/' . $indicator->staff->photo) }}" alt="{{ $indicator->staff->name }}">
                                     <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
                                         <div class="text-base font-semibold text-gray-900 dark:text-white">{{ $indicator->staff->name }}</div>
                                         <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $indicator->staff->email }}</div>
                                     </div>
                                 </td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">Project</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->target }} Project</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->result }} Project</td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
