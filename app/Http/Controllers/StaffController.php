@@ -66,6 +66,10 @@ class StaffController extends Controller
             'linkedin' => 'required'
         ]);
 
+        // NAMA STAF TIDAK BOLEH SAMA
+        $staff = Staff::where('name', $validatedData['name'])->first();
+        if($staff) return redirect('/staff')->with('error', 'Staff name already exists!');
+
         Staff::create($validatedData);
 
         return redirect('/staff')->with('success', 'Data has been added!');
@@ -95,6 +99,7 @@ class StaffController extends Controller
         $validatedData = $request->validate([
             'email' => 'required',
             'name' => 'required|max:255',
+            'status' => 'required',
             'phone' => 'required|max:12',
             'place' => 'required',
             'birth' => 'required',

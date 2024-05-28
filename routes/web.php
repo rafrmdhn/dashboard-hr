@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\BulkActionController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InternController;
 use App\Http\Controllers\TalentController;
 use App\Http\Controllers\EarningController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\CustomInternController;
 use App\Http\Controllers\DependantDropdownController;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\PerformanceController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpendingController;
 use App\Http\Controllers\UserListController;
@@ -75,8 +77,16 @@ Route::middleware('role_or_permission:view data')->group(function () {
     Route::resource('/talent', TalentController::class);
     Route::resource('/brand', BrandController::class);
     Route::resource('/agency', AgencyController::class);
+
+    // POSISI
+    Route::resource('/position', PositionController::class);
+
+    // KATEGORI
+    Route::resource('/category', CategoryController::class);
+
     Route::get('/fregistrasi', [TalentController::class, 'page']);
     Route::put('/fregistrasi/{talent}', [TalentController::class, 'updateForm']);
+    
 });
 
 Route::middleware('role_or_permission:view users')->group(function () {
@@ -96,3 +106,4 @@ Route::get('/registrasi-talent', function(){
 })->name('registrasi-talent');
 Route::get('/form/498c62cf2582c9ef765d1154b0a64032', [TalentController::class, 'registrasi']);
 Route::post('/form/498c62cf2582c9ef765d1154b0a64032', [TalentController::class, 'form']);
+

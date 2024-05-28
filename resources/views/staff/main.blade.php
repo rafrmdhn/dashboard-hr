@@ -27,6 +27,19 @@
 </div>
 @endif
 
+@if (session()->has('error'))
+    <div class="flex sm:ml-72 sm:mr-8 mt-4 mitems-center p-4 mb-4 text-sm text-pink-800 border border-pink-300 rounded-lg bg-pink-50 dark:bg-gray-800 dark:text-pink-400 dark:border-pink-800" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+        <span class="font-medium">{{ session('error') }}
+        </div>
+    </div>
+@endif
+
+
 {{-- Untuk bulk delete --}}
 <div id="error-alert"></div>
 
@@ -150,9 +163,15 @@
                             <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->village?->province?->name }}</td>
                             <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->instagram }}, {{ $staff->linkedin }}</td>
                             <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                    <h2 class="text-sm font-normal">Active</h2>
-                                </div>
+                                @if ($staff->status == 1)
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Aktif</h2>
+                                    </div>
+                                @else
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-white bg-rose-500 dark:bg-gray-800">
+                                        <h2 class="text-sm font-normal">Tidak Aktif</h2>
+                                    </div>
+                                @endif
                             </td>
                             <td class="p-4 space-x-2 whitespace-nowrap">
                                 <!-- Edit User Modal -->
