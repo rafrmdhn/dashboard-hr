@@ -3,15 +3,43 @@
 namespace App\Exports;
 
 use App\Models\Brand;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class BrandExport implements FromCollection
+class BrandExport implements FromQuery, WithHeadings, WithMapping
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function query()
     {
-        return Brand::all();
+        return Brand::query();
+    }
+
+    public function map($brand): array
+    {
+        return [
+            $brand->id,
+            $brand->name,
+            $brand->email,
+            $brand->address,
+            $brand->phone,
+            $brand->categories->implode('name', ', '),
+            $brand->staff->name
+        ];
+    }
+
+    public function headings(): array
+    {
+        return [
+            'ID',
+            'Nama Brand',
+            'Email',
+            'Alamat',
+            'Nomor HP',
+            'Kategori',
+            'PIC'
+        ];
     }
 }
