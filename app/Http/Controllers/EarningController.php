@@ -19,10 +19,55 @@ class EarningController extends Controller
      */
     public function index()
     {
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
+
+        $earningsQuery = Earning::with('sows')
+            ->filter(request(['search', 'name', 'bulan', 'tahun', 'tipe', 'status']));
+
+        $earnings = $earningsQuery->get();
+
+        $earnings = $earnings->map(function($earning) {
+            $total_talent_rate = $earning->sows->sum(function($sow) {
+                return $sow->pivot->talent_rate;
+            });
+            $earning->total_talent_rate = $total_talent_rate;
+            $earning->profit = $earning->rate - $total_talent_rate;
+            return $earning;
+        });
+
+        if ($sort === 'profit') {
+            $earnings = $direction === 'asc'
+                ? $earnings->sortBy('profit')
+                : $earnings->sortByDesc('profit');
+        } elseif ($sort === 'sow') {
+            $earnings = $direction === 'asc'
+                ? $earnings->sortBy(function($earning) {
+                    return $earning->sows->pluck('name')->first();
+                })
+                : $earnings->sortByDesc(function($earning) {
+                    return $earning->sows->pluck('name')->first();
+                });
+        } else {
+            $earnings = $direction === 'asc'
+                ? $earnings->sortBy($sort)
+                : $earnings->sortByDesc($sort);
+        }
+
+        $page = request('page', 1);
+        $perPage = 10;
+        $paginatedEarnings = new \Illuminate\Pagination\LengthAwarePaginator(
+            $earnings->forPage($page, $perPage),
+            $earnings->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
         return view('earnings.main', [
             'title' => 'Pendapatan',
             'search' => 'earnings',
-            'tables' => Earning::latest()->filter(request(['search', 'name', 'bulan', 'tahun', 'tipe', 'status']))->paginate(10)->withQueryString(),
+            'tables' => $paginatedEarnings,
             'export' => 'exportEarning',
             'talents' => Talent::orderBy('name')->get(),
             'sows' => Sow::orderBy('id')->get(),

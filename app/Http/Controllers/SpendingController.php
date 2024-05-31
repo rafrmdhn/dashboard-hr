@@ -15,10 +15,25 @@ class SpendingController extends Controller
      */
     public function index()
     {
+        $sort = request()->query('sort', 'id');
+        $direction = request()->query('direction', 'asc');
+
+        if ($sort == 'staff_id') {
+            $sort = 'staff.name';
+        }
+
+        $tables = Spending::query()
+            ->join('staff', 'spendings.staff_id', '=', 'staff.id')
+            ->orderBy($sort, $direction)
+            ->select('spendings.*', 'staff.name as staff_name') // Select columns from spending and staff name
+            ->filter(request(['search', 'name', 'position']))
+            ->paginate(10)
+            ->withQueryString();
+
         return view('spending.main', [
             'title' => 'Pengeluaran',
             'search' => 'spendings',
-            'tables' => Spending::latest()->filter(request(['search', 'name', 'bulan', 'tahun']))->paginate(10)->withQueryString(),
+            'tables' => $tables,
             'staffs' => Staff::all(),
             'export' => 'exportSpending'
         ]);
