@@ -30,53 +30,132 @@
                                         <label for="checkbox-all" class="sr-only">checkbox</label>
                                     </div>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Name
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Nama
+                                        @if (request('sort') == 'name')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Tanggal
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'date', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Tanggal
+                                        @if (request('sort') == 'date')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Tipe
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'earnable_type', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Tipe
+                                        @if (request('sort') == 'earnable_type')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     PIC Project
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Talent
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'talent_id', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Talent
+                                        @if (request('sort') == 'talent_id')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    SOW
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'sow', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        SOW
+                                        @if (request('sort') == 'sow')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Rate
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'rate', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Rate
+                                        @if (request('sort') == 'rate')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Rate Talent
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'talent_rate', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Rate Talent
+                                        @if (request('sort') == 'talent_rate')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Keuntungan
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'profit', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Keuntungan
+                                        @if (request('sort') == 'profit')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Status
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'status', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Status
+                                        @if (request('sort') == 'status')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Link Project
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                    <a class="flex justify-between" href="{{ route('earnings.index', ['sort' => 'link_project', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                        Link Proyek
+                                        @if (request('sort') == 'link_project')
+                                            @if (request('direction') == 'asc')
+                                                ▲
+                                            @else
+                                                ▼
+                                            @endif
+                                        @endif
+                                    </a>
                                 </th>
                                 @can('edit earnings')
-                                <th scope="col"
-                                    class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                     Aksi
                                 </th>
                                 @endcan

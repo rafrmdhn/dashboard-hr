@@ -22,11 +22,11 @@ class AgencyController extends Controller
         $sort = request()->query('sort', 'id');
         $direction = request()->query('direction', 'asc');
 
-            $tables = Agency::query()
-                ->orderBy($sort, $direction)
-                ->filter(request(['search', 'name', 'position']))
-                ->paginate(10)
-                ->withQueryString();
+        $tables = Agency::query()
+            ->orderBy($sort, $direction)
+            ->filter(request(['search', 'name', 'position']))
+            ->paginate(10)
+            ->withQueryString();
 
         return view('agency.main', [
             'title' => 'Agency',
