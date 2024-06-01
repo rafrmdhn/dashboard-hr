@@ -65,10 +65,6 @@ Route::middleware(['auth', 'prevent-back'])->group(function () {
     Route::get('/getAgencies', [DependantDropdownController::class, 'getAgencies']);
     Route::get('/getBrands', [DependantDropdownController::class, 'getBrands']);
     
-    // Route for return regencies by province_id
-    Route::get('/getRegencies/{province_id}', [DependantDropdownController::class, 'getRegencies']);
-    Route::get('/getDistricts/{regency_id}', [DependantDropdownController::class, 'getDistricts']);
-    Route::get('/getVillages/{district_id}', [DependantDropdownController::class, 'getVillages']);
 });
 
 Route::middleware('role_or_permission:view data')->group(function () {
@@ -107,3 +103,10 @@ Route::get('/registrasi-talent', function(){
 Route::get('/form/498c62cf2582c9ef765d1154b0a64032', [TalentController::class, 'registrasi']);
 Route::post('/form/498c62cf2582c9ef765d1154b0a64032', [TalentController::class, 'form']);
 
+// Route for return regencies by province_id
+Route::get('/getRegencies/{province_id}', [DependantDropdownController::class, 'getRegencies']);
+Route::get('/getDistricts/{regency_id}', [DependantDropdownController::class, 'getDistricts']);
+Route::get('/getVillages/{district_id}', [DependantDropdownController::class, 'getVillages']);
+
+// Route untuk get data Staff/PIC
+Route::get('/getStaffs', [StaffController::class, 'getStaffs']);

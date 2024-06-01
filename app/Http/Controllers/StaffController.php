@@ -142,4 +142,15 @@ class StaffController extends Controller
         
         return redirect('/staff')->with('success', 'Data has been added!');
     }
+
+    // Untuk mendapatkan data staff/PIC dari ajax
+    public function getStaffs(Request $request)
+    {
+        $staffs = Staff::where('name', 'like', '%' . $request->name . '%')
+                        ->select('id', 'name')
+                        ->take(5)
+                        ->get();
+
+        return response()->json($staffs);
+    }
 }

@@ -132,7 +132,7 @@ class TalentController extends Controller
         // $result = $request->staff_id == 'input_manual';
         // dd($result);
         // dd($request->staff_name_manual_input);
-        // dd($request->all());/
+        // dd($request->all());
 
         $validatedData = $request->validate([
             'name' => 'required|max:255',
@@ -162,13 +162,26 @@ class TalentController extends Controller
             'shopee_affiliate' => 'required',
             'tiktok_affiliate' => 'required',
             'mcn_tiktok' => 'required',
-            'photo' => 'image|file|max:5120',  
+            'photo' => 'image|file|max:5120',
+            'manual_staff_name' => 'required_if:staff_id,input_manual',
+            'statement' => 'required',
+
+            // Ini untuk display agar formatnya sama di html blade form
+            'rate_igs_display' => 'nullable',
+            'rate_igf_display' => 'nullable',
+            'rate_igr_display' => 'nullable',
+            'rate_igl_display' => 'nullable',
+            'rate_ttf_display' => 'nullable',
+            'rate_ttl_display' => 'nullable',
+            'rate_yt_display' => 'nullable',
+            'rate_event_display' => 'nullable',
+            'staff_id_display' => 'nullable',
         ]);
 
         // NAMA TIDAK BOLEH SAMA 
         $talentName = Talent::where('name', $validatedData['name'])->first();
         if ($talentName) {
-            return redirect('/form/498c62cf2582c9ef765d1154b0a64032')->with('error', 'Name already exists');
+            return back()->with('error', 'Gagal. Talent dengan nama "' . $validatedData['name'] . '" sudah terdaftar!');
         }
 
         $categories = $validatedData['category_id'];
