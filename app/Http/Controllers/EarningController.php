@@ -182,6 +182,7 @@ class EarningController extends Controller
             'link_project' => 'nullable|url',
         ]);
 
+        // dd($validatedData);
         Earning::where('id', $earning->id)
                 ->update($validatedData);
 

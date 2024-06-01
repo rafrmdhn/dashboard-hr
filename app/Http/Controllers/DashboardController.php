@@ -68,8 +68,9 @@ class DashboardController extends Controller
             'pie' => $data,
             'internData' => $internData,
             'staffData' => $staffData,
-            'earnings' => Earning::latest()->paginate(5),
-            'spendings' => Spending::latest()->paginate(5)
+            'earnings' => Earning::where('status', 'selesai')->latest()->paginate(5),
+            // 'spendings' => Spending::latest()->paginate(5)
+            'spendings' => Spending::where('status', 'selesai')->latest()->paginate(5),
         ]);
     }
 }
