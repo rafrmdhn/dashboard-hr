@@ -41,7 +41,7 @@
 
                         <div class="col-span-6">
                             <label for="address"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Karyawan</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Intern</label>
                             <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 @if (old('status', $intern->status) == 1)
                                     <option value="1" selected>Aktif</option>
@@ -199,7 +199,9 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
-                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Simpan Perubahan</button>
+                        <button
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            type="submit">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>

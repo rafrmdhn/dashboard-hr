@@ -6,7 +6,7 @@
                     <li class="inline-flex items-center">
                         <span class="inline-flex items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white">
                             <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-                            @if (request()->is('talent', 'staff', 'intern', 'brand', 'agency', 'edit-profile', 'users-list', 'kinerja-intern', 'kinerja-staff'))
+                            @if (request()->is('talent', 'staff', 'intern', 'brand', 'agency', 'edit-profile', 'users-list', 'kinerja-intern', 'kinerja-staff', 'position', 'categories'))
                                 Administrator
                             @elseif (request()->is('earnings', 'spendings'))
                                 Keuangan
@@ -16,7 +16,7 @@
                     <li>
                         <div class="flex items-center">
                             <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                            @if (request()->is('talent', 'staff', 'intern', 'brand', 'agency'))
+                            @if (request()->is('talent', 'staff', 'intern', 'brand', 'agency', 'categories', 'position'))
                                 <span class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">Data</span>
                             @elseif (request()->is('edit-profile', 'users-list'))
                                 <span class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">Profile</span>
@@ -67,6 +67,16 @@
                     <div class="relative mt-1 lg:w-52 xl:w-64">
                         <input type="search" name="search" id="searchBottom" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Cari {{ $title }}" value="{{ request('search') }}">
                     </div>
+                    @if (request()->is('talent', 'staff', 'intern'))
+                    <div class="relative mt-1 pl-3">
+                        <select id="bulan" name="bulan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
+                            <option value="">Pilih Bulan</option>
+                            @foreach(range(1, 12) as $month)
+                                <option value="{{ $month }}" {{ request('bulan') == $month ? 'selected' : '' }}>{{ date("F", mktime(0, 0, 0, $month, 10)) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @endif
                     @if(isset($positions) && count($positions) > 0)
                     <div class="pl-3 mt-1">
                         <select name="position" id="position" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -107,18 +117,54 @@
                     @endif
                     @if(request()->is('earnings'))
                     <div class="relative mt-1 pl-3">
+                        <select id="talent" name="talent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Talent">
+                            <option value="">Pilih Talent</option>
+                            @foreach ($talents as $talent)
+                                <option value="{{ $talent->id }}" {{ request('talent') == $talent->id ? 'selected' : '' }}>{{ $talent->name }}</option>    
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="relative mt-1 pl-3">
                         <select id="tipe" name="tipe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Tipe">
                             <option value="">Pilih Tipe</option>
                             <option value="Brand" {{ request('tipe') == 'Brand' ? 'selected' : '' }}>Brand</option>
                             <option value="Agency" {{ request('tipe') == 'Agency' ? 'selected' : '' }}>Agency</option>
                         </select>
                     </div>
+                    @endif
+                    @if (request()->is('talent'))
+                    <div class="relative mt-1 pl-3">
+                        <select id="mcn" name="mcn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih MCN">
+                            <option value="">Pilih MCN</option>
+                            <option value="1" {{ request('mcn') == '1' ? 'selected' : '' }}>Ya</option>
+                            <option value="0" {{ request('mcn') == '0' ? 'selected' : '' }}>Tidak</option>
+                        </select>
+                    </div>
+                    <div class="relative mt-1 pl-3">
+                        <select id="staff" name="staff" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih PIC">
+                            <option value="">Pilih PIC</option>
+                            @foreach ($staffs as $pic)
+                                <option value="{{ $pic->id }}" {{ request('staff') == $pic->id ? 'selected' : '' }}>{{ $pic->name }}</option>    
+                            @endforeach
+                        </select>
+                    </div>
+                    @endif
+                    @if (request()->is('earnings', 'spendings'))
                     <div class="relative mt-1 pl-3">
                         <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Status">
                             <option value="">Pilih Status</option>
                             <option value="proses" {{ request('status') == 'proses' ? 'selected' : '' }}>Proses</option>
                             <option value="selesai" {{ request('status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
                             <option value="gagal" {{ request('status') == 'gagal' ? 'selected' : '' }}>Gagal</option>
+                        </select>
+                    </div>
+                    @endif
+                    @if (request()->is('staff', 'intern'))
+                    <div class="relative mt-1 pl-3">
+                        <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Status">
+                            <option value="">Pilih Status</option>
+                            <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Aktif</option>
+                            <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Tidak Aktif</option>
                         </select>
                     </div>
                     @endif

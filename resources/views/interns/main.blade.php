@@ -92,7 +92,16 @@
                                 </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Tempat, Tanggal Lahir
+                                <a class="flex justify-between" href="{{ route('intern.index', ['sort' => 'birth', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Tempat, Tanggal Lahir
+                                    @if (request('sort') == 'birth')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 <a class="flex justify-between" href="{{ route('intern.index', ['sort' => 'village_id', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
@@ -145,17 +154,17 @@
                                 <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $intern->address }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->position->name }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->phone }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->place }}, {{ $intern->birth }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->place }}, {{ \Carbon\Carbon::parse($intern->birth)->format('d F Y') }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->village->province->name }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->instagram }}, {{ $intern->linkedin }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
                                     @if ($intern->status == 1)
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                            <h2 class="text-sm font-normal">Active</h2>
+                                            <h2 class="text-sm font-normal">Aktif</h2>
                                         </div>
-                                    @elseif ($intern->status == 0)
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                            <h2 class="text-sm font-normal">inactive</h2>
+                                    @else
+                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-rose-500 bg-rose-100/60 dark:bg-gray-800">
+                                            <h2 class="text-sm font-normal">Tidak Aktif</h2>
                                         </div>
                                     @endif
                                 </td>

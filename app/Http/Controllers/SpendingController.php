@@ -26,7 +26,7 @@ class SpendingController extends Controller
             ->join('staff', 'spendings.staff_id', '=', 'staff.id')
             ->orderBy($sort, $direction)
             ->select('spendings.*', 'staff.name as staff_name') // Select columns from spending and staff name
-            ->filter(request(['search', 'name', 'position']))
+            ->filter(request(['search', 'name', 'position', 'status']))
             ->paginate(10)
             ->withQueryString();
 

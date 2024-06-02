@@ -12,13 +12,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $tables = Category::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString();
         return view('category.main', [
             'title' => 'Kategori',
             'search' => 'categories',
-            'tables' => '',
+            'tables' => $tables,
             'export' => 'exportCategory',
-            'categories' => $categories
         ]);
     }
 
@@ -41,12 +40,12 @@ class CategoryController extends Controller
 
         // NAMA TIDAK BOLEH SAMA
         if (Category::where('name', $validatedData['name'])->exists()) {
-            return redirect('/category')->with('error', 'Kategori sudah ada');
+            return redirect('/categories')->with('error', 'Kategori sudah ada');
         }
         
         Category::create($validatedData);
 
-        return redirect('/category')->with('success', 'Data has been added!');
+        return redirect('/categories')->with('success', 'Data has been added!');
     }
 
     /**

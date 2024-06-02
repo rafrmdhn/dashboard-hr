@@ -63,5 +63,13 @@ class Staff extends Model
                 $query->where('name', $position);
             });
         });
+
+        $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
+            $query->whereMonth('birth', $bulan);
+        });
+
+        $query->when(isset($filters['status']) && $filters['status'] !== '', function ($query) use ($filters) {
+            $query->where('status', $filters['status']);
+        });
     }
 }

@@ -30,7 +30,7 @@ class TalentController extends Controller
             }, function($query) use ($sort, $direction) {
                 $query->orderBy($sort, $direction);
             })
-            ->filter(request(['search', 'name', 'category']))
+            ->filter(request(['search', 'name', 'category', 'mcn', 'staff', 'bulan']))
             ->paginate(10)
             ->withQueryString();
 
@@ -38,6 +38,7 @@ class TalentController extends Controller
             'title' => 'Talent',
             'search' => 'talent',
             'tables' => $tables,
+            'staffs' => Staff::has('talents')->get(),
             'categories' => Category::all(),
             'provinces' => Province::all(),
             'export' => 'exportTalent'

@@ -23,7 +23,7 @@ class EarningController extends Controller
         $direction = request()->query('direction', 'asc');
 
         $earningsQuery = Earning::with('sows')
-            ->filter(request(['search', 'name', 'bulan', 'tahun', 'tipe', 'status']));
+            ->filter(request(['search', 'name', 'bulan', 'tahun', 'tipe', 'status', 'talent']));
 
         $earnings = $earningsQuery->get();
 

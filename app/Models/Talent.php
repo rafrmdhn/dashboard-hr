@@ -43,5 +43,17 @@ class Talent extends Model
                 $query->whereIn('name', (array) $categories);
             });
         });
+
+        $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
+            $query->whereMonth('date', $bulan);
+        });
+
+        $query->when(isset($filters['mcn']) && $filters['mcn'] !== '', function ($query) use ($filters) {
+            $query->where('mcn_tiktok', $filters['mcn']);
+        });
+
+        $query->when($filters['staff'] ?? false, function ($query, $staff) {
+            $query->where('staff_id', $staff);
+        });
     }
 }
