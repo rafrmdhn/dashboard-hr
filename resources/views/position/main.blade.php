@@ -49,7 +49,7 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                        @foreach ( $positions as $position )
+                        @foreach ( $tables as $position )
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $position->id }}">
                                 <td class="w-4 p-4">
                                     <div class="flex items-center">

@@ -55,7 +55,16 @@
                                 </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Tempat, Tanggal Lahir
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'date', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Tempat, Tanggal Lahir
+                                    @if (request('sort') == 'date')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'village_id', 'direction' => request('sort') == 'village_id' && request('direction') == 'asc' ? 'desc' : 'asc']) }}">
@@ -415,11 +424,11 @@
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if($talent->status == 1)
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                            <h2 class="text-sm font-normal">Ya</h2>
+                                            <h2 class="text-sm font-normal">Aktif</h2>
                                         </div>
-                                    @elseif($talent->status == 0)
+                                    @else
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-pink-500 bg-pink-100/60 dark:bg-gray-800">
-                                            <h2 class="text-sm font-normal">Tidak</h2>
+                                            <h2 class="text-sm font-normal">Tidak Aktif</h2>
                                         </div>
                                     @endif
                                 </td>

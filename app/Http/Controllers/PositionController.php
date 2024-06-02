@@ -14,13 +14,12 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $positions = Position::orderBy('created_at', 'asc')->get();
+        $tables = Position::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString();
         return view('position.main', [
             'title' => 'Posisi',
-            'search' => '',
-            'tables' => '',
-            'export' => '',
-            'positions' => $positions
+            'search' => 'position',
+            'tables' => $tables,
+            'export' => 'exportPositions',
         ]);
     }
 
@@ -35,7 +34,7 @@ class PositionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePositionRequest $request)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
@@ -45,6 +44,7 @@ class PositionController extends Controller
         if (Position::where('name', $validatedData['name'])->exists()) {
             return redirect('/position')->with('error', 'Posisi sudah ada');
         }
+
         Position::create($validatedData);
 
         return redirect('/position')->with('success', 'Data has been added!');
@@ -69,7 +69,7 @@ class PositionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePositionRequest $request, Position $position)
+    public function update(Request $request, Position $position)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',

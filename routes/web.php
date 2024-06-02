@@ -82,7 +82,7 @@ Route::middleware('role_or_permission:view data')->group(function () {
     Route::resource('/position', PositionController::class);
 
     // KATEGORI
-    Route::resource('/category', CategoryController::class);
+    Route::resource('/categories', CategoryController::class);
 
     Route::get('/fregistrasi', [TalentController::class, 'page']);
     Route::put('/fregistrasi/{talent}', [TalentController::class, 'updateForm']);

@@ -49,7 +49,7 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                        @foreach ( $categories as $category )
+                        @foreach ( $tables as $category )
                             <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" id="{{ $search }}_ids{{ $category->id }}">
                                 <td class="w-4 p-4">
                                     <div class="flex items-center">
@@ -62,7 +62,7 @@
                                     <!-- Edit User Modal -->
                                     @include('category.edit')
                                     @can('delete data')
-                                        <form action="/category/{{ $category->id }}" method="POST" class="inline-flex">
+                                        <form action="/categories/{{ $category->id }}" method="POST" class="inline-flex">
                                             @method('delete')
                                             @csrf
                                             <!-- Delete User Modal -->

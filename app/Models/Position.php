@@ -21,4 +21,12 @@ class Position extends Model
         return $this->hasMany(Staff::class);
     }
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function($query, $search) {
+            $query->where(function($subquery) use ($search) {
+                $subquery->where('name', 'like', '%' . $search . '%');
+            });
+        });
+    }
 }

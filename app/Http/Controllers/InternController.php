@@ -29,9 +29,8 @@ class InternController extends Controller
         $direction = request()->query('direction', 'asc');
 
         $tables = Intern::query()
-            ->where('status', 1)
             ->orderBy($sort, $direction)
-            ->filter(request(['search', 'name', 'position']))
+            ->filter(request(['search', 'name', 'position', 'bulan', 'status']))
             ->paginate(10)
             ->withQueryString();
 

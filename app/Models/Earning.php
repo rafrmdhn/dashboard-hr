@@ -33,6 +33,10 @@ class Earning extends Model
             $query->where('name', 'like', '%' . $search . '%');
         });
     
+        $query->when($filters['talent'] ?? false, function ($query, $talen) {
+            $query->where('talent_id', $talen);
+        });
+
         $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
             $query->whereMonth('date', $bulan);
         });

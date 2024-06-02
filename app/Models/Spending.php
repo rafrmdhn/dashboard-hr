@@ -26,9 +26,12 @@ class Spending extends Model
             $query->whereMonth('date', $bulan);
         });
     
-        // Filter by tahun (year)
         $query->when($filters['tahun'] ?? false, function ($query, $tahun) {
             $query->whereYear('date', $tahun);
+        });
+
+        $query->when($filters['status'] ?? false, function ($query, $status){
+            $query->where('spendings.status', $status);   
         });
     }
 }
