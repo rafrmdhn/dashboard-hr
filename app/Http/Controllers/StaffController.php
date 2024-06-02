@@ -25,6 +25,7 @@ class StaffController extends Controller
         $direction = request()->query('direction', 'asc');
 
         $tables = Staff::query()
+            ->where('status', 1)
             ->orderBy($sort, $direction)
             ->filter(request(['search', 'name', 'position']))
             ->paginate(10)

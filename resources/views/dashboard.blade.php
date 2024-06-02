@@ -148,7 +148,7 @@
                                     @elseif ($earning->status == 'selesai')
                                         <span class="inline-block p-1 rounded bg-green-100 text-green-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
                                     @elseif ($earning->status == 'gagal')
-                                    <span class="inline-block p-1 rounded bg-red-100 text-red-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
+                                        <span class="inline-block p-1 rounded bg-red-100 text-red-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
                                     @endif
                                 </td>
                             </tr>

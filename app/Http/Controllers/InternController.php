@@ -29,6 +29,7 @@ class InternController extends Controller
         $direction = request()->query('direction', 'asc');
 
         $tables = Intern::query()
+            ->where('status', 1)
             ->orderBy($sort, $direction)
             ->filter(request(['search', 'name', 'position']))
             ->paginate(10)
@@ -106,7 +107,8 @@ class InternController extends Controller
             'address' => 'required|max:255',
             'position_id' => 'required|max:255',
             'instagram' => 'required',
-            'linkedin' => 'required'
+            'linkedin' => 'required',
+            'status' => 'required'
         ]);
 
         Intern::where('id', $intern->id)
