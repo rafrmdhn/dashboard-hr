@@ -15,11 +15,19 @@ class IndicatorController extends Controller
         $sort = request()->query('sort', 'id');
         $direction = request()->query('direction', 'asc');
 
+        if ($sort == 'position') {
+            $sort = 'positions.name'; // Assuming the position name column is 'name'
+        }
+
         $tables = Indicator::query()
+            ->join('staff', 'indicators.staff_id', '=', 'staff.id')
+            ->join('positions', 'staff.position_id', '=', 'positions.id')
+            ->select('indicators.*', 'positions.name as position_name')
             ->orderBy($sort, $direction)
-            ->filter(request(['search']))
+            ->filter(request(['search', 'bulan']))
             ->paginate(10)
             ->withQueryString();
+
 
         return view('sperform.main', [
             'title' => 'Staff',
@@ -34,8 +42,9 @@ class IndicatorController extends Controller
     {
         $validatedData = $request->validate([
             'staff_id' => 'required',
-            'target' => 'required',
+            'date' => 'required',
             'result' => 'required',
+            'description' => 'required'
         ]);
 
         Indicator::create($validatedData);
@@ -48,11 +57,12 @@ class IndicatorController extends Controller
         // dd($request->all());
         $validatedData = $request->validate([
             'staff_id' => 'required',
-            'target' => 'required',
+            'date' => 'required',
             'result' => 'required',
+            'description' => 'required'
         ]);
     
-        Indicator::where($indicator->id)->update($validatedData);
+        Indicator::where('id', $indicator->id)->update($validatedData);
     
         return redirect('/kinerja-staff')->with('success', 'Data has been updated!');
     }

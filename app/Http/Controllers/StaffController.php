@@ -60,7 +60,7 @@ class StaffController extends Controller
             'place' => 'required',
             'birth' => 'required',
             'village_id' => 'required',
-            'address' => 'required|max:255',
+            'address' => 'required',
             'position_id' => 'required|max:255',
             'instagram' => 'required',
             'linkedin' => 'required'
@@ -104,7 +104,7 @@ class StaffController extends Controller
             'place' => 'required',
             'birth' => 'required',
             'village_id' => 'required',
-            'address' => 'required|max:255',
+            'address' => 'required',
             'position_id' => 'required|max:255',
             'instagram' => 'required',
             'linkedin' => 'required'

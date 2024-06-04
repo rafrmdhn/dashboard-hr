@@ -23,5 +23,9 @@ class Indicator extends Model
                 $query->where('name', 'like', '%' . $search . '%');
             });
         });
+
+        $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
+            $query->whereMonth('date', $bulan);
+        });
     }
 }

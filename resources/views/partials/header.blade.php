@@ -67,7 +67,7 @@
                     <div class="relative mt-1 lg:w-52 xl:w-64">
                         <input type="search" name="search" id="searchBottom" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Cari {{ $title }}" value="{{ request('search') }}">
                     </div>
-                    @if (request()->is('talent', 'staff', 'intern'))
+                    @if (request()->is('talent', 'staff', 'intern', 'kinerja-intern', 'kinerja-staff'))
                     <div class="relative mt-1 pl-3">
                         <select id="bulan" name="bulan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
                             <option value="">Pilih Bulan</option>

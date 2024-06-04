@@ -39,6 +39,18 @@
                                 </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('kinerja-staff.index', ['sort' => 'position', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Posisi
+                                    @if (request('sort') == 'position')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 <a class="flex justify-between" href="{{ route('kinerja-staff.index', ['sort' => 'date', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
                                     Bulan, Tahun
                                     @if (request('sort') == 'date')
@@ -57,6 +69,18 @@
                                 <a class="flex justify-between" href="{{ route('kinerja-staff.index', ['sort' => 'result', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
                                     Capaian
                                     @if (request('sort') == 'result')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('kinerja-staff.index', ['sort' => 'description', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Justifikasi
+                                    @if (request('sort') == 'description')
                                         @if (request('direction') == 'asc')
                                             ▲
                                         @else
@@ -85,9 +109,11 @@
                                         <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $indicator->staff->email }}</div>
                                     </div>
                                 </td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">Project</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->target }} Project</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->result }} Project</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->staff->position->name }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ \Carbon\Carbon::parse($indicator->date)->format('F, Y') }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->target }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $indicator->result }}</td>
+                                <td class="p-4 text-base font-normal text-gray-500 whitespace-nowrap dark:text-white">{{ $indicator->description }}</td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <!-- Edit User Modal -->
                                     @include('sperform.edit')
