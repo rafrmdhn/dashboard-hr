@@ -18,9 +18,16 @@ class PerformanceController extends Controller
         $sort = request()->query('sort', 'id');
         $direction = request()->query('direction', 'asc');
 
+        if ($sort == 'position') {
+            $sort = 'positions.name';
+        }
+
         $tables = Performance::query()
+            ->join('interns', 'performances.intern_id', '=', 'interns.id')
+            ->join('positions', 'interns.position_id', '=', 'positions.id')
+            ->select('performances.*', 'positions.name as position_name')
             ->orderBy($sort, $direction)
-            ->filter(request(['search']))
+            ->filter(request(['search', 'bulan']))
             ->paginate(10)
             ->withQueryString();
 
@@ -48,8 +55,9 @@ class PerformanceController extends Controller
     {
         $validatedData = $request->validate([
             'intern_id' => 'required',
-            'target' => 'required',
-            'result' => 'required',
+            'date' => 'required',
+            'result' => 'required|numeric',
+            'description' => 'required'
         ]);
 
         Performance::create($validatedData);
@@ -81,11 +89,12 @@ class PerformanceController extends Controller
         // dd($request->all());
         $validatedData = $request->validate([
             'intern_id' => 'required',
-            'target' => 'required',
-            'result' => 'required',
+            'date' => 'required',
+            'result' => 'required|numeric',
+            'description' => 'required'
         ]);
     
-        Performance::where($performance->id)->update($validatedData);
+        Performance::where('id', $performance->id)->update($validatedData);
     
         return redirect('/kinerja-intern')->with('success', 'Data has been updated!');
     }

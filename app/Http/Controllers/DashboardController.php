@@ -18,7 +18,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $internData = Performance::selectRaw('MONTH(created_at) as month, SUM(result) as result')
+        $internData = Performance::selectRaw('MONTH(created_at) as month, AVG(result) as result')
                         ->whereBetween('created_at', ['2024-02-01', '2024-06-30'])
                         ->groupByRaw('MONTH(created_at)')
                         ->get()
@@ -27,7 +27,7 @@ class DashboardController extends Controller
                             return $item;
                         });
 
-        $staffData  = Indicator::selectRaw('MONTH(created_at) as month, SUM(result) as result')
+        $staffData  = Indicator::selectRaw('MONTH(created_at) as month, AVG(result) as result')
                         ->whereBetween('created_at', ['2024-02-01', '2024-06-30'])
                         ->groupByRaw('MONTH(created_at)')
                         ->get()

@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('indicators', function (Blueprint $table) {
             $table->id();
             $table->foreignId('staff_id')->constrained();
-            $table->integer('target');
-            $table->integer('result');
+            $table->date('date')->default(date("Y-m-d H:i:s"));
+            $table->double('target')->default(4.00);
+            $table->double('result');
+            $table->text('description');
             $table->timestamps();
         });
     }
