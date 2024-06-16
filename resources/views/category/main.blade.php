@@ -71,8 +71,6 @@
                                     @endcan
                                 </td>
                             </tr>
-                                        
-                            
                         @endforeach
                     </tbody>
                 </table>
@@ -82,7 +80,7 @@
 </div>
 
 {{-- Paginate --}}
-{{-- {{ $tables->links('partials.paginate') }} --}}
+{{ $tables->links('partials.paginate') }}
 
 @include('category.create')
 @endsection
