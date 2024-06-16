@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $tables = Category::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString();
+        $tables = Category::latest()->filter(request(['search', 'name']))->orderBy('name', 'asc')->paginate(10)->withQueryString();
         return view('category.main', [
             'title' => 'Kategori',
             'search' => 'categories',

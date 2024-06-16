@@ -27,5 +27,9 @@ class Performance extends Model
         $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
             $query->whereMonth('date', $bulan);
         });
+
+        $query->when($filters['tahun'] ?? false, function ($query, $tahun) {
+            $query->whereYear('date', $tahun);
+        });
     }
 }

@@ -27,7 +27,7 @@ class PerformanceController extends Controller
             ->join('positions', 'interns.position_id', '=', 'positions.id')
             ->select('performances.*', 'positions.name as position_name')
             ->orderBy($sort, $direction)
-            ->filter(request(['search', 'bulan']))
+            ->filter(request(['search', 'bulan', 'tahun']))
             ->paginate(10)
             ->withQueryString();
 
