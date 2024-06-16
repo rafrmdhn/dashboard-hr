@@ -44,7 +44,7 @@ class UserListController extends Controller
             'name' => 'required|max:255',
             'email' => 'required',
             'password' => 'required',
-            'photo' => 'required',
+            'photo' => 'image|file|max:2048',
             'role' => 'required'
         ]);
 
