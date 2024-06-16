@@ -82,7 +82,7 @@
 </div>
 
 {{-- Paginate --}}
-{{-- {{ $tables->links('partials.paginate') }} --}}
+{{ $tables->links('partials.paginate') }}
 
 @include('position.create')
 @endsection
