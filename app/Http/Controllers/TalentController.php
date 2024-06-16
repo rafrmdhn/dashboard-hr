@@ -163,7 +163,7 @@ class TalentController extends Controller
             'shopee_affiliate' => 'required',
             'tiktok_affiliate' => 'required',
             'mcn_tiktok' => 'required',
-            'photo' => 'image|file|max:5120',
+            'photo' => 'image|file|max:2048',
             'manual_staff_name' => 'required_if:staff_id,input_manual',
             'statement' => 'required',
 
@@ -210,7 +210,7 @@ class TalentController extends Controller
                 'village_id' => null,
                 'address' => '',
                 'position_id' => 1,
-                'photo' => '', // 1MB Max
+                'photo' => '', // 2MB Max
                 'instagram' => '',
                 'linkedin' => ''
             ]);

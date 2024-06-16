@@ -56,7 +56,7 @@ class AgencyController extends Controller
             'phone' => 'required',
             'address' => 'required',
             'staff_id' => 'required',
-            'photo' => 'image|file|max:1024'
+            'photo' => 'image|file|max:2048'
         ]);
 
         // NAMA TIDAK BOLEH SAMA
@@ -101,7 +101,7 @@ class AgencyController extends Controller
             'phone' => 'required',
             'address' => 'required',
             'staff_id' => 'required',
-            'photo' => 'image|file|max:1024'
+            'photo' => 'image|file|max:2048'
         ]);
 
         if($request->file('photo')) {

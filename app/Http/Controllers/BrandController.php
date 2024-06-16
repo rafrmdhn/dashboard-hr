@@ -66,7 +66,7 @@ class BrandController extends Controller
             'address' => 'required',
             'staff_id' => 'required',
             'category_id' => 'required',
-            'photo' => 'image|file|max:1024'
+            'photo' => 'image|file|max:2048'
         ]);
 
         // PENGECEKAN NAMA BRAND

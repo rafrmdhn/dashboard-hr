@@ -23,7 +23,7 @@ class ProfileController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'sometimes|nullable',
-            'photo' => 'image|file|max:1024'
+            'photo' => 'image|file|max:2048'
         ]);
         $user = User::findOrFail(Auth::user()->id);
 
