@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title }}</title>
+    <link rel="icon" type="image/x-icon" href="https://media.licdn.com/dms/image/D4E0BAQFFpLZcUp0Qgg/company-logo_200_200/0/1694839430809?e=1726704000&v=beta&t=EQEkZ9MD2YCO-nxv0CX4j_W0Yd1vJ__T4W2a0NViqnA">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         body {
