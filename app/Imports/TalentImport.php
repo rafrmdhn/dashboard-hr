@@ -40,7 +40,7 @@ class TalentImport implements ToModel
             'staff_id' => $row[23],
             'shopee_affiliate' => $row[24],
             'tiktok_affiliate' => $row[25],
-            'mcn_tiktok' => $row[26],
+            'mcn_tiktok' => $row[26], 
         ]);
     }
 }

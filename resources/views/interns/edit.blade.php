@@ -114,7 +114,7 @@
                                 required>
                                 <option selected value="">Pilih Provinsi</option>
                                 @foreach ($provinces as $province)
-                                    @if (old('province_id', $intern->village->province->id) == $province->id)
+                                    @if (old('province_id', $intern->village?->province?->id) == $province->id)
                                         <option value="{{ $province->id }}" selected>{{ $province->name }}</option>
                                     @else
                                         <option value="{{ $province->id }}">{{ $province->name }}</option>

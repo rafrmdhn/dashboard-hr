@@ -28,7 +28,7 @@ class StaffFactory extends Factory
             'linkedin' => $this->faker->userName(),
             // 'photo' => $this->withPhoto($this->faker->image('public/storage/images/staffs', 300, 300)),
             // 'photo' => '-',
-            'position_id' => mt_rand(1, 2)
+            'position_id' => mt_rand(1, 5)
         ];
     }
 

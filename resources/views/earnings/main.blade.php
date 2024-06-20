@@ -225,8 +225,7 @@
                                                 'gagal' => 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
                                             ];
                                         @endphp
-                                        <span
-                                            class="text-xs font-medium me-2 px-2.5 py-0.5 rounded {{ $status_color[$finance->status] }}">{{ $finance->status }}</span>
+                                        <span class="text-xs font-medium me-2 px-2.5 py-0.5 rounded {{ $status_color[$finance->status] }}">{{ $finance->status }}</span>
                                     </td>
                                     <td class="p-4 text-base text-blue-900 whitespace-nowrap dark:text-white"><a
                                             href="{{ $finance->link_project }}"

@@ -57,7 +57,7 @@ class SpendingController extends Controller
             'requirement' => 'required',
             'budget' => 'required',
             'date' => 'required',
-            'proof' => 'image|file|max:1024', // 1MB Max
+            'proof' => 'image|file|max:5120', // 1MB Max
         ]);
 
         if($request->file('proof')) {

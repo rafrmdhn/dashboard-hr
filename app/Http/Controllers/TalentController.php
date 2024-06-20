@@ -23,10 +23,12 @@ class TalentController extends Controller
         $direction = request()->query('direction', 'asc');
 
         $tables = Talent::query()
+            ->select('talent.*')
             ->with('categories')
             ->when($sort === 'category', function($query) use ($direction) {
                 $query->leftJoin('category_talent', 'talent.id', '=', 'category_talent.talent_id')
-                    ->orderBy('category_talent.category_id', $direction);
+                    ->leftJoin('categories', 'category_talent.category_id', '=', 'categories.id')
+                    ->orderBy('categories.name', $direction);
             }, function($query) use ($sort, $direction) {
                 $query->orderBy($sort, $direction);
             })
@@ -39,7 +41,7 @@ class TalentController extends Controller
             'search' => 'talent',
             'tables' => $tables,
             'staffs' => Staff::has('talents')->get(),
-            'categories' => Category::all(),
+            'categories' => Category::orderBy('name')->get(),
             'provinces' => Province::all(),
             'export' => 'exportTalent'
         ]);
@@ -120,7 +122,7 @@ class TalentController extends Controller
     {
         return view('forms.form', [
             'title' => "FYP Media",
-            'categories' => Category::all(),
+            'categories' => Category::orderBy('name')->get(),
             'staffs' => Staff::all(),
             'provinces' => Province::all()
         ]);
@@ -194,31 +196,31 @@ class TalentController extends Controller
         }
 
 
-        // CEK NILAI DARI staff_id
-        if ($request->staff_id == 'input_manual') {
+        // // CEK NILAI DARI staff_id
+        // if ($request->staff_id == 'input_manual') {
         
-            // Ambil data nama staff dari request
-            $staffName = $request->manual_staff_name;
+        //     // Ambil data nama staff dari request
+        //     $staffName = $request->manual_staff_name;
     
-            // Simpan data staff baru
-            $save = Staff::create([
-                'name' => $staffName,
-                'email' => '',
-                'phone' => '',
-                'place' => '',
-                'birth' => null,
-                'village_id' => null,
-                'address' => '',
-                'position_id' => 1,
-                'photo' => '', // 1MB Max
-                'instagram' => '',
-                'linkedin' => ''
-            ]);
+        //     // Simpan data staff baru
+        //     $save = Staff::create([
+        //         'name' => $staffName,
+        //         'email' => '',
+        //         'phone' => '',
+        //         'place' => '',
+        //         'birth' => null,
+        //         'village_id' => null,
+        //         'address' => '',
+        //         'position_id' => 1,
+        //         'photo' => '', // 1MB Max
+        //         'instagram' => '',
+        //         'linkedin' => ''
+        //     ]);
     
-            // Tambahkan ID staff yang baru ditambahkan ke data yang divalidasi
-            $validatedData['staff_id'] = $save->id;
+        //     // Tambahkan ID staff yang baru ditambahkan ke data yang divalidasi
+        //     $validatedData['staff_id'] = $save->id;
 
-        }
+        // }
 
         $talent = Talent::create($validatedData);
         
@@ -238,7 +240,7 @@ class TalentController extends Controller
             'title' => 'Registrasi',
             'search' => 'fregsitrasi',
             'tables' => Talent::latest()->filter(request(['search', 'name']))->where('status', '=', 0)->paginate(10)->withQueryString(),
-            'categories' => Category::all(),
+            'categories' => Category::orderBy('name')->get(),
             'export' => 'exportRegis'
         ]);
     }

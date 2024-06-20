@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('place');
             $table->date('date')->default(Carbon::now()->toDateString());
-            $table->char('village_id', 10);
+            $table->char('village_id', 10)->nullable();
             $table->string('instagram');
             $table->string('engagement');
             $table->bigInteger('finstagram');
