@@ -127,19 +127,16 @@
                                     <img class="h-10 rounded-lg shadow-xl dark:shadow-gray-800" src="{{ asset('storage/' . $spend->proof) }}" alt="{{ $spend->name }}"></td>
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    @if($spend->status == 'gagal')
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-pink-500 bg-pink-100/60 dark:bg-gray-800">
-                                            <h2 class="text-sm font-normal">Gagal</h2>
-                                        </div>
-                                    @elseif($spend->status == 'selesai')
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                            <h2 class="text-sm font-normal">Selesai</h2>
-                                        </div>
-                                    @elseif($spend->status == 'proses')
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-blue-500 bg-blue-100/60 dark:bg-gray-800">
-                                            <h2 class="text-sm font-normal">Proses</h2>
-                                        </div>
-                                    @endif
+                                    @php
+                                        $status_color = [
+                                            'proses' =>
+                                                'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+                                            'selesai' =>
+                                                'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+                                            'gagal' => 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+                                        ];
+                                    @endphp
+                                    <span class="text-xs font-medium me-2 px-2.5 py-0.5 rounded {{ $status_color[$spend->status] }}">{{ $spend->status }}</span>
                                 </td>
                                 {{-- <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->university }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->instagram }}, {{ $intern->linkedin }}</td>--}}

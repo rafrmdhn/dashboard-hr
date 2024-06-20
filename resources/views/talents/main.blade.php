@@ -275,7 +275,7 @@
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'tiktok_affiliate', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
-                                    Tiktok Affiliate
+                                    Personal Branding
                                     @if (request('sort') == 'tiktok_affiliate')
                                         @if (request('direction') == 'asc')
                                             ▲
@@ -332,7 +332,7 @@
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->phone }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->place }}, {{ \Carbon\Carbon::parse($talent->date)->format('d F Y') }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->village->province->name }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->village?->province?->name }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @foreach ($talent->categories as $index => $category)
                                         @if ($index > 0)

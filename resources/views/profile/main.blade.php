@@ -35,7 +35,7 @@
             </div>
             <div class="pb-4">
               <label for="about" class="font-semibold text-gray-700 block pb-1">Email</label>
-              <input id="email" name="email" class="border-1 rounded-r px-4 py-2 w-full" type="email" value="{{ old('email', $user->email) }}" />
+              <input id="email" name="email" class="border-1 rounded-r px-4 py-2 w-full" type="email" value="{{ old('email', $user->email) }}" disabled/>
             </div>
             <div class="pb-4">
               <label for="password" class="font-semibold text-gray-700 block pb-1">Password</label>

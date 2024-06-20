@@ -25,10 +25,12 @@ class BrandController extends Controller
         $direction = request()->query('direction', 'asc');
 
         $tables = Brand::query()
+            ->select('brands.*')
             ->with('categories')
             ->when($sort === 'category', function($query) use ($direction) {
                 $query->leftJoin('brand_category', 'brands.id', '=', 'brand_category.brand_id')
-                    ->orderBy('brand_category.category_id', $direction);
+                    ->leftJoin('categories', 'brand_category.category_id', '=', 'categories.id')
+                    ->orderBy('categories.name', $direction);
             }, function($query) use ($sort, $direction) {
                 $query->orderBy($sort, $direction);
             })
@@ -40,7 +42,7 @@ class BrandController extends Controller
             'title' => 'Brand',
             'search' => 'brand',
             'tables' => $tables,
-            'categories' => Category::all(),
+            'categories' => Category::orderBy('name')->get(),
             'staffs' => Staff::all(),
             'export' => 'exportBrand'
         ]);
@@ -66,7 +68,7 @@ class BrandController extends Controller
             'address' => 'required',
             'staff_id' => 'required',
             'category_id' => 'required',
-            'photo' => 'image|file|max:1024'
+            'photo' => 'image|file|max:2048'
         ]);
 
         // PENGECEKAN NAMA BRAND
@@ -121,7 +123,7 @@ class BrandController extends Controller
             'address' => 'required',
             'staff_id' => 'required',
             'category_id' => 'required',
-            'photo' => 'image|file|max:1024'
+            'photo' => 'image|file|max:2048'
         ]);
 
         $categories = $validatedData['category_id'];

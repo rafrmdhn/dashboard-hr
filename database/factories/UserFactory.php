@@ -24,8 +24,8 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'master',
-            'email' => 'hellofypagency@gmail.com',
+            'name' => 'David Wijaya',
+            'email' => 'davidwjya@gmail.com',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'photo' => 'images/default-profile-picture.jpg'

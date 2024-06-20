@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('place');
             $table->date('birth');
             $table->text('address');
-            $table->char('village_id', 10);
+            $table->char('village_id', 10)->nullable();
             $table->string('instagram');
             $table->string('linkedin');
             $table->boolean('status')->default(true);

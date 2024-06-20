@@ -676,9 +676,9 @@
                     <div class="sm:col-span-2">
                         <label for="staff_id" class="block mb-2 font-medium text-gray-900 dark:text-white">PIC (Siapa
                             yang Menghubungi)<span class="text-red-500">*</span></label>
-                        <p class="text-sm">Setelah Submit, konfirmasi ke Nomor 085175460533 (Fia) ya.
-                            <a href="http://wa.me/6285175460533" target="_blank"
-                                class="text-blue-800">(wa.me/6285175460533)</a>
+                        <p class="text-sm">Setelah Submit, konfirmasi ke Nomor 085175123014 (Jaya) ya.
+                            <a href="http://wa.me/6285175123014" target="_blank"
+                                class="text-blue-800">(wa.me/6285175123014)</a>
                         </p>
                         <br>
                         <div class="relative" id="search_pic">
@@ -707,16 +707,16 @@
                     </div>
 
                     {{-- Checkbox pic manual --}}
-                    <div class="sm:col-span-2">
+                    {{-- <div class="sm:col-span-2">
                         <div class="flex items-center">
                             <input id="checkbox_staff_manual" type="checkbox" value="1" @checked(old('staff_id') == 'input_manual')
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="checkbox_staff_manual" class="ms-2 text-sm text-gray-900 dark:text-gray-300">PIC tidak ada pada pencarian.</label>
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- INPUT PIC MANUAL --}}
-                    <div class="sm:col-span-2 @if(old('staff_id') != 'input_manual') hidden @endif" id="input_data_pic_manual">
+                    {{-- <div class="sm:col-span-2 @if(old('staff_id') != 'input_manual') hidden @endif" id="input_data_pic_manual">
                         <label for="manual_staff_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
                             PIC<span class="text-red-500">*</span></label>
                         <input type="text" name="manual_staff_name" id="manual_staff_name" value="{{ old('manual_staff_name') }}"
@@ -725,7 +725,7 @@
                         @error('manual_staff_name')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                         @enderror
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
@@ -773,7 +773,7 @@
                     </div>
                     <div class="sm:col-span-2">
                         <label for="phone" class="block mb-4 font-medium text-gray-900 dark:text-white">Apakah Kamu
-                            Tertarik Bergabung Menjadi TikTok Affiliate?<span class="text-red-500">*</span></label>
+                            Tertarik Untuk Dibantu Personal Branding / Jasa Digital Marketing Oleh Tim FYP Media?<span class="text-red-500">*</span></label>
 
                         <div class="flex">
                             <div class="flex items-center me-6">
@@ -1015,53 +1015,53 @@
             });
 
             // Jika checkbox_staff_manual di-check
-            $('#checkbox_staff_manual').on('change', function() {
-                if ($(this).is(':checked')) {
-                    $('#staff_id').prop('required', false);
-                    $('#manual_staff_name').prop('required', true);
+            // $('#checkbox_staff_manual').on('change', function() {
+            //     if ($(this).is(':checked')) {
+            //         $('#staff_id').prop('required', false);
+            //         $('#manual_staff_name').prop('required', true);
 
-                    $('#staff_id').val('');
-                    $('#staff_id').prop('disabled', true);
-                    $('#input_data_pic_manual').removeClass('hidden');
+            //         $('#staff_id').val('');
+            //         $('#staff_id').prop('disabled', true);
+            //         $('#input_data_pic_manual').removeClass('hidden');
 
-                    $('input[name="staff_id"]').val('input_manual');
-                    $('#dropdown').hide();
-                } else {
-                    $('#staff_id').prop('required', true);
-                    $('#manual_staff_name').prop('required', false);
+            //         $('input[name="staff_id"]').val('input_manual');
+            //         $('#dropdown').hide();
+            //     } else {
+            //         $('#staff_id').prop('required', true);
+            //         $('#manual_staff_name').prop('required', false);
 
-                    $('#manual_staff_name').val('');
-                    $('#staff_id').prop('disabled', false);
-                    $('#input_data_pic_manual').addClass('hidden');
+            //         $('#manual_staff_name').val('');
+            //         $('#staff_id').prop('disabled', false);
+            //         $('#input_data_pic_manual').addClass('hidden');
 
-                    $('input[name="staff_id"]').val('');
-                }
-            });
+            //         $('input[name="staff_id"]').val('');
+            //     }
+            // });
 
             // Prevent if submit button clicked
-            $('#submit_button').on('click', function(event) {
-                event.preventDefault();
+            // $('#submit_button').on('click', function(event) {
+            //     event.preventDefault();
 
-                // Cek jika checkbox_staff_manual di-check
-                if ($('#checkbox_staff_manual').is(':checked')) {
-                    $('input[name="staff_id"]').val('input_manual');
-                }
+            //     // Cek jika checkbox_staff_manual di-check
+            //     if ($('#checkbox_staff_manual').is(':checked')) {
+            //         $('input[name="staff_id"]').val('input_manual');
+            //     }
 
-                // Cek jika minimal 1 category_id di-check
-                if ($('input[name="category_id[]"]:checked').length == 0) {
-                    alert('Pilih minimal 1 kategori');
-                    return;
-                }
+            //     // Cek jika minimal 1 category_id di-check
+            //     if ($('input[name="category_id[]"]:checked').length == 0) {
+            //         alert('Pilih minimal 1 kategori');
+            //         return;
+            //     }
 
-                // Cek required
-                if (!$('#registrationForm')[0].checkValidity()) {
-                    $('#registrationForm')[0].reportValidity();
-                    return;
-                }
+            //     // Cek required
+            //     if (!$('#registrationForm')[0].checkValidity()) {
+            //         $('#registrationForm')[0].reportValidity();
+            //         return;
+            //     }
 
-                // Submit form
-                $('#registrationForm').submit();
-            })
+            //     // Submit form
+            //     $('#registrationForm').submit();
+            // })
 
         });
     </script>

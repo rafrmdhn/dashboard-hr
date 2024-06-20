@@ -42,28 +42,81 @@
                     <div class="text-sm font-medium text-gray-400">Posisi</div>
                 </div>
             </div>
+            <a href="/position" class="text-[#f84525] font-medium text-sm hover:text-red-800">Tampilkan</a>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <div class="p-6 relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words w-full shadow-md shadow-black/5 rounded">
             <div class="rounded-t mb-0 px-0 border-0">
-              <div class="flex flex-wrap items-center px-4 py-2">
-                <div class="relative w-full max-w-full flex-grow flex-1">
-                  <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Kinerja</h3>
+                <div class="flex flex-wrap items-center px-4 py-2">
+                    <div class="relative w-full max-w-full flex justify-between items-center">
+                        <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Kinerja</h3>
+                    
+                        <div class="relative">
+                            <button id="dropdownYearButton" data-dropdown-toggle="dropdownKinerja"
+                                    class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                    type="button">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    viewBox="0 0 4 15">
+                                    <path
+                                        d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                                </svg>
+                            </button>
+                    
+                            <!-- Dropdown menu -->
+                            <div id="dropdownKinerja"
+                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 absolute right-0 mt-2 origin-top-right dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                    <!-- Placeholder for dynamic years -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="block w-full overflow-x-auto">
-                    <div id="column-chart"></div>
-              </div>
+                <div class="block w-full overflow-x-auto">
+                        <div id="column-chart"></div>
+                </div>
             </div>
-          </div>
-            <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
-              <div class="relative w-full max-w-full flex-grow flex-1">
-                <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Total Posisi</h3>
-              </div>
-                <div class="py-6" id="pie-chart"></div>
-            </div>
-            
+        </div>
+        <div class="p-6 relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words w-full shadow-md shadow-black/5 rounded">
+            <div class="rounded-t mb-0 px-0 border-0">
+                <div class="flex flex-wrap items-center px-4 py-2">
+                    <div class="relative w-full max-w-full flex justify-between items-center">
+                        <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Total Posisi</h3>
+                        
+                        <div class="relative">
+                            <button id="dropdownPositionButton" data-dropdown-toggle="dropdownPosition"
+                                    class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                    type="button">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                     viewBox="0 0 4 15">
+                                    <path
+                                        d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                                </svg>
+                            </button>
+                                
+                            <!-- Dropdown menu -->
+                            <div id="dropdownPosition"
+                                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 absolute right-0 mt-2 origin-top-right dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                    <li>
+                                        <a href="?position=intern"
+                                           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                           onclick="selectPosition('intern')">Intern</a>
+                                    </li>
+                                    <li>
+                                        <a href="?position=staff"
+                                           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                           onclick="selectPosition('staff')">Staff</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div class="py-6" id="pie-chart"></div>
+        </div>
     </div>
     <div class="grid grid-cols-4 gap-6 mb-6">
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
@@ -93,17 +146,11 @@
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50">
                                 @if($spend->status == 'gagal')
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-pink-500 bg-pink-100/60 dark:bg-gray-800">
-                                        <h2 class="text-sm font-normal">Gagal</h2>
-                                    </div>
+                                    <span class="inline-block p-1 rounded bg-red-100 text-red-800 font-medium text-[12px] leading-none">{{ $spend->status }}</span>
                                 @elseif($spend->status == 'selesai')
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                        <h2 class="text-sm font-normal">Selesai</h2>
-                                    </div>
+                                <span class="inline-block p-1 rounded bg-green-100 text-green-800 font-medium text-[12px] leading-none">{{ $spend->status }}</span>
                                 @elseif($spend->status == 'proses')
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-blue-500 bg-blue-100/60 dark:bg-gray-800">
-                                        <h2 class="text-sm font-normal">Proses</h2>
-                                    </div>
+                                <span class="inline-block p-1 rounded bg-yellow-100 text-yellow-800 font-medium text-[12px] leading-none">{{ $spend->status }}</span>
                                 @endif
                             </td>
                         </tr>
@@ -161,70 +208,89 @@
 </div>
 
 <script>
-
-const getChartOptions = () => {
-  return {
-    series: {!! json_encode($pie) !!},
-    colors: ["#1C64F2", "#16BDCA", "#9061F9", "#F21C64", "#CA16BD", "#F99061", "#F9F91C", "#64F21C", "#1CAAF2", "#F21CA3"],
-    chart: {
-      height: 420,
-      width: "100%",
-      type: "pie",
-    },
-    stroke: {
-      colors: ["white"],
-      lineCap: "",
-    },
-    plotOptions: {
-      pie: {
-        labels: {
-          show: true,
+    const getChartOptions = () => {
+    return {
+        series: {!! json_encode($pie) !!},
+        colors: ["#1C64F2", "#16BDCA", "#9061F9", "#F21C64", "#CA16BD", "#F99061", "#F9F91C", "#64F21C", "#1CAAF2", "#F21CA3"],
+        chart: {
+        height: 420,
+        width: "100%",
+        type: "pie",
         },
-        size: "100%",
+        stroke: {
+        colors: ["white"],
+        lineCap: "",
+        },
+        plotOptions: {
+        pie: {
+            labels: {
+            show: true,
+            },
+            size: "100%",
+            dataLabels: {
+            offset: -25
+            }
+        },
+        },
+        labels: {!! json_encode($labels) !!},
         dataLabels: {
-          offset: -25
-        }
-      },
-    },
-    labels: {!! json_encode($labels) !!},
-    dataLabels: {
-      enabled: true,
-      style: {
+        enabled: true,
+        style: {
+            fontFamily: "Inter, sans-serif",
+        },
+        },
+        legend: {
+        position: "bottom",
         fontFamily: "Inter, sans-serif",
-      },
-    },
-    legend: {
-      position: "bottom",
-      fontFamily: "Inter, sans-serif",
-    },
-    yaxis: {
-      labels: {
-        formatter: function (value) {
-          return value + "%"
         },
-      },
-    },
-    xaxis: {
-      labels: {
-        formatter: function (value) {
-          return value  + "%"
+        yaxis: {
+        labels: {
+            formatter: function (value) {
+            return value + "%"
+            },
         },
-      },
-      axisTicks: {
-        show: false,
-      },
-      axisBorder: {
-        show: false,
-      },
-    },
-  }
-}
+        },
+        xaxis: {
+        labels: {
+            formatter: function (value) {
+            return value  + "%"
+            },
+        },
+        axisTicks: {
+            show: false,
+        },
+        axisBorder: {
+            show: false,
+        },
+        },
+    }
+    }
 
-if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
-  const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
-  chart.render();
-}
+    if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
+    const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
+    chart.render();
+    }
+    
+    function selectPosition(position) {
+        // Handle position selection here
+        console.log('Selected position:', position);
 
+        // Example: redirect to a URL with selected position as query parameter
+        // window.location.href = '/dashboard?position=' + position;
+
+        // Example: perform AJAX request to fetch data for the selected position
+        // $.ajax({
+        //     url: '/dashboard',
+        //     type: 'GET',
+        //     data: { position: position },
+        //     success: function(data) {
+        //         // Update dashboard content with data for selected position
+        //     },
+        //     error: function(error) {
+        //         console.error('Error fetching data:', error);
+        //     }
+        // });
+    }
 </script>
 
 <script>
@@ -256,5 +322,56 @@ if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
         const chart = new ApexCharts(document.getElementById("column-chart"), options);
         chart.render();
     }
+    
+    function generateYearOptions() {
+        var currentYear = new Date().getFullYear();
+
+        var years = [];
+        for (var i = currentYear; i >= currentYear - 4; i--) {
+            years.push(i);
+        }
+
+        var dropdownMenu = document.getElementById('dropdownKinerja');
+        dropdownMenu.innerHTML = '';
+
+        var ul = document.createElement('ul');
+        ul.className = 'py-2 text-sm text-gray-700 dark:text-gray-200';
+        ul.setAttribute('aria-labelledby', 'dropdownYearButton');
+
+        years.forEach(function (year) {
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.href = '#';
+            a.className = 'block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white';
+            a.textContent = year;
+            a.onclick = function () {
+                selectYear(year);
+            };
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+
+        dropdownMenu.appendChild(ul);
+    }
+
+    function selectYear(year) {
+        console.log('Selected year:', year);
+
+        window.location.href = '/fdashboard?year=' + year;
+
+        // $.ajax({
+        //     url: '/dashboard',
+        //     type: 'GET',
+        //     data: { year: year },
+        //     success: function(data) {
+        //         // Update dashboard content with data for selected year
+        //     },
+        //     error: function(error) {
+        //         console.error('Error fetching data:', error);
+        //     }
+        // });
+    }
+
+    generateYearOptions();
 </script>
 @endsection

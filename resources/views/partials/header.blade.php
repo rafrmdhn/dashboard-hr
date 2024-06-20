@@ -67,7 +67,7 @@
                     <div class="relative mt-1 lg:w-52 xl:w-64">
                         <input type="search" name="search" id="searchBottom" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Cari {{ $title }}" value="{{ request('search') }}">
                     </div>
-                    @if (request()->is('talent', 'staff', 'intern', 'kinerja-intern', 'kinerja-staff'))
+                    @if (request()->is('talent', 'staff', 'intern'))
                     <div class="relative mt-1 pl-3">
                         <select id="bulan" name="bulan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
                             <option value="">Pilih Bulan</option>
@@ -97,7 +97,7 @@
                         </select>
                     </div>
                     @endif
-                    @if(request()->is('earnings', 'spendings'))
+                    @if(request()->is('earnings', 'spendings', 'kinerja-intern', 'kinerja-staff'))
                     <div class="relative mt-1 pl-3">
                         <select id="bulan" name="bulan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
                             <option value="">Pilih Bulan</option>
@@ -107,9 +107,13 @@
                         </select>
                     </div>
                     <div class="relative mt-1 pl-3">
-                        <select id="tahun" name="tahun" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Bulan">
+                        <select id="tahun" name="tahun" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-placeholder="Pilih Tahun">
                             <option value="">Pilih Tahun</option>
-                            @foreach(range(2020, date('Y')) as $year)
+                            @php
+                                $currentYear = date('Y');
+                                $startYear = $currentYear - 4; // 5 years range, including current year
+                            @endphp
+                            @foreach(range($startYear, $currentYear) as $year)
                                 <option value="{{ $year }}" {{ request('tahun') == $year ? 'selected' : '' }}>{{ $year }}</option>
                             @endforeach
                         </select>
@@ -272,7 +276,7 @@
                 @endif
 
                 @can('import data')
-                @if (!request()->is('users-list', 'kinerja-intern', 'kinerja-staff', 'earnings', 'spendings'))
+                @if (!request()->is('users-list', 'kinerja-intern', 'kinerja-staff', 'earnings', 'spendings', 'position','categories'))
                     <button data-modal-target="import-modal" data-modal-toggle="import-modal" class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700" type="button">
                         <svg class="w-5 h-5 mr-2 -ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd" d="M9 7V2.2a2 2 0 0 0-.5.4l-4 3.9a2 2 0 0 0-.3.5H9Zm2 0V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5h7.6l-.3.3a1 1 0 0 0 1.4 1.4l2-2c.4-.4.4-1 0-1.4l-2-2a1 1 0 0 0-1.4 1.4l.3.3H4V9h5a2 2 0 0 0 2-2Z" clip-rule="evenodd"/>
