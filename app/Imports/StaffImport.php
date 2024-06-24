@@ -16,8 +16,8 @@ class StaffImport implements ToModel
     {
         return new Staff([
             'position_id' => $row[1],
-            'name' => $row[2],
-            'email' => $row[3],   
+            'email' => $row[2],
+            'name' => $row[3],   
             'phone' => $row[4],
             'place' => $row[5],
             'birth' => $row[6],
@@ -25,7 +25,6 @@ class StaffImport implements ToModel
             'domicile'=>$row[8],
             'instagram'=>$row[9],
             'linkedin'=>$row[10],
-            'photo'=>$row[11],
         ]);
     }
 }

@@ -122,7 +122,7 @@
                                         {{ $category->name }}
                                     @endforeach
                                 </td>
-                                <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $brand->staff->name }}</td>
+                                <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $brand->staff?->name }}</td>
                             <td class="p-4 space-x-2 whitespace-nowrap">
                                 <!-- Edit User Modal -->
                                 @include('brand.edit')

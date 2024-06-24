@@ -15,8 +15,11 @@ class AgencyImport implements ToModel
     public function model(array $row)
     {
         return new Agency([
-            'name' => $row[1],
-            
+            'staff_id' => $row[1],
+            'name' => $row[2],
+            'email' => $row[3],
+            'phone' => $row[4],
+            'address' => $row[5],
         ]);
     }
 }

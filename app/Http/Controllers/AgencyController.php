@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\AgencyExport;
+use App\Imports\AgencyImport;
 use App\Models\Staff;
 use App\Models\Agency;
 use Illuminate\Http\Request;
@@ -131,5 +132,17 @@ class AgencyController extends Controller
     public function export() 
     {
         return Excel::download(new AgencyExport, 'agency.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('AgencyData', $fileName);
+
+        Excel::import(new AgencyImport, public_path('/AgencyData/'.$fileName)); 
+        
+        return redirect('/agency')->with('success', 'Data has been added!');
     }
 }

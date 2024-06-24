@@ -387,7 +387,7 @@
                                         </div>
                                     @endif
                                 </td>
-                                <td class="p-4 text-base font-bold text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->staff->name }}</td>
+                                <td class="p-4 text-base font-bold text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->staff?->name }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if($talent->shopee_affiliate == 1)
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">

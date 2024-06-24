@@ -17,12 +17,14 @@ class InternImport implements ToModel
         return new Intern([
             'position_id' => $row[1],
             'email' => $row[2],
-            'name' => $row[3],
-            'photo'=>$row[4],
-            'biography'=>$row[5],
-            'university'=>$row[6],
-            'instagram'=>$row[7],
-            'linkedin'=>$row[8]
+            'name' => $row[3],   
+            'phone' => $row[4],
+            'place' => $row[5],
+            'birth' => $row[6],
+            'address'=>$row[7],
+            'domicile'=>$row[8],
+            'instagram'=>$row[9],
+            'linkedin'=>$row[10],
         ]);
     }
 }

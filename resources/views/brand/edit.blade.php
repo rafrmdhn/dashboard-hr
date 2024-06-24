@@ -62,7 +62,7 @@
                             <select name="staff_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                 <option value="" selected>Pilih PIC</option>
                                     @foreach ($staffs as $staff)
-                                        @if (old('staff_id', $brand->staff->id ) == $staff->id)
+                                        @if (old('staff_id', $brand->staff?->id ) == $staff->id)
                                             <option value="{{ $staff->id }}" selected>{{$staff->name}}</option>
                                         @else
                                             <option value="{{ $staff->id }}">{{$staff->name}}</option>
