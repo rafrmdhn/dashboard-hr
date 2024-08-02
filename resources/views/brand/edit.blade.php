@@ -4,7 +4,7 @@
 </button>
 
 <div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full" id="edit-data-modal-{{ $brand->id }}">
-    <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
+    <div class="relative w-full h-full max-w-2xl px-4">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
             <!-- Modal header -->
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label for="position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
-                            <button id="editDropdownSearchButton-{{ $brand->id }}" data-dropdown-toggle="editDropdownSearch-{{ $brand->id }}" class="inline-flex items-center justify-between bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="button">
+                            <button id="editDropdownSearchButton-{{ $brand->id }}" data-dropdown-toggle="editDropdownSearch-{{ $brand->id }}" class="inline-flex items-center justify-between bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="button">
                                 Pilih Kategori
                                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -72,12 +72,37 @@
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="photo">Unggah Foto</label>
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="photo" type="file" name="photo" required>
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="photo" type="file" name="photo">
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                         </div>
                         <div class="col-span-6">
                             <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
                             <textarea id="address" name="address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Input Address" required>{{ old('address', $brand->address) }}</textarea>
+                        </div>
+
+                        {{-- Informasi Data Payment --}}
+                        <div class="col-span-full">
+                            <h1 class="text-xl font-semibold dark:text-white">Data Payment</h1>
+                        </div>
+                        <div class="col-span-6">
+                            <label for="account_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Penerima Rekening</label>
+                            <input type="text" name="account_name" value="{{ old('account_name', $brand->account_name) }}" placeholder="Masukkan nama penerima rekening..."" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        </div>
+                        <div class="col-span-full sm:col-span-4">
+                            <label for="account_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Rekening</label>
+                            <input type="text" name="account_number" value="{{ old('account_number', $brand->account_number) }}" placeholder="Masukkan nomor rekening..."" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        </div>
+                        <div class="col-span-full sm:col-span-2">
+                            <label for="bank_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Bank</label>
+                            <input type="text" name="bank_name" value="{{ old('bank_name', $brand->bank_name) }}" placeholder="BCA/BNI/dll" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        </div>
+                        <div class="col-span-6">
+                            <label for="npwp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NPWP</label>
+                            <input type="text" name="npwp" value="{{ old('npwp', $brand->npwp) }}" placeholder="xx.xxx.xxx.x-xxx.xxx" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        </div>
+                        <div class="col-span-6">
+                            <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
+                            <input type="text" name="nik" value="{{ old('nik', $brand->nik) }}" placeholder="16 digit" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                     </div> 
                 </div>

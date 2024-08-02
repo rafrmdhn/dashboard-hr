@@ -4,9 +4,15 @@ namespace App\Imports;
 
 use App\Models\Brand;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class BrandImport implements ToModel
+class BrandImport implements ToModel, WithStartRow
 {
+    public function startRow(): int
+    {
+        return 2; // Mulai dari baris kedua (melewati heading)
+    }
+    
     /**
     * @param array $row
     *
@@ -15,11 +21,15 @@ class BrandImport implements ToModel
     public function model(array $row)
     {
         return new Brand([
-            'staff_id' => $row[1],
-            'name' => $row[2],
-            'email' => $row[3],
+            'name' => $row[1],
+            'email' => $row[2],
+            'address' => $row[3],
             'phone' => $row[4],
-            'address' => $row[5],
+            'account_name' => $row[5],
+            'account_number' => $row[6],
+            'bank_name' => $row[7],
+            'npwp' => $row[8],
+            'nik' => $row[9],
         ]);
     }
 }

@@ -30,6 +30,7 @@
     </div>
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('js/index.js') }}"></script>
     <script>
         $(document).ready(function() {
@@ -40,6 +41,23 @@
             $('input[name="phone"]').on('input', function(event) {
                 // Hilangkan karakter non-angka
                 $(this).val($(this).val().replace(/[^0-9]/g, ''));
+            });
+
+            /* -------------------------- Validasi Data Payment -------------------------- */
+            $('input[name=account_number]').inputmask({
+                regex: "[0-9]*",
+                showMaskOnHover: false,
+                showMaskOnFocus: false
+            });
+            $('input[name=npwp]').inputmask({
+                mask: "99.999.999.9-999.999",
+                showMaskOnHover: false,
+                showMaskOnFocus: false
+            });
+            $('input[name=nik]').inputmask({
+                mask: "9999999999999999",
+                showMaskOnHover: false,
+                showMaskOnFocus: false
             });
 
             $('#deleteAllSelectorRecord').click(function(e){

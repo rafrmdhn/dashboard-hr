@@ -42,6 +42,11 @@ return new class extends Migration
             $table->boolean('mcn_tiktok');            
             $table->string('photo')->default('images/default-profile-picture.jpg');
             $table->boolean('status')->default(false);
+            $table->string('account_name')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('npwp')->nullable();
+            $table->string('nik')->nullable();
             $table->timestamps();
 
             $table->foreign('village_id')

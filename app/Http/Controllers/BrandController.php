@@ -68,7 +68,14 @@ class BrandController extends Controller
             'address' => 'required',
             'staff_id' => 'required',
             'category_id' => 'required',
-            'photo' => 'image|file|max:2048'
+            'photo' => 'nullable|image|file|max:2048',
+
+            // Tambahan untuk data Payment
+            'account_name' => 'nullable',
+            'account_number' => 'nullable',
+            'bank_name' => 'nullable',
+            'npwp' => 'nullable|regex:/^\d{2}\.\d{3}\.\d{3}\.\d-\d{3}\.\d{3}$/',
+            'nik' => 'nullable|digits:16',
         ]);
 
         // PENGECEKAN NAMA BRAND
@@ -123,7 +130,14 @@ class BrandController extends Controller
             'address' => 'required',
             'staff_id' => 'required',
             'category_id' => 'required',
-            'photo' => 'image|file|max:2048'
+            'photo' => 'nullable|image|file|max:2048',
+
+            // Tambahan untuk data Payment
+            'account_name' => 'nullable',
+            'account_number' => 'nullable',
+            'bank_name' => 'nullable',
+            'npwp' => 'nullable|regex:/^\d{2}\.\d{3}\.\d{3}\.\d-\d{3}\.\d{3}$/',
+            'nik' => 'nullable|digits:16',
         ]);
 
         $categories = $validatedData['category_id'];

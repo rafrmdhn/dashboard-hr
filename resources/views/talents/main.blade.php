@@ -262,6 +262,66 @@
                                 </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'account_name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nama Penerima Rekening
+                                    @if (request('sort') == 'account_name')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'account_number', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    No Rekening
+                                    @if (request('sort') == 'account_number')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'bank_name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nama Bank
+                                    @if (request('sort') == 'bank_name')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'npwp', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    NPWP
+                                    @if (request('sort') == 'npwp')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'nik', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    NIK
+                                    @if (request('sort') == 'nik')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 <a class="flex justify-between" href="{{ route('talent.index', ['sort' => 'shopee_affiliate', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
                                     Shopee Affiliate
                                     @if (request('sort') == 'shopee_affiliate')
@@ -388,6 +448,11 @@
                                     @endif
                                 </td>
                                 <td class="p-4 text-base font-bold text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->staff?->name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->account_name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->account_number }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->bank_name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->npwp }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->nik }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if($talent->shopee_affiliate == 1)
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">

@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('phone');
             $table->text('address');
             $table->string('photo')->default('images/default-profile-picture.jpg');
+            $table->string('account_name')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('npwp')->nullable();
+            $table->string('nik')->nullable();
             $table->timestamps();
         });
     }

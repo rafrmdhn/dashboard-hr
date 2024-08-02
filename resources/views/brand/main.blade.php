@@ -92,6 +92,66 @@
                                 </a>
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'account_name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nama Penerima Rekening
+                                    @if (request('sort') == 'account_name')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'account_number', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    No Rekening
+                                    @if (request('sort') == 'account_number')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'bank_name', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    Nama Bank
+                                    @if (request('sort') == 'bank_name')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'npwp', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    NPWP
+                                    @if (request('sort') == 'npwp')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                <a class="flex justify-between" href="{{ route('brand.index', ['sort' => 'nik', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}">
+                                    NIK
+                                    @if (request('sort') == 'nik')
+                                        @if (request('direction') == 'asc')
+                                            ▲
+                                        @else
+                                            ▼
+                                        @endif
+                                    @endif
+                                </a>
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Aksi
                             </th> 
                         </tr>
@@ -123,6 +183,11 @@
                                     @endforeach
                                 </td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $brand->staff?->name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $brand->account_name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $brand->account_number }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $brand->bank_name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $brand->npwp }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $brand->nik }}</td>
                             <td class="p-4 space-x-2 whitespace-nowrap">
                                 <!-- Edit User Modal -->
                                 @include('brand.edit')
