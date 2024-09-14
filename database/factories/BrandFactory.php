@@ -23,6 +23,11 @@ class BrandFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
             'photo' => 'images/default-profile-picture.jpg',
+            'account_name' => $this->faker->name(),
+            'account_number' => $this->faker->numerify('############'),
+            'bank_name' => $this->faker->randomElement(['BCA', 'BNI', 'BRI', 'BSI', 'Mandiri', 'Bank Danamon']),
+            'npwp' => $this->faker->numerify("##.###.###-#.###.###"),
+            'nik' => $this->faker->numerify('################')
         ];
     }
 }

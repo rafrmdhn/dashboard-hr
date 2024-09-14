@@ -19,7 +19,7 @@ class TalentFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'phone' => $this->faker->phoneNumber(),
+            'phone' => $this->faker->numerify('08##########'),
             'place' => $this->faker->city(),
             'date' => $this->faker->date(),
             'instagram' => $this->faker->userName(),
@@ -44,6 +44,11 @@ class TalentFactory extends Factory
             'mcn_tiktok' => $this->faker->boolean(),
             'photo' => 'images/default-profile-picture.jpg',
             'status' => 1,
+            'account_name' => $this->faker->name(),
+            'account_number' => $this->faker->numerify('############'),
+            'bank_name' => $this->faker->randomElement(['BCA', 'BNI', 'BRI', 'BSI', 'Mandiri', 'Bank Danamon']),
+            'npwp' => $this->faker->numerify("##.###.###-#.###.###"),
+            'nik' => $this->faker->numerify('################')
         ];
     }
 

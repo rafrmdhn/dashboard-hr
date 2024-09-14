@@ -87,6 +87,21 @@
                                 PIC
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Nama Penerima Rekening
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                No Rekening
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Nama Bank
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                NPWP
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                NIK
+                            </th>
+                            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Shopee Affiliate
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
@@ -171,6 +186,11 @@
                                     @endif
                                 </td>
                                 <td class="p-4 text-base font-bold text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->staff->name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->account_name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->account_number }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->bank_name }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->npwp }}</td>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->nik }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if($talent->shopee_affiliate == 1)
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">

@@ -54,6 +54,7 @@ class TalentController extends Controller
 
     public function update(Request $request, Talent $talent)
     {
+        // dd($request->all());
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
@@ -61,7 +62,7 @@ class TalentController extends Controller
             'place' => 'required',
             'date' => 'required',
             'engagement' => 'required',
-            // 'category_id' => 'required',
+            'category_id' => 'nullable',
             'instagram' => 'required',
             'finstagram' => 'required',
             'rate_igs' => 'required',
@@ -81,8 +82,17 @@ class TalentController extends Controller
             'tiktok_affiliate' => 'required',
             'mcn_tiktok' => 'required', 
             'status' => 'required',
-            'village_id' => 'required'
+            'village_id' => 'required',
+
+            // Tambahan untuk data Payment
+            'account_name' => 'nullable',
+            'account_number' => 'nullable',
+            'bank_name' => 'nullable',
+            'npwp' => 'nullable|regex:/^\d{2}\.\d{3}\.\d{3}\.\d-\d{3}\.\d{3}$/',
+            'nik' => 'nullable|digits:16',
         ]);
+
+        // dd($validatedData);
 
         // Check if a new photo is uploaded
         if($request->file('photo')) {
@@ -93,11 +103,13 @@ class TalentController extends Controller
             $validatedData['photo'] = $talent->photo;
         }
 
+        // UPDATE DATA KATEGORY
+        $talent->categories()->sync($request->category_id);
+        // remove category_id from validatedData
+        unset($validatedData['category_id']);
+
         Talent::where('id', $talent->id)
                 ->update($validatedData);
-
-        // UPDATE DATA KATEGORY
-        // $talent->categories()->sync($request->category_id);
 
         return redirect('/talent')->with('success', 'Data has been updated!');
     }
@@ -179,6 +191,13 @@ class TalentController extends Controller
             'rate_yt_display' => 'nullable',
             'rate_event_display' => 'nullable',
             'staff_id_display' => 'nullable',
+
+            // Tambahan untuk data Payment
+            'account_name' => 'nullable',
+            'account_number' => 'nullable',
+            'bank_name' => 'nullable',
+            'npwp' => 'nullable|regex:/^\d{2}\.\d{3}\.\d{3}\.\d-\d{3}\.\d{3}$/',
+            'nik' => 'nullable|digits:16',
         ]);
 
         // NAMA TIDAK BOLEH SAMA 

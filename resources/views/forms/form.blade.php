@@ -732,6 +732,74 @@
             </div>
         </section>
 
+        {{-- DATA PAYMENT --}}
+        <section
+            class="bg-white dark:bg-gray-900 shadow dark:border rounded-lg dark:border-gray-700 my-8">
+            <div class="text-xl font-bold text-[#e6edf3] bg-[#010409] px-6 py-4 flex items-center gap-2 rounded-t-lg">
+                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 14a3 3 0 0 1 3-3h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4a3 3 0 0 1-3-3Zm3-1a1 1 0 1 0 0 2h4v-2h-4Z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M12.293 3.293a1 1 0 0 1 1.414 0L16.414 6h-2.828l-1.293-1.293a1 1 0 0 1 0-1.414ZM12.414 6 9.707 3.293a1 1 0 0 0-1.414 0L5.586 6h6.828ZM4.586 7l-.056.055A2 2 0 0 0 3 9v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2h-4a5 5 0 0 1 0-10h4a2 2 0 0 0-1.53-1.945L17.414 7H4.586Z" clip-rule="evenodd"/>
+                  </svg>
+                  
+
+                <h2>
+                    Data Payment <span class="font-normal text-base">(Opsional)</span>
+                </h2>
+            </div>
+            <div class="py-8 px-6">
+
+                <div class="grid gap-4 sm:grid-cols-12 sm:gap-6">
+
+                    <div class="sm:col-span-full">
+                        <label for="account_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Penerima Rekening</label>
+                        <input type="text" name="account_name" id="account_name" required value="{{ old('account_name') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan nama penerima rekening...">
+                        @error('account_name')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="sm:col-span-8">
+                        <label for="account_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Rekening</label>
+                        <input type="text" name="account_number" id="account_number" required value="{{ old('account_number') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan nomor rekening...">
+                        @error('account_number')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="sm:col-span-4">
+                        <label for="bank_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Bank</label>
+                        <input type="text" name="bank_name" id="bank_name" required value="{{ old('bank_name') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="BCA/BNI/dll">
+                        @error('bank_name')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="sm:col-span-full">
+                        <label for="npwp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NPWP</label>
+                        <input type="text" name="npwp" id="npwp" required value="{{ old('npwp') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="xx.xxx.xxx.x-xxx.xxx">
+                        @error('npwp')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="sm:col-span-full">
+                        <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
+                        <input type="text" name="nik" id="nik" required value="{{ old('nik') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="16 digit">
+                        @error('nik')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         {{-- AFFILIATE --}}
         <section
             class="bg-white dark:bg-gray-900 shadow dark:border rounded-lg dark:border-gray-700 my-8">
@@ -858,6 +926,7 @@
     @endif
 
 	<script src="{{ asset('js/dropdown-indo-region.js') }}"></script>
+    <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script>
         $(document).ready(function() {
 			// Validasi Phone
@@ -1013,6 +1082,23 @@
                     }
                     $('#dropdown').hide();  // Hide the dropdown if clicking outside of it
                 }
+            });
+
+            /* -------------------------- Validasi Data Payment -------------------------- */
+            $('input[name=account_number]').inputmask({
+                regex: "[0-9]*",
+                showMaskOnHover: false,
+                showMaskOnFocus: false
+            });
+            $('input[name=npwp]').inputmask({
+                mask: "99.999.999.9-999.999",
+                showMaskOnHover: false,
+                showMaskOnFocus: false
+            });
+            $('input[name=nik]').inputmask({
+                mask: "9999999999999999",
+                showMaskOnHover: false,
+                showMaskOnFocus: false
             });
 
             // Jika checkbox_staff_manual di-check
